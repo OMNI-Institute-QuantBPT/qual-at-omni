@@ -8,14 +8,15 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: about.qmd
-        text: Use this template
-      - href: customization.qmd
-        text: Customization
-      - text: Test
+      - href: fun_standards.qmd
+        text: Fundamental Standards
+      - href: methods.qmd
+        text: Methods
+      - href: analysis.qmd
+        text: Analysis
         menu: 
-        - text: "Subtab 1"
-        - href: "subtab1.qmd"
+        - text: "Data Prep"
+        - href: "data_prep.qmd"
     background: "#081c39"
     foreground: white
     logo: https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/logo-no-text.png?raw=true

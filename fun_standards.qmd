@@ -1,0 +1,102 @@
+---
+title: "Fundamental Standards"
+execute: 
+  echo: true
+---
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(janitor)
+library(omni)
+library(scales)
+```
+
+The following fundamental standards and associated practices guide Omni’s Qualitative methods (including data management, and analyses). These apply regardless of the methods or software packages used to support project work and are considered non-negotiables because they are critical to our ability to be #accountable to clients and communities in the accuracy of our work.
+
+All staff are expected to review the Fundamental Qualitative Standards and indicate they have done so in Confluence [here](https://omniinstitute.atlassian.net/wiki/spaces/QB/pages/2072609009/Fundamental+Qualitative+Standards+-+Review+Log).
+
+Fundamental Standard #1 - Reproducibility: All data management and analysis must be transparently documented from start to finish. 
+
+Another Omni staff person should be able to independently retrace your steps and understand exactly how themes, findings, and interpretations were generated, without needing to confer with you directly. This applies to data management, coding, theme development, and interpretation.
+
+Reproducibility in qualitative work is facilitated through:
+
+Clear documentation of every step of the process, including:
+
+How data were collected (e.g., interview guides, focus group protocols, open-ended survey items)
+
+How transcripts or field notes were processed and stored
+
+How coding was applied (including codebooks with definitions and decision rules)
+
+How codes were organized into categories/themes
+
+How interpretations and conclusions were drawn
+
+Use of qualitative data analysis software (e.g., Dedoose, R, or similar) that allows for:
+
+Systematic coding and categorization
+
+Documentation of memos and analytic decisions
+
+Exporting of coded data and audit trails
+
+Memos and annotations in plain English that explain:
+
+Why specific codes were applied
+
+How you handled complexities (e.g., contradictory data, ambiguous passages)
+
+Rationale for developing themes and conclusions
+
+Fundamental Standard #2 - Analysis reviews: We check each other’s qualitative coding and interpretations.
+
+We’re human, which means we bring our own perspectives and potential biases to qualitative work. To strengthen the credibility and trustworthiness of our findings, there must be at least two sets of eyes on:
+
+Codebooks
+
+Application of codes 
+
+Theme development and interpretation
+
+This includes, at a minumum, one person who does the original coding and one person who reviews the coding or participates in a coding comparison. Peer debriefing and/or oversight review should also be used to critically examine interpretations, question assumptions, and ensure findings are rooted in the data rather than assumptions.
+
+Fundamental Standard #3 - Save and Preserve Raw Data Files: Original data are maintained for the entirety of the project lifecycle.
+
+Qualitative data can be messy: transcription software might include typos, audio recordings may be unclear, and datasets might include photos alongside text. Although we may engage in additional efforts to clean up our data, we must maintain a copy of the original data. 
+
+Original data files should be:
+
+Clearly Labeled (e.g., education_listening_session_transcript_raw.txt)
+
+Securely Stored (i.e., saved to a locked down data folder in Dropbox)
+
+Never altered
+
+Any modifications (e.g., de-identification, transcript corrections, cleaning up of quotes for reporting) should be made on copies, with clear documentation of changes. This ensures data integrity, allows for mistakes to be traced and corrected, and maintains the authenticity of participants voices. Additionally, qualitative files should follow Omni’s data security protocols, ensuring confidentiality and participant protections at all stages.
+
+Fundamental Standard #4 - Estimate and Communicate with Precision: Our reporting is as precise as possible, and we precisely communicate the uncertainty of our findings. 
+
+Our qualitative findings are presented with the greatest precision possible, and we communicate how interpretations were reached, including any uncertainties or limitations.
+
+When we present themes or findings to clients, they should be rooted in the data and include:
+
+Clear explanations of how themes were derived
+
+Discussion of alternative interpretations, where appropriate
+
+Explanation of analytic decisions, including the rationale for emphasizing certain themes over others
+
+Transparency about data limitations (e.g., sample characteristics, data quality, potential biases)
+
+Careful and intentional use of quantifiers (words like “many”, “most” may not be appropriate for all qualitative reporting, and should be used judiciously)
+
+Direct reporting of the number of participants/groups that the code/theme arose in (e.g., n=)
+
+Direct quotes that illustrate key themes
+
+This information can be conveyed in a narrative or as a technical appendix. It not need to take up a lot of space in a report (regardless of where it is shared), but its inclusion better allows clients and communities to trust the rigor of our work.
+
+Fundamental Standard #5 - Evaluate: Question whether what you’re seeing makes sense. If it doesn’t make sense, dig in.
+
+**Inquiry** is our greatest tool to ensure high-quality, accurate qualitative methods. At every step, from opening the raw data file to examining findings that emerge from our analyses, we should be critically examining our results and asking questions like: does this look like what we expected? does this make intuitive sense? what does this actually mean? If the answer to these questions are no or I don’t know or your gut tells you something is off, dig in until it is resolved. “Digging in” could consist of retracing your steps and double checking the code, the data, or assumptions about the data. It could be consulting a data dictionary, conferring with a colleague, or adding an agenda item to a project meeting. The important thing is to lean into inquiry, be critical, and identify those things that don’t seem right.

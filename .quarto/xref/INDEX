@@ -7,5 +7,20 @@
   },
   "subtab1.qmd": {
     "subtab1.html": "eaaa6ba0"
+  },
+  "about.qmd": {
+    "about.html": "bb3f3bb4"
+  },
+  "analysis.qmd": {
+    "analysis.html": "ab52ce77"
+  },
+  "data_prep.qmd": {
+    "data_prep.html": "8f35d9dc"
+  },
+  "fun_standards.qmd": {
+    "fun_standards.html": "f7cebba2"
+  },
+  "methods.qmd": {
+    "methods.html": "b69ca87d"
   }
 }
