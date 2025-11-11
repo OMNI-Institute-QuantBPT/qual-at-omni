@@ -1,0 +1,21 @@
+---
+title: "Incentives"
+toc-depth: 2
+---
+
+***Always refer to an incentive protocol developed by the project team when processing incentives for qualitative methods.***
+
+- Gather repeated names of focus group registration as participants may have the same first or last name or join via a friend/connection’s Zoom link.  Keep the name/email/attendance record in the same row in a tracking spreadsheet. 
+
+- Have separate lines for Name, Address, Address 2 (apartment/unit number), City, State, and Zip in an online form of contact information. Prompt people to include their apartment or unit number in the directions.
+
+  - This makes mail merging with many responses much easier when processing physical gift cards and helps prevent mail from bouncing back to us.
+
+- Please be aware of the specific challenges/benefits of the administration method and the vendor you're working with (e.g., physical vs. e-gift card; Amazon vs. Kroger vs. Visa [which carries a $5 activation fee]; etc.).
+  - NOTE: To avoid online scammers, you may wish to limit your options to physical gift cards, as they require a mailing address. By contrast, e-gift cards only require a valid email address, and scammers have sophisticated methods for creating multiple email addresses.
+  
+See some examples of incentive tracking spreadsheets here:
+
+- Summit County Community Health Assessment PhotoVoice [Incentive Tracker](https://www.dropbox.com/scl/fi/zu47eltye6l52hrx8j25f/Gift-card-tracker_SCPH_PhotoVoice.xlsx?rlkey=vdsylf0ods9qg1l37uoezy4ny&dl=0)
+
+- DeKalb County Community Health Assessment Qual [Incentive Tracker](https://www.dropbox.com/scl/fi/0d99cbabdghqrn1vkkub2/Qual-Gift-card-tracker_DeKalb.xlsx?rlkey=c123g847oufw6kigqkx6nquze&dl=0)

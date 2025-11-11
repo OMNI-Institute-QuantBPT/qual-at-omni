@@ -1,9 +1,8 @@
 ---
-title: Subtab1 test
+title: Data Prep
 toc-depth: 2
 ---
 
-## Quarto
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(fig.path='figs/',
                       echo=FALSE, # change to TRUE if most code chunks should knit to report 
@@ -26,7 +25,7 @@ Data Cleaner's Summary
 
 ## Introduction
 
-**Do not share this guide outside of OMNI**
+**Do not share this guide outside of Omni**
 
 Data cleaning is often one of the first things you will do when you
 start working with qualitative data at OMNI. Whether we’re working with

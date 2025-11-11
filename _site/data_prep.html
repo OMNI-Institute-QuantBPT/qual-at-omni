@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Subtab1 test</title>
+<title>Data Prep</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,10 +100,18 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./methods.html"> 
 <span class="menu-text">Methods</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./analysis.html"> 
-<span class="menu-text">Analysis</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Analysis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
+        <li class="dropdown-header">Data Prep</li>
+        <li>
+    <a class="dropdown-item" href="./data_prep.html">
+ <span class="dropdown-text">Subtab1 test</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -120,8 +128,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#rationale" id="toc-rationale" class="nav-link" data-scroll-target="#rationale">Rationale</a></li>
   <li><a href="#when-are-data-clean" id="toc-when-are-data-clean" class="nav-link" data-scroll-target="#when-are-data-clean">When are data clean?</a></li>
   <li><a href="#how-do-i-report-the-results-of-data-cleaning" id="toc-how-do-i-report-the-results-of-data-cleaning" class="nav-link" data-scroll-target="#how-do-i-report-the-results-of-data-cleaning">How do I report the results of data cleaning?</a></li>
@@ -139,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Subtab1 test</h1>
+<h1 class="title">Data Prep</h1>
 </div>
 
 
@@ -156,14 +163,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
 <p>Manager’s Summary</p>
 <p>Data Cleaner’s Summary</p>
-</section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p><strong>Do not share this guide outside of OMNI</strong></p>
+<p><strong>Do not share this guide outside of Omni</strong></p>
 <p>Data cleaning is often one of the first things you will do when you start working with qualitative data at OMNI. Whether we’re working with interview transcripts, focus group discussions, or open-ended survey responses, the raw data we receive is rarely ready for immediate analysis. Cleaning is not just about tidying up; it’s about making informed decisions that clarify the meaning and integrity of the data while preparing it for systematic analysis.</p>
 <p>The decisions we make during the cleaning process are every bit as complex and impactful as those made during coding and analysis. Thoughtful data cleaning can preserve the richness of qualitative data, while careless decisions can distort or diminish participants’ voices. Therefore, it is especially important to have a strong set of working principles to guide your decisions when cleaning qualitative data.</p>
 <p>This guide covers a general approach to qualitative data cleaning, with an emphasis on useful R packages and functions designed to conquer some common challenges. While this guide includes tools and code to make your life easier, it also offers guidelines for making judgment calls about what to remove, retain, or clarify in the data.</p>

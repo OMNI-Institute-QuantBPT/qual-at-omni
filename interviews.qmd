@@ -1,0 +1,180 @@
+---
+title: "Interviews"
+toc-depth: 2
+---
+
+Omni uses various methods for qualitative data collection, including interviews and focus groups, open-ended survey responses, and mixed-methods integration.
+
+Below are some guidance and considerations for you as you plan for a qualitative method.
+
+## In-Person Interviews
+
+The following are items/resources to consider for an in-person focus group or interview.
+
+### Documents
+
+- List of confirmed participants with contact information (if applicable). This can be helpful if we need to text/call participants if they are lost, for example 
+
+- Focus group/interview guide: (1) for facilitator/interviewer and (1) for additional staff as needed (e.g., notetaker)
+
+- Notetaking materials: facilitator/interviewer and/or notetaker may take notes on a guide, notebook, or laptop
+
+- Consent form (if consent was not collected prior to the session) - (1) for each participant to take and (1) for each participant to sign and return. 
+
+  - NOTE: If a youth focus group is being conducted, a parent/legal guardian consent form should be collected prior to the focus group. An assent form can be given to the youth (i.e., a similar document to a parent consent form, explaining participants' rights but without a place for the youth to sign).
+
+- Demographic survey (if applicable)
+
+- Debrief discussion tool for the facilitator/interviewer(s)
+
+- Incentive tracking sheet (to collect gift card serial numbers and participant signatures)
+
+### Facilitation Materials
+
+- Recording equipment: Either 2 digital recorders – (1) as primary, (1) as backup (smart devices such as an iPhone, iPad, or laptop often have a recording capability and can be leveraged for recording). Ensure that recorders have full batteries/charge. Bring extra batteries and a power cord (if using a smart device). 
+
+- Laptop 
+
+- Pens for participants to sign consent forms
+
+- Comfort items: tissues, hand sanitizer, stress-relief toys
+
+- Snacks and refreshments (as budget allows)
+
+- Incentives (e.g., gift cards, cash) 
+
+- A flip chart (if applicable): markers and tape
+
+- Name tags/badges (if applicable)
+
+- Clipboards (if applicable): to complete forms
+
+- Timer/clock (if applicable): room may not have a clock to track time, and facilitator/interviewer to avoid looking at their phone
+
+### Communication
+
+- Invitation Emails: Include the purpose of the interview/focus group, site location/access instructions (e.g., parking map, parking voucher), and consent form
+
+- Reminder Emails: Send reminder emails at least 24 hours before the session. You may wish to send an additional reminder several days in advance
+
+- Thank You Emails: Follow-up by thanking participants for their time and inviting any final feedback
+
+### Setting/Location
+
+- Accessible by public transit
+
+- Parking space that is free or minimal cost (provide parking vouchers (if applicable))
+
+- Central or well known by the community (e.g., culturally sensitive) 
+
+- Comfortable seating to arrange tables and chairs in a circle (if possible)
+
+- Restroom access (where to point participants to the restroom)
+
+- Accessibility (room is accessible to participants [e.g., wheelchair accessible], has technical supports, and is accessible to facilitator/interviewer if conducted after 5pm/business hours)
+
+- On-site childcare space for participants (if applicable)
+
+- Transportation vouchers (if applicable)
+
+### Safe Storage
+
+- Secure Dropbox folders to store PII information (e.g., names, email addresses, phone numbers, physical addresses for qualitative data collection) per OMNI guidance
+
+- Shred documents that have PII information 
+
+- VPN access and passcode for phone storage if recorder is not available 
+
+- Destruction protocol (protocol on the timeline identified) per OMNI guidance 
+
+## Virtual Interviews
+
+***Pre-Session Preparation***
+
+### Documents (links) 
+
+- Participant/Registration List: Include confirmed participants and email addresses. Helpful for troubleshooting if anyone has difficulty joining the virtual platform.
+
+  - Note: Some projects may collect demographic information and/or gift card preferences at registration (e.g., physical or virtual).
+
+- Consent Form: Provide access to a crosswalk showing that participants completed the consent form online.
+
+- Interview/Focus Group Guide: Share links for both the facilitator/interviewer and notetaker, along with an agenda if relevant (e.g., breakout room activities). Facilitator or notetaker may take notes directly on the guide, in a notebook, or on a laptop.
+
+- PPT Slides (if applicable): Use slides to highlight group norms, ground rules, Zoom how-to’s, or interview/focus group questions for accessibility.
+
+### Technical Preparation
+
+#### Platform and Equipment
+
+- Confirm you have full Zoom (or other platform) access and necessary features enabled: hosting, recording, breakout rooms, and transcription.
+
+- Check for updates before the session and test your microphone, camera, and internet connection.
+
+- Ensure a strong and stable internet connection and develop a backup plan for potential connectivity issues.
+
+- Choose a quiet, well-lit location to support accessibility and engagement.
+
+- Open all needed materials in advance (e.g., guides, slides, notes).
+If using one monitor, be mindful of maintaining eye contact and engaged body language while referencing materials.
+
+#### Zoom Configuation
+
+- Enable the waiting room to control participant entry.
+
+- Assign alternative hosts in advance so others can manage the session if needed.
+
+- Confirm that facilitators can record sessions, including breakout rooms (saved to their cloud).
+
+- Adjust breakout room settings to avoid automatic closing unless intentional.
+
+- Test your camera, microphone, and internet connection again within Zoom before the session.
+
+### Communication
+
+- Invitation Emails: Include the purpose of the interview/focus group, virtual platform registration link, and consent form
+
+- Reminder Emails: Send reminder emails at least 24 hours ahead. You may wish to send another email one hour before the session
+
+- Tech Support Instructions: Provide instructions in the email or as an attachment for participants on how to access the virtual platform. Offer one-on-one support if participants need assistance.
+
+- Thank You Emails with Incentive/Meal voucher information (e.g., door dash, gift card): Thank participants for their time, invite any final feedback, and include a link to gather their gift card preferences (if not gathered before the event. If the gift card has already been distributed, you may wish to ask if there are any questions related to their incentive
+
+### Facilitation and Support Roles
+
+- Assign clear roles before the event:
+
+  - Facilitator/Interviewer: Leads the session, manages time, and engages participants.
+
+  - Notetaker/Tech Support: Monitors chat, handles recording, and provides technical assistance.
+
+- One team member should confirm attendance (via registration list or Zoom report). *Note: Zoom attendance reports can be imperfect; double-check manually if needed.*
+
+### Accessibility and Engagement
+
+- Provide a FAQ or Zoom instructions in advance for participants unfamiliar with the platform.
+
+- Use slides to display discussion questions, ground rules, and key information for participants who prefer visual reference.
+
+- Pin facilitators/co-facilitators to foster connection.
+
+- Encourage use of emoji reactions (thumbs up, checkmark) for participants who choose not to use their cameras.
+
+- Keep accessibility in mind by minimizing distractions and allowing time for processing.
+
+### Breakout Room Management
+
+- Assign one staff member to remain in the main room for late arrivals or tech issues.
+
+- Prepare an Excel list of registrants with breakout room categories to streamline assignments and track attendance.
+
+- Coordinate breakout room timing manually if possible (uncheck the “close automatically” option).
+
+- Ensure each breakout room has a designated facilitator or notetaker.
+
+### Safe Storage
+
+- Store personally identifiable information (PII) securely (e.g., names, emails, phone numbers, addresses) in approved Dropbox folders following Omni guidance.
+
+- Follow data destruction protocols according to the timelines in Salesforce.
+

@@ -100,10 +100,18 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./methods.html"> 
 <span class="menu-text">Methods</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./analysis.html"> 
-<span class="menu-text">Analysis</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Analysis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
+        <li class="dropdown-header">Data Prep</li>
+        <li>
+    <a class="dropdown-item" href="./data_prep.html">
+ <span class="dropdown-text">Data Prep</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -115,8 +123,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link active" data-scroll-target="#reproducibility">Reproducibility</a></li>
+  <li><a href="#analysis-reviews" id="toc-analysis-reviews" class="nav-link" data-scroll-target="#analysis-reviews">Analysis reviews</a></li>
+  <li><a href="#save-and-preserve-raw-data-files" id="toc-save-and-preserve-raw-data-files" class="nav-link" data-scroll-target="#save-and-preserve-raw-data-files">Save and Preserve Raw Data Files</a></li>
+  <li><a href="#estimate-and-communicate-with-precision" id="toc-estimate-and-communicate-with-precision" class="nav-link" data-scroll-target="#estimate-and-communicate-with-precision">Estimate and Communicate with Precision</a></li>
+  <li><a href="#evaluate" id="toc-evaluate" class="nav-link" data-scroll-target="#evaluate">Evaluate</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -140,53 +158,82 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The following fundamental standards and associated practices guide Omni’s Qualitative methods (including data management, and analyses). These apply regardless of the methods or software packages used to support project work and are considered non-negotiables because they are critical to our ability to be #accountable to clients and communities in the accuracy of our work.</p>
+<p>The following fundamental standards and associated practices guide Omni’s Qualitative methods (including data management and analyses). These apply regardless of the methods or software packages used to support project work and are considered non-negotiables because they are critical to our ability to be <strong>#accountable</strong> to clients and communities in the accuracy of our work.</p>
 <p>All staff are expected to review the Fundamental Qualitative Standards and indicate they have done so in Confluence <a href="https://omniinstitute.atlassian.net/wiki/spaces/QB/pages/2072609009/Fundamental+Qualitative+Standards+-+Review+Log">here</a>.</p>
-<p>Fundamental Standard #1 - Reproducibility: All data management and analysis must be transparently documented from start to finish.</p>
+<section id="reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility">Reproducibility</h2>
+<p><strong><em>All data management and analysis must be transparently documented from start to finish.</em></strong></p>
 <p>Another Omni staff person should be able to independently retrace your steps and understand exactly how themes, findings, and interpretations were generated, without needing to confer with you directly. This applies to data management, coding, theme development, and interpretation.</p>
 <p>Reproducibility in qualitative work is facilitated through:</p>
-<p>Clear documentation of every step of the process, including:</p>
-<p>How data were collected (e.g., interview guides, focus group protocols, open-ended survey items)</p>
-<p>How transcripts or field notes were processed and stored</p>
-<p>How coding was applied (including codebooks with definitions and decision rules)</p>
-<p>How codes were organized into categories/themes</p>
-<p>How interpretations and conclusions were drawn</p>
-<p>Use of qualitative data analysis software (e.g., Dedoose, R, or similar) that allows for:</p>
-<p>Systematic coding and categorization</p>
-<p>Documentation of memos and analytic decisions</p>
-<p>Exporting of coded data and audit trails</p>
-<p>Memos and annotations in plain English that explain:</p>
-<p>Why specific codes were applied</p>
-<p>How you handled complexities (e.g., contradictory data, ambiguous passages)</p>
-<p>Rationale for developing themes and conclusions</p>
-<p>Fundamental Standard #2 - Analysis reviews: We check each other’s qualitative coding and interpretations.</p>
+<ul>
+<li><p>Clear documentation of every step of the process, including:</p>
+<ul>
+<li><p>How data were collected (e.g., interview guides, focus group protocols, open-ended survey items)</p></li>
+<li><p>How transcripts or field notes were processed and stored</p></li>
+<li><p>How coding was applied (including codebooks with definitions and decision rules)</p></li>
+<li><p>How codes were organized into categories/themes</p></li>
+<li><p>How interpretations and conclusions were drawn</p></li>
+</ul></li>
+<li><p>Use of qualitative data analysis software (e.g., Dedoose, R, or similar) that allows for:</p>
+<ul>
+<li><p>Systematic coding and categorization</p></li>
+<li><p>Documentation of memos and analytic decisions</p></li>
+<li><p>Exporting of coded data and audit trails</p></li>
+</ul></li>
+<li><p>Memos and annotations in plain English that explain:</p>
+<ul>
+<li><p>Why specific codes were applied</p></li>
+<li><p>How you handled complexities (e.g., contradictory data, ambiguous passages)</p></li>
+<li><p>Rationale for developing themes and conclusions</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="analysis-reviews" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-reviews">Analysis reviews</h2>
+<p><strong><em>We check each other’s qualitative coding and interpretations.</em></strong></p>
 <p>We’re human, which means we bring our own perspectives and potential biases to qualitative work. To strengthen the credibility and trustworthiness of our findings, there must be at least two sets of eyes on:</p>
-<p>Codebooks</p>
-<p>Application of codes</p>
-<p>Theme development and interpretation</p>
+<ul>
+<li><p>Codebooks</p></li>
+<li><p>Application of codes</p></li>
+<li><p>Theme development and interpretation</p></li>
+</ul>
 <p>This includes, at a minumum, one person who does the original coding and one person who reviews the coding or participates in a coding comparison. Peer debriefing and/or oversight review should also be used to critically examine interpretations, question assumptions, and ensure findings are rooted in the data rather than assumptions.</p>
-<p>Fundamental Standard #3 - Save and Preserve Raw Data Files: Original data are maintained for the entirety of the project lifecycle.</p>
+</section>
+<section id="save-and-preserve-raw-data-files" class="level2">
+<h2 class="anchored" data-anchor-id="save-and-preserve-raw-data-files">Save and Preserve Raw Data Files</h2>
+<p><strong><em>Original data are maintained for the entirety of the project lifecycle.</em></strong></p>
 <p>Qualitative data can be messy: transcription software might include typos, audio recordings may be unclear, and datasets might include photos alongside text. Although we may engage in additional efforts to clean up our data, we must maintain a copy of the original data.</p>
 <p>Original data files should be:</p>
-<p>Clearly Labeled (e.g., education_listening_session_transcript_raw.txt)</p>
-<p>Securely Stored (i.e., saved to a locked down data folder in Dropbox)</p>
-<p>Never altered</p>
+<ul>
+<li><p>Clearly Labeled (e.g., education_listening_session_transcript_raw.txt)</p></li>
+<li><p>Securely Stored (i.e., saved to a locked down data folder in Dropbox)</p></li>
+<li><p>Never altered</p></li>
+</ul>
 <p>Any modifications (e.g., de-identification, transcript corrections, cleaning up of quotes for reporting) should be made on copies, with clear documentation of changes. This ensures data integrity, allows for mistakes to be traced and corrected, and maintains the authenticity of participants voices. Additionally, qualitative files should follow Omni’s data security protocols, ensuring confidentiality and participant protections at all stages.</p>
-<p>Fundamental Standard #4 - Estimate and Communicate with Precision: Our reporting is as precise as possible, and we precisely communicate the uncertainty of our findings.</p>
+</section>
+<section id="estimate-and-communicate-with-precision" class="level2">
+<h2 class="anchored" data-anchor-id="estimate-and-communicate-with-precision">Estimate and Communicate with Precision</h2>
+<p><strong><em>Our reporting is as precise as possible, and we precisely communicate the uncertainty of our findings.</em></strong></p>
 <p>Our qualitative findings are presented with the greatest precision possible, and we communicate how interpretations were reached, including any uncertainties or limitations.</p>
 <p>When we present themes or findings to clients, they should be rooted in the data and include:</p>
-<p>Clear explanations of how themes were derived</p>
-<p>Discussion of alternative interpretations, where appropriate</p>
-<p>Explanation of analytic decisions, including the rationale for emphasizing certain themes over others</p>
-<p>Transparency about data limitations (e.g., sample characteristics, data quality, potential biases)</p>
-<p>Careful and intentional use of quantifiers (words like “many”, “most” may not be appropriate for all qualitative reporting, and should be used judiciously)</p>
-<p>Direct reporting of the number of participants/groups that the code/theme arose in (e.g., n=)</p>
-<p>Direct quotes that illustrate key themes</p>
+<ul>
+<li><p>Clear explanations of how themes were derived</p></li>
+<li><p>Discussion of alternative interpretations, where appropriate</p></li>
+<li><p>Explanation of analytic decisions, including the rationale for emphasizing certain themes over others</p></li>
+<li><p>Transparency about data limitations (e.g., sample characteristics, data quality, potential biases)</p></li>
+<li><p>Careful and intentional use of quantifiers (words like “many”, “most” may not be appropriate for all qualitative reporting, and should be used judiciously)</p></li>
+<li><p>Direct reporting of the number of participants/groups that the code/theme arose in (e.g., n=)</p></li>
+<li><p>Direct quotes that illustrate key themes</p></li>
+</ul>
 <p>This information can be conveyed in a narrative or as a technical appendix. It not need to take up a lot of space in a report (regardless of where it is shared), but its inclusion better allows clients and communities to trust the rigor of our work.</p>
-<p>Fundamental Standard #5 - Evaluate: Question whether what you’re seeing makes sense. If it doesn’t make sense, dig in.</p>
-<p><strong>Inquiry</strong> is our greatest tool to ensure high-quality, accurate qualitative methods. At every step, from opening the raw data file to examining findings that emerge from our analyses, we should be critically examining our results and asking questions like: does this look like what we expected? does this make intuitive sense? what does this actually mean? If the answer to these questions are no or I don’t know or your gut tells you something is off, dig in until it is resolved. “Digging in” could consist of retracing your steps and double checking the code, the data, or assumptions about the data. It could be consulting a data dictionary, conferring with a colleague, or adding an agenda item to a project meeting. The important thing is to lean into inquiry, be critical, and identify those things that don’t seem right.</p>
+</section>
+<section id="evaluate" class="level2">
+<h2 class="anchored" data-anchor-id="evaluate">Evaluate</h2>
+<p><strong><em>Question whether what you’re seeing makes sense. If it doesn’t make sense, dig in.</em></strong></p>
+<p><strong>#Inquiry</strong> is our greatest tool to ensure high-quality, accurate qualitative methods. At every step, from opening the raw data file to examining findings that emerge from our analyses, we should be critically examining our results and asking questions like: does this look like what we expected? does this make intuitive sense? what does this actually mean? If the answer to these questions are no or I don’t know or your gut tells you something is off, dig in until it is resolved. “Digging in” could consist of retracing your steps and double checking the code, the data, or assumptions about the data. It could be consulting a data dictionary, conferring with a colleague, or adding an agenda item to a project meeting. The important thing is to lean into inquiry, be critical, and identify those things that don’t seem right.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

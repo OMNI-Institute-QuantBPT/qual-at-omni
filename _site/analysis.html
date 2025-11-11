@@ -154,10 +154,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./methods.html"> 
 <span class="menu-text">Methods</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./analysis.html" aria-current="page"> 
-<span class="menu-text">Analysis</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Analysis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
+        <li class="dropdown-header">Data Prep</li>
+        <li>
+    <a class="dropdown-item" href="./data_prep.html">
+ <span class="dropdown-text">Data Prep</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -957,8 +965,8 @@ quantitative data when appropriate.</p></div>
 <!-- | **Topic Modeling** | 5,000+ words | ❌ Low | Topic modeling relies on **statistical probability**. Anything under **5,000 words** will **struggle to produce meaningful, stable topics**. While you *can* run a topic model on smaller datasets (e.g., 2,000 words), the **results are less trustworthy**, prone to overfitting, and often **hard to interpret**. Not recommended without strong caveats. | -->
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-7128db70ecf74f26edb6" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7128db70ecf74f26edb6">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Word Frequency","Sentiment Analysis","Content Analysis (Dictionary-based) or Thematic Analysis","Topic Modeling"],["500+ words","1,000+ words","1,000+ words (small dictionaries)","5,000+ words"],["✅ High","✅ Moderate","✅ Moderate","❌ Low"],["Works even on small datasets for exploratory insights. You can analyze under 500 words, but findings may feel anecdotal rather than robust. Best if presented as observations rather than firm conclusions.","Sentiment varies widely within small datasets. Under 1,000 words, tone shifts can skew results. You can use it in smaller datasets (500+ words), but you'll need careful interpretation and clear disclaimers.","Works well with small datasets, especially if using focused dictionaries with clearly defined terms. Fewer words mean fewer opportunities for themes to emerge, so results need contextualization.","Topic modeling relies on statistical probability. Anything under 5,000 words will struggle to produce meaningful, stable topics. While you can run a topic model on smaller datasets (e.g., 2,000 words), the results are less trustworthy, prone to overfitting, and often hard to interpret. Not recommended without strong caveats."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Analysis<\/th>\n      <th>Typical_Recommendation<\/th>\n      <th>Wiggle_Room_with_Word_Count<\/th>\n      <th>Why<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"autoWidth":true,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Analysis","targets":1},{"name":"Typical_Recommendation","targets":2},{"name":"Wiggle_Room_with_Word_Count","targets":3},{"name":"Why","targets":4}],"order":[],"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-c87f4b2904ada31496a0" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c87f4b2904ada31496a0">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Word Frequency","Sentiment Analysis","Content Analysis (Dictionary-based) or Thematic Analysis","Topic Modeling"],["500+ words","1,000+ words","1,000+ words (small dictionaries)","5,000+ words"],["✅ High","✅ Moderate","✅ Moderate","❌ Low"],["Works even on small datasets for exploratory insights. You can analyze under 500 words, but findings may feel anecdotal rather than robust. Best if presented as observations rather than firm conclusions.","Sentiment varies widely within small datasets. Under 1,000 words, tone shifts can skew results. You can use it in smaller datasets (500+ words), but you'll need careful interpretation and clear disclaimers.","Works well with small datasets, especially if using focused dictionaries with clearly defined terms. Fewer words mean fewer opportunities for themes to emerge, so results need contextualization.","Topic modeling relies on statistical probability. Anything under 5,000 words will struggle to produce meaningful, stable topics. While you can run a topic model on smaller datasets (e.g., 2,000 words), the results are less trustworthy, prone to overfitting, and often hard to interpret. Not recommended without strong caveats."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Analysis<\/th>\n      <th>Typical_Recommendation<\/th>\n      <th>Wiggle_Room_with_Word_Count<\/th>\n      <th>Why<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"autoWidth":true,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Analysis","targets":1},{"name":"Typical_Recommendation","targets":2},{"name":"Wiggle_Room_with_Word_Count","targets":3},{"name":"Why","targets":4}],"order":[],"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">

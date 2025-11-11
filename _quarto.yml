@@ -10,8 +10,11 @@ website:
         text: Home
       - href: fun_standards.qmd
         text: Fundamental Standards
-      - href: methods.qmd
-        text: Methods
+      - text: Methods
+        menu:
+        - href: interviews.qmd
+        - href: food.qmd
+        - href: incentives.qmd
       - text: Analysis
         menu: 
         - text: "Data Prep"
