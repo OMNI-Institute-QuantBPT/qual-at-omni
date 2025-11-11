@@ -12,8 +12,7 @@ website:
         text: Fundamental Standards
       - href: methods.qmd
         text: Methods
-      - href: analysis.qmd
-        text: Analysis
+      - text: Analysis
         menu: 
         - text: "Data Prep"
         - href: "data_prep.qmd"
