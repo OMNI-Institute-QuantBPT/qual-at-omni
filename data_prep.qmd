@@ -1,14 +1,7 @@
 ---
-title: Data Prep
+title: Data Cleaning
 toc-depth: 2
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.path='figs/',
-                      echo=FALSE, # change to TRUE if most code chunks should knit to report 
-                      warning=FALSE, 
-                      message=FALSE)
-```
 
 ```{r packages, echo=FALSE}
 library(tidyverse)
@@ -28,7 +21,7 @@ Data Cleaner's Summary
 **Do not share this guide outside of Omni**
 
 Data cleaning is often one of the first things you will do when you
-start working with qualitative data at OMNI. Whether we’re working with
+start working with qualitative data at Omni. Whether we’re working with
 interview transcripts, focus group discussions, or open-ended survey
 responses, the raw data we receive is rarely ready for immediate
 analysis. Cleaning is not just about tidying up; it’s about making
@@ -51,14 +44,15 @@ what to remove, retain, or clarify in the data.
 The steps in a qualitative data cleaning process will always be informed
 by two key factors:
 
-1)  **The state of the data when we (OMNI) receive it**
+1)  **The state of the data when we (Omni) receive it**
 
 -   For example, some transcripts may come from automated services (like
     Zoom or Otter.ai) and contain timestamps, speaker labels, or filler
     words that require removal. Others may be professionally transcribed
     and need minimal cleaning.
 
-2)  **The specific needs of the project** Because of this variability,
+2)  **The specific needs of the project** 
+-   Because of this variability,
     we encourage a flexible, judgment-driven approach to data cleaning.
     The steps described in this guide are common to many projects, but
     their order and application should be tailored to the needs of the
@@ -67,16 +61,13 @@ by two key factors:
     required. Consult the analysis plan and research questions in your
     project materials to verify the needs of the project.
 
-### Supporting resources
-
 ## Rationale
 
-When we clean qualitative data, we apply a series of thoughtful
-transformations that make the data clearer, more consistent, and usable
+When we clean qualitative data, we apply a series of thoughtful transformations that make the data clearer, more consistent, and usable
 for analysis. Qualitative data cleaning requires attention to detail and
 sensitivity to the context in which the data were collected. The
 procedures we use need to be flexible because the downstream purposes of
-the data can vary from project to project—whether for thematic coding,
+the data can vary from project to project, whether for thematic coding,
 content analysis, or mixed-methods integration.
 
 The qualitative data cleaner often has to make many judgment calls
@@ -101,18 +92,21 @@ guided by the project’s research questions or evaluation goals. Having a
 shared understanding of what the team hopes to explore in the data helps
 inform:
 
-What should be cleaned What should be preserved (even if messy) What
-should be flagged for discussion Two especially helpful documents to
-have before qualitative data cleaning begins are:
+- What should be cleaned
+- What should be preserved (even if messy)
+- What should be flagged for discussion 
 
-A codebook (or at least a data dictionary) This helps ensure consistency
-in how we treat things like speaker names, special terminology, or
-sensitive content. A data analysis plan This outlines the team’s
+Two especially helpful documents to have before qualitative data cleaning begins are:
+
+- A **[codebook](codebook.qmd)** (or at least a data dictionary). This helps ensure consistency in how we treat things like speaker names, special terminology, or
+sensitive content. 
+- A **[data analysis plan](https://omniinstitute.atlassian.net/wiki/spaces/Quant/pages/375226966/Guide+for+data+analysis+plans)**. This outlines the team’s
 approach to coding and analysis and helps identify if additional
 cleaning steps are necessary. For example: anonymizing sensitive details
 or removing artifacts from automated transcription tools (timestamps,
-filler words, etc.). Whenever possible, we expect teams to develop a
-data analysis plan and request any available data dictionaries or
+filler words, etc.). 
+
+Whenever possible, we expect teams to develop a data analysis plan and request any available data dictionaries or
 codebooks from the client or partner organizations who collected the
 data. However, you may need to create a codebook if one doesn’t
 exist—feel free to reach out to the QualBPT (or whichever team you want
@@ -133,136 +127,157 @@ any other purpose, always write your R scripts as if they will later be:
 -   Held up as example code
 -   Modified by someone brand new to both R and the project
 
-Make it easy on future OMNI-ites—and on your future self!
+Make it easy on future Omni-ites—and on your future self!
 
 ## When are data clean?
 
-✅ What Does It Mean to Have "Clean" Qualitative Data? For there to be
-project tasks that direct OMNI-ites to ‘clean qualitative data,’ and a
+**What Does It Mean to Have "Clean" Qualitative Data?**
+- For there to be project tasks that direct Omni-ites to ‘clean qualitative data,’ and a
 guide to help in doing so, there should also be a shared understanding
 of what it means for qualitative data to be clean.
 
-📝 Definition of Clean Qualitative Data: At OMNI, qualitative data are
+**Definition of Clean Qualitative Data**
+- At Omni, qualitative data are
 considered clean when they are organized, de-identified, and ready for
 analysis or coding.
 
 That means the data:
-
-Accurately reflect the original source material (e.g., interviews, focus
+- Accurately reflect the original source material (e.g., interviews, focus
 groups, or open-text survey responses) Have been transformed into a
 structure that makes them easy to navigate and analyze Protect the
 privacy and confidentiality of participants Are consistent, clear, and
-free of irrelevant clutter (like transcription artifacts) 🎯 What Makes
-a Qualitative Dataset "Analysis-Ready"? For qualitative text data to be
-ready for analysis, they should meet the following criteria:
+free of irrelevant clutter (like transcription artifacts) 
 
-Speaker Information Is Clear and Consistent
+**What Makes a Qualitative Dataset "Analysis-Ready"?**
 
-Participant speakers and interviewers are clearly labeled in the data.
-Each speaker’s text is grouped logically into segments, preserving
-conversational flow. Participant Identifiers Are Specified and Protected
+- For qualitative text data to be ready for analysis, they should meet the following criteria:
 
-Real names, locations, and other direct identifiers have been removed or
-replaced with participant IDs or pseudonyms. Confidential information
-(e.g., agency names, job titles, organizations) is anonymized where
-necessary, following OMNI’s confidentiality guidelines. Questions Are
-Clearly Distinguished From Responses
+1) Speaker Information Is Clear and Consistent
 
-Interviewer questions (or prompts) are labeled or separated from
+- Participant speakers and interviewers are clearly labeled in the data.
+- Each speaker’s text is grouped logically into segments, preserving
+conversational flow. 
+
+2) Participant Identifiers Are Specified and Protected
+
+- Real names, locations, and other direct identifiers have been removed or
+replaced with participant IDs or pseudonyms. 
+- Confidential information (e.g., agency names, job titles, organizations) is anonymized where necessary, following Omni’s confidentiality guidelines. 
+
+3) Questions Are Clearly Distinguished From Responses
+
+- Interviewer questions (or prompts) are labeled or separated from
 participant responses, as appropriate. This can be done by adding
 question text as its own field in the dataset or by adding markers in
-the transcript. Text Segments Are Ordered and Organized
+the transcript. 
 
-The transcript text is ordered according to the flow of conversation.
+4) Text Segments Are Ordered and Organized
+
+- The transcript text is ordered according to the flow of conversation.
 Segments are correctly time-sequenced (even if timestamps themselves are
-removed). Text Is Structured Into a Tidy, Rectangular Format
+removed). 
 
-Each row represents a single speaker turn or unit of analysis (e.g., a
-complete response to a question). Data are stored in a rectangular table
-(data frame), with columns for: Session name or group (e.g., "Educators"
-or "Public Health") Participant ID or role (e.g., "Participant 1,"
-"Facilitator") Text segment (the response or comment) Any relevant
-metadata (e.g., discussion section, date) Timestamps and Transcription
-Artifacts Are Removed
+5) Text Is Structured Into a Tidy, Rectangular Format
 
-All timestamps (e.g., [00:05:23], (0:12:45)) are deleted unless
-specifically required for analysis. Automated transcription quirks
+- Each row represents a single speaker turn or unit of analysis (e.g., a
+complete response to a question). 
+- Data are stored in a rectangular table (data frame), with columns for: 
+  - Session name or group (e.g., "Educators" or "Public Health")
+  - Participant ID or role (e.g., "Participant 1", "Facilitator")
+  - Text segment (the response or comment)
+  - Any relevant metadata (e.g., discussion section, date) 
+  - Transcription
+  
+6) Artifacts Are Removed
+
+- All timestamps (e.g., [00:05:23], (0:12:45)) are deleted unless
+specifically required for analysis. 
+- Automated transcription quirks
 (e.g., repeated words, filler words, auto-captions like “[inaudible]”)
-are reviewed, cleaned, or flagged. Text Is Consistent in Style and
-Format
+are reviewed, cleaned, or flagged. 
 
-All text is converted to lowercase, unless case is important for
-analysis. Spelling errors are corrected when they obscure meaning (but
+7) Text Is Consistent in Style and Format
+
+- All text is converted to lowercase, unless case is important for
+analysis. 
+- Spelling errors are corrected when they obscure meaning (but
 regional spellings or participant quirks may be preserved if relevant).
-Punctuation and spacing are standardized (no excessive whitespace,
-missing periods, etc.). Relevant Identifiers Are Added to the Dataset
+- Punctuation and spacing are standardized (no excessive whitespace,
+missing periods, etc.). 
 
-If there are multiple sessions or groups, these are labeled (e.g.,
-"Educators," "Public Health"). If there are themes or discussion
+8) Relevant Identifiers Are Added to the Dataset
+
+- If there are multiple sessions or groups, these are labeled (e.g.,
+"Educators," "Public Health"). 
+- If there are themes or discussion
 sections (e.g., "Challenges," "Recommendations"), these are identified.
-If codes are pre-assigned for analytic purposes (e.g.,
+- If codes are pre-assigned for analytic purposes (e.g.,
 “Pre-implementation,” “Post-implementation”), they are included in the
-data structure. 💡 How Do We Know When Qualitative Data Are Clean? Here
-are some guiding questions to help determine when qualitative data are
+data structure. 
+
+**How Do We Know When Qualitative Data Are Clean?**
+
+Here are some guiding questions to help determine when qualitative data are
 ready for analysis (i.e., clean):
 
-What is the plan for coding or analyzing this data?
+- What is the plan for coding or analyzing this data?
 
-The analysis plan (or coding framework) should inform cleaning
+- The analysis plan (or coding framework) should inform cleaning
 decisions. For example, if the team plans to do thematic coding, they’ll
 need text organized into meaningful speaker turns or responses. What
 needs to be anonymized?
 
-Identify any sensitive information that must be redacted or replaced to
+- Identify any sensitive information that must be redacted or replaced to
 maintain confidentiality and ensure participant privacy. Are speaker
 turns properly attributed and easy to follow?
 
-Each speaker’s contributions should be clearly labeled, consistently
+- Each speaker’s contributions should be clearly labeled, consistently
 formatted, and grouped logically. Are responses to specific questions
 clearly identifiable?
 
-If interviews or focus groups follow a semi-structured guide, it’s
+- If interviews or focus groups follow a semi-structured guide, it’s
 important to separate questions from responses for clarity in analysis.
 Is the structure of the data appropriate for the analytic tool?
 
-If the data are being uploaded to Dedoose, NVivo, or another platform,
+- If the data are being uploaded to Dedoose, NVivo, or another platform,
 they should follow the required format (e.g., tidy data frame with
 speaker IDs and group names). Have all unnecessary artifacts been
 removed?
 
-Time stamps, filler words, and transcription errors that don’t add value
+- Time stamps, filler words, and transcription errors that don’t add value
 to the analysis should be removed. Has the cleaned data been reviewed by
 someone else (QA check)?
 
-Whenever possible, have another OMNI-ite review the cleaned data for
-accuracy and completeness. ✨ Common Issues to Discuss Early in the
-Cleaning Process Just like in quantitative data cleaning, clarifying
+- Whenever possible, have another Omni-ite review the cleaned data for
+accuracy and completeness. 
+
+**Common Issues to Discuss Early in the Cleaning Process**
+
+Just like in quantitative data cleaning, clarifying
 expectations at the start of a project will save time later. For
 qualitative projects, consider these:
 
-Will we analyze both facilitator questions and participant responses, or
-just participant responses? How will we handle overlapping speech,
-interruptions, or incomplete thoughts? Do we need to standardize
-participant roles (e.g., "Public Health Official" vs. "PH Staff") for
-consistency? Are we preparing data for manual coding or automated text
-analysis? Do we need to translate or transcribe non-English responses?
-Do we need to connect text segments with broader context, such as the
-discussion theme or section of the focus group? 🚀 In the Following
-Sections... We’ll see how these fundamentals—like tidy qualitative data,
-pipes, and regular expressions—play out in real-world cleaning tasks,
-such as:
+- Will we analyze both facilitator questions and participant responses, or
+just participant responses? 
+- How will we handle overlapping speech, interruptions, or incomplete thoughts? 
+- Do we need to standardize participant roles (e.g., "Public Health Official" vs. "PH Staff") for consistency? 
+- Are we preparing data for manual coding or automated text
+analysis? 
+- Do we need to translate or transcribe non-English responses?
+- Do we need to connect text segments with broader context, such as the
+discussion theme or section of the focus group? 
 
-Removing timestamps and filler words Labeling speakers and organizing
-segments Anonymizing sensitive information Structuring text for analysis
-software (Dedoose, NVivo, etc.) ✅ Quick Summary of "Clean Qualitative
-Data" at OMNI: Clean qualitative data are:
+**Quick Summary of "Clean Qualitative Data" at Omni: Clean qualitative data are:**
 
-Anonymized Clearly structured and labeled Organized for easy analysis
-Free of unnecessary artifacts Ready for use in coding and interpretation
+- Anonymized 
+- Clearly structured and labeled 
+- Organized for easy analysis
+- Free of unnecessary artifacts 
+- Ready for use in coding and interpretation
 
 ## How do I report the results of data cleaning?
 
-📝 How to Report the Results of Qualitative Data Cleaning at OMNI
+📝 How to Report the Results of Qualitative Data Cleaning at Omni
 Cleaning qualitative data is an interpretive and decision-heavy process,
 and those decisions need to be transparent. Reporting your cleaning
 process helps:
@@ -480,12 +495,12 @@ about this, ask Hannah or a member of Qual BPT for some help!
 Here is an example of what your data may look like when you first read
 it into R.
 
-![](dirty_data.png)
+![](images/dirty_data.png)
 
 and here's what we want it to look like (eventually) for most of our
 analysis needs.
 
-![](clean_data.png)
+![](images/clean_data.png)
 
 With clean data, we can:
 
@@ -513,7 +528,7 @@ With clean data, we can:
 
 One of the main forms of qualitative data we receive includes Zoom transcripts. Below is a function you can use to clean your Zoom transcripts and get them to a tidy format by entering the interviewer name(s), and key phrases used by the interviewer to mark the section of the discussion. For example, an interview might begin with an introduction, then include a discussion of barriers, and a discussion of strengths. We'll likely want to separate these out into sections so our analyses can speak to each section independent of each other, rather than be clumped altogether. 
 
-```{r}
+```{r, echo = TRUE}
 
 # youll need these libraries for this function:
 library(tidyverse)
@@ -779,7 +794,7 @@ library(dplyr)
 
 ### Excel sheets
 
-Of course, we also tend to ask qualitative questions in some of our surveys at OMNI, and these types of data should be read in like quantitative data and should already be in a clean format if you follow the data cleaning guide (insert link to data cleaning guide).
+Of course, we also tend to ask qualitative questions in some of our surveys at Omni, and these types of data should be read in like quantitative data and should already be in a clean format if you follow the data cleaning guide (insert link to data cleaning guide).
 
 ### @QUALBPT Any other forms of text we use?
 
@@ -819,3 +834,267 @@ Of course, we also tend to ask qualitative questions in some of our surveys at O
 [ ] Has text been standardized (case, punctuation, spacing)?
 [ ] Is the cleaned dataset in a tidy format (one speaker turn per row)?
 [ ] Has the cleaned dataset been reviewed by another team member?
+
+```{=html}
+<div class="outer">
+  <div class="green-box"
+       style="--bar-bg: #5776b2;
+              --bar-text-color: #FFFFFF;
+              --box-h: 90px;">
+    <div class="green-col">Cleaning and Pre-Processing Your Data</div>
+    <div class="green-col pattern">
+      <img src="images/Pattern-05-Periwinkle.png" alt="Pattern">
+    </div>
+  </div>
+</div>
+```
+
+<br>
+
+## Terminology {.unnumbered}
+
+Before starting your pre-processing and analysis, it’s important to
+understand a few core terms. These concepts are essential for working
+with text data and deciding on the appropriate pre-processing and
+analysis steps.
+
+| **Term** | **Definition** |
+|-----------------------|-------------------------------------------------|
+| Tokenization | Breaking text into units (words, phrases, sentences) |
+| Stemming | Reducing words to their root (e.g., "running" → "run") |
+| Lemmatization | Reducing to dictionary form (e.g., "better" → "good") |
+| Stop Words | Common words often removed (e.g., "the", "and") |
+| Document-Term Matrix | Table of word frequencies across documents |
+| TF-IDF | Term importance based on frequency and inverse document frequency |
+| Corpus | Collection of text documents as one dataset |
+| Dictionary | List of keywords/phrases used to code or categorize text |
+
+::::: columns
+::: {.column width="60%"}
+```{r, echo=TRUE}
+# Load all packages 
+library(tidyverse)
+library(tidytext)
+library(quanteda)
+library(textstem)
+library(sentimentr)
+library(topicmodels)
+library(flextable)
+library(knitr)
+library(omni)
+
+```
+:::
+
+::: {.column width="40%"}
+![](images/preprocessing.png)
+:::
+:::::
+
+```{r, include=FALSE}
+# Create a fake, tidy qualitative dataset
+text_data <- tibble(
+  line = 1:10,
+  speaker = c("interviewer", "participant", "participant", "interviewer", "participant",
+              "participant", "interviewer", "participant", "participant", "participant"),
+  participant_id = c("I1", "P1", "P2", "I1", "P1", "P2", "I1", "P1", "P2", "P1"),
+  question = c(1, 0, 0, 1, 0, 0, 1, 0, 0, 0),
+  section = c(1, 1, 1, 2, 2, 2, 3, 3, 3, 3),
+  section_label = c("Introduction", "Introduction", "Introduction", "Barriers", 
+                    "Barriers", "Barriers", "Recommendations", "Recommendations", 
+                    "Recommendations", "Recommendations"),
+  text = c(
+    "Can you tell me about your experience accessing services in the county?",
+    "Sure, I think one of the biggest challenges is transportation in Travis County. There are many people here who do not own their own cars which makes it difficult to access any type of treatment services. On top of that, the buses are never on time so people have to do a lot of planning ahead of time to get to their appointment.",
+    "I agree, especially for people in rural areas. It's hard to get to services.",
+    "What kinds of barriers do you see in your community?",
+    "Travis county definitely has a lack of awareness about available programs.",
+    "Also, the application process is confusing and time-consuming. The health administrative offices used to post the applications at midnight and they would take new clients on a rolling basis, so by the time it was morning all applications would be filled.",
+    "What are your recommendations for improving access?",
+    "More outreach and education campaigns would help Travis county residents, rather than wasting time on trying to get policy changes.",
+    "Simplifying the application process would make a big difference.",
+    "Providing transportation vouchers could also improve access."
+  ),
+  session = c(rep("Education", 5), rep("Public Health", 5))
+) %>% 
+  mutate(text = tolower(text),
+         text = str_replace_all(text, "[^a-zA-Z0-9\\s]", ""))
+
+text_data <- text_data %>% 
+  filter(speaker != "interviewer")
+```
+
+Pre-processing prepares your qualitative data for analysis by
+**cleaning**, **organizing**, and **standardizing** text. This step
+ensures the data is usable for word frequency, sentiment analysis, topic
+modeling, and other text mining techniques.
+
+You should always assess the **scope and quality** of your data first:
+
+-   Are the data cleaned (lowercase, removed participant names,
+    punctuation, symbols)? 
+
+```{r, echo=FALSE}
+omni::callout_box(
+    text = "Check out our function that does all of these data cleaning tasks for you in R! You can also segment your text by question, combine multiple interviews and focus groups into one dataset, and more.",
+    color = "periwinkle-600",
+    fixed_width_px = 800
+)
+```
+<center> 
+  <a href="https://www.example.com" target="_blank" rel="noopener" class="yellow-btn">
+    Cleaning transcripts function
+  </a>
+</center>
+-   How much text do you have? (Word counts per document/response.)
+
+-   How many participants contributed?
+
+-   How detailed or shallow are the responses?
+
+-   Whose voices are you analyzing?
+
+Once you understand your data, you can decide which pre-processing steps
+are appropriate.
+
+## Tokenization {.unnumbered}
+
+Tokenization breaks text into individual pieces—usually words, but
+sometimes phrases or sentences.
+
+-   Most text mining techniques require tokenized text.
+
+-   This is common for word frequency analysis, sentiment analysis, and
+    topic modeling.
+
+-   After tokenization, we lose the flow of sentences which is generally
+    okay for some analyses, but not for narrative analysis or content
+    analysis.
+
+```{r}
+# %%%%%%%%%%%%%%% Tokenize text %%%%%%%%%%%%%%%
+
+# Tokenize text
+tokenized_text <- text_data %>% 
+  unnest_tokens(word, text)
+
+```
+
+**What are Stop Words?**
+
+Stop words are common words like "the", "and", "but" that don’t add much
+meaning on their own. Because we want to focus on broader themes from
+our participants' voices, we usually want to remove stop words after
+text is tokenized. This process allows us to focus on content-rich
+words, like nouns and verbs. We should remove stop words when running a
+word frequency analysis, topic modeling, or sentiment analysis.
+
+We can also create custom stop words that we want to remove from our
+analyses, for example, location names or project-specific words that
+appear frequently but aren’t relevant to the analysis.
+
+**Example:**
+
+-   In the example below, my custom stop words are "travis" and
+    "county", and they're added to the stop_words bank which includes
+    other words like "but", "is", "the", etc. If you'd like to see all
+    of the stop words, see View(stop_words).
+
+```{r}
+# %%%%%%%%%%%%%%% Stop words %%%%%%%%%%%%%%%
+
+# Use standard stop words + custom ones (e.g., counties, names)
+my_stop_words <- bind_rows(stop_words, 
+                           data.frame(word = c("travis", 
+                                               "county"), lexicon = "custom"))
+
+cleaned_text <- tokenized_text %>% 
+  anti_join(my_stop_words, by = "word")
+
+```
+
+## Stemming {.unnumbered}
+
+Stemming words cuts them down to their root forms (e.g., "running"
+becomes "run"). This pre-processing step should primarily be used for
+topic modeling or for other analyses that you decide that exact word
+form isn’t critical. This step is recommended to use with larger
+datasets, with typically hundreds of documents or more, but for our
+purposes we recommend stemming any time you have enough data for topic
+modeling (around 5,000 total words).
+
+```{r}
+# %%%%%%%%%%%%%%% Stemming %%%%%%%%%%%%%%%
+
+library(textstem)
+
+stemmed_text <- cleaned_text %>%
+  mutate(stem_word = stem_words(word))
+```
+
+## Lemmatization {.unnumbered}
+
+Lemmatization converts words to their dictionary root and keeps the
+words readable to the user (e.g., "better" becomes "good"). This
+pre-processing step should be used for word frequency analysis,
+sentiment analysis, or thematic/content analysis as it works will with
+small and large corpuses.
+
+```{r}
+
+# %%%%%%%%%%%%%%% Lemmatization %%%%%%%%%%%%%%%
+
+lemmatized_text <- cleaned_text %>% 
+  mutate(lem_word = lemmatize_words(word))
+
+```
+
+Let's compare the stem words, vs lemmatized words against the original
+tokenized words:
+
+```{r}
+compare_words <- cleaned_text %>% 
+  left_join(stemmed_text, 
+            by = join_by(line, 
+                         speaker, 
+                         participant_id, question, section, section_label,
+                         session, word)) %>% 
+  left_join(lemmatized_text,
+            by = join_by(line, 
+                         speaker, 
+                         participant_id, question, section, section_label,
+                         session, word)) %>%
+  slice(1:10) %>%
+  kable()
+```
+
+```{r, include=TRUE}
+compare_words
+```
+
+```{r, echo=FALSE}
+# Create a data frame for the table
+comparison_table <- data.frame(
+  "Stemming" = c(
+    "You need speed over accuracy",
+    "Working with large datasets",
+    "Basic information retrieval tasks",
+    "Search engines or topic modeling where fine detail isn't critical",
+    "Not concerned about human readability"
+  ),
+  "Lemmatization" = c(
+    "Slower but more accurate",
+    "Better for small datasets",
+    "Better for nuanced analysis",
+    "Better for in-depth analysis",
+    "Maintains readable words)"
+  )
+)
+
+# Print the table
+kable(comparison_table,
+      caption = "When to Use Stemming vs. Lemmatization",
+      align = 'll')
+
+```
+

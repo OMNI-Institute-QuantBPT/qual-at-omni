@@ -10,18 +10,29 @@ website:
         text: Home
       - href: fun_standards.qmd
         text: Fundamental Standards
+
       - text: Methods
         menu:
-        - text: "Interviews"
-        - href: "interviews.qmd"
-        - text: "Food"
-        - href: "food.qmd"
-        - text: "Incentives"
-        - href: "incentives.qmd"
+          - text: "Interviews"
+            href: interviews.qmd
+          - text: "Food"
+            href: food.qmd
+          - text: "Incentives"
+            href: incentives.qmd
+
       - text: Analysis
-        menu: 
-        - text: "Data Prep"
-        - href: "data_prep.qmd"
+        menu:
+          - text: "Analysis Plan"
+            href: analysis_plan.qmd
+          - text: "Data Cleaning"
+            href: data_prep.qmd
+          - text: "Omni's Approach"
+            href: approach.qmd
+            
+      - text: Resources
+        menu:
+          - text: "Codebook"
+            href: codebook.qmd
     background: "#081c39"
     foreground: white
     logo: https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/logo-no-text.png?raw=true

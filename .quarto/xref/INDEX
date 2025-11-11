@@ -31,5 +31,14 @@
   },
   "interviews.qmd": {
     "interviews.html": "83ad973e"
+  },
+  "codebook.qmd": {
+    "codebook.html": "301dd970"
+  },
+  "approach.qmd": {
+    "approach.html": "fb46562e"
+  },
+  "analysis_plan.qmd": {
+    "analysis_plan.html": "391fbc69"
   }
 }

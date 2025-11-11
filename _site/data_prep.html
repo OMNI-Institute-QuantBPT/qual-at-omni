@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Prep</title>
+<title>Data Cleaning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -96,19 +130,52 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./fun_standards.html"> 
 <span class="menu-text">Fundamental Standards</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./methods.html"> 
-<span class="menu-text">Methods</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-methods" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Methods</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-methods">    
+        <li>
+    <a class="dropdown-item" href="./interviews.html">
+ <span class="dropdown-text">Interviews</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./food.html">
+ <span class="dropdown-text">Food</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./incentives.html">
+ <span class="dropdown-text">Incentives</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analysis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Analysis</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
-        <li class="dropdown-header">Data Prep</li>
+        <li>
+    <a class="dropdown-item" href="./analysis_plan.html">
+ <span class="dropdown-text">Analysis Plan</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="./data_prep.html">
- <span class="dropdown-text">Subtab1 test</span></a>
+ <span class="dropdown-text">Data Cleaning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./approach.html">
+ <span class="dropdown-text">Omni’s Approach</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="./codebook.html">
+ <span class="dropdown-text">Codebook</span></a>
   </li>  
     </ul>
   </li>
@@ -137,7 +204,13 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#reading-your-data-into-r" id="toc-reading-your-data-into-r" class="nav-link" data-scroll-target="#reading-your-data-into-r">Reading your data into R</a></li>
   </ul></li>
-  <li><a href="#qa-checklist-for-qual-cleaning" id="toc-qa-checklist-for-qual-cleaning" class="nav-link" data-scroll-target="#qa-checklist-for-qual-cleaning">QA Checklist for Qual Cleaning</a></li>
+  <li><a href="#qa-checklist-for-qual-cleaning" id="toc-qa-checklist-for-qual-cleaning" class="nav-link" data-scroll-target="#qa-checklist-for-qual-cleaning">QA Checklist for Qual Cleaning</a>
+  <ul class="collapse">
+  <li><a href="#terminology-1" id="toc-terminology-1" class="nav-link" data-scroll-target="#terminology-1">Terminology</a></li>
+  <li><a href="#tokenization" id="toc-tokenization" class="nav-link" data-scroll-target="#tokenization">Tokenization</a></li>
+  <li><a href="#stemming" id="toc-stemming" class="nav-link" data-scroll-target="#stemming">Stemming</a></li>
+  <li><a href="#lemmatization" id="toc-lemmatization" class="nav-link" data-scroll-target="#lemmatization">Lemmatization</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -146,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Prep</h1>
+<h1 class="title">Data Cleaning</h1>
 </div>
 
 
@@ -168,31 +241,40 @@ ul.task-list li input[type="checkbox"] {
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p><strong>Do not share this guide outside of Omni</strong></p>
-<p>Data cleaning is often one of the first things you will do when you start working with qualitative data at OMNI. Whether we’re working with interview transcripts, focus group discussions, or open-ended survey responses, the raw data we receive is rarely ready for immediate analysis. Cleaning is not just about tidying up; it’s about making informed decisions that clarify the meaning and integrity of the data while preparing it for systematic analysis.</p>
+<p>Data cleaning is often one of the first things you will do when you start working with qualitative data at Omni. Whether we’re working with interview transcripts, focus group discussions, or open-ended survey responses, the raw data we receive is rarely ready for immediate analysis. Cleaning is not just about tidying up; it’s about making informed decisions that clarify the meaning and integrity of the data while preparing it for systematic analysis.</p>
 <p>The decisions we make during the cleaning process are every bit as complex and impactful as those made during coding and analysis. Thoughtful data cleaning can preserve the richness of qualitative data, while careless decisions can distort or diminish participants’ voices. Therefore, it is especially important to have a strong set of working principles to guide your decisions when cleaning qualitative data.</p>
 <p>This guide covers a general approach to qualitative data cleaning, with an emphasis on useful R packages and functions designed to conquer some common challenges. While this guide includes tools and code to make your life easier, it also offers guidelines for making judgment calls about what to remove, retain, or clarify in the data.</p>
 <p>The steps in a qualitative data cleaning process will always be informed by two key factors:</p>
 <ol type="1">
-<li><strong>The state of the data when we (OMNI) receive it</strong></li>
+<li><strong>The state of the data when we (Omni) receive it</strong></li>
 </ol>
 <ul>
 <li>For example, some transcripts may come from automated services (like Zoom or Otter.ai) and contain timestamps, speaker labels, or filler words that require removal. Others may be professionally transcribed and need minimal cleaning.</li>
 </ul>
 <ol start="2" type="1">
-<li><strong>The specific needs of the project</strong> Because of this variability, we encourage a flexible, judgment-driven approach to data cleaning. The steps described in this guide are common to many projects, but their order and application should be tailored to the needs of the dataset and the analytic goals of the project. Importantly, depending on the type of analysis, different cleaning steps may be required. Consult the analysis plan and research questions in your project materials to verify the needs of the project.</li>
+<li><strong>The specific needs of the project</strong></li>
 </ol>
-<section id="supporting-resources" class="level3">
-<h3 class="anchored" data-anchor-id="supporting-resources">Supporting resources</h3>
-</section>
+<ul>
+<li>Because of this variability, we encourage a flexible, judgment-driven approach to data cleaning. The steps described in this guide are common to many projects, but their order and application should be tailored to the needs of the dataset and the analytic goals of the project. Importantly, depending on the type of analysis, different cleaning steps may be required. Consult the analysis plan and research questions in your project materials to verify the needs of the project.</li>
+</ul>
 </section>
 <section id="rationale" class="level2">
 <h2 class="anchored" data-anchor-id="rationale">Rationale</h2>
-<p>When we clean qualitative data, we apply a series of thoughtful transformations that make the data clearer, more consistent, and usable for analysis. Qualitative data cleaning requires attention to detail and sensitivity to the context in which the data were collected. The procedures we use need to be flexible because the downstream purposes of the data can vary from project to project—whether for thematic coding, content analysis, or mixed-methods integration.</p>
+<p>When we clean qualitative data, we apply a series of thoughtful transformations that make the data clearer, more consistent, and usable for analysis. Qualitative data cleaning requires attention to detail and sensitivity to the context in which the data were collected. The procedures we use need to be flexible because the downstream purposes of the data can vary from project to project, whether for thematic coding, content analysis, or mixed-methods integration.</p>
 <p>The qualitative data cleaner often has to make many judgment calls during this process. These decisions are guided by the project’s goals, the nature of the source data, team experience, and guidance documents (like this one). Every decision and its rationale should be clearly documented in the data cleaning script or data log (more on that below). Transparency in this process ensures that the cleaned dataset remains trustworthy and aligned with our ethical standards for qualitative research.</p>
 <p>Qualitative data cleaning requires a lot of careful thought and attention. The R code that cleans text data needs to be clearly written and well-commented, not only for reproducibility but to ensure that meaning is preserved, and participant voices are not inadvertently altered or diminished. In qualitative work, the cleaning process can directly impact the integrity of the analysis.</p>
 <p>Just as with quantitative analysis, qualitative data-cleaning decisions are made with greater ease and clarity when there is a clear work plan, guided by the project’s research questions or evaluation goals. Having a shared understanding of what the team hopes to explore in the data helps inform:</p>
-<p>What should be cleaned What should be preserved (even if messy) What should be flagged for discussion Two especially helpful documents to have before qualitative data cleaning begins are:</p>
-<p>A codebook (or at least a data dictionary) This helps ensure consistency in how we treat things like speaker names, special terminology, or sensitive content. A data analysis plan This outlines the team’s approach to coding and analysis and helps identify if additional cleaning steps are necessary. For example: anonymizing sensitive details or removing artifacts from automated transcription tools (timestamps, filler words, etc.). Whenever possible, we expect teams to develop a data analysis plan and request any available data dictionaries or codebooks from the client or partner organizations who collected the data. However, you may need to create a codebook if one doesn’t exist—feel free to reach out to the QualBPT (or whichever team you want to point folks to) if you need support.</p>
+<ul>
+<li>What should be cleaned</li>
+<li>What should be preserved (even if messy)</li>
+<li>What should be flagged for discussion</li>
+</ul>
+<p>Two especially helpful documents to have before qualitative data cleaning begins are:</p>
+<ul>
+<li>A <strong><a href="./codebook.html">codebook</a></strong> (or at least a data dictionary). This helps ensure consistency in how we treat things like speaker names, special terminology, or sensitive content.</li>
+<li>A <strong><a href="https://omniinstitute.atlassian.net/wiki/spaces/Quant/pages/375226966/Guide+for+data+analysis+plans">data analysis plan</a></strong>. This outlines the team’s approach to coding and analysis and helps identify if additional cleaning steps are necessary. For example: anonymizing sensitive details or removing artifacts from automated transcription tools (timestamps, filler words, etc.).</li>
+</ul>
+<p>Whenever possible, we expect teams to develop a data analysis plan and request any available data dictionaries or codebooks from the client or partner organizations who collected the data. However, you may need to create a codebook if one doesn’t exist—feel free to reach out to the QualBPT (or whichever team you want to point folks to) if you need support.</p>
 <p>In many cases, the people drafting the analysis plan are different from those cleaning the qualitative data, so strong cross-team communication is essential. We recommend including the qualitative data cleaner (or cleaning team) in project discussions as early as possible. When drafting the analysis plan, think through what text cleaning steps will be necessary to make the data usable for coding, protect participant confidentiality, and meet the project’s goals.</p>
 <p>Finally, whether you’re writing code for qualitative data cleaning or any other purpose, always write your R scripts as if they will later be:</p>
 <ul>
@@ -200,38 +282,114 @@ ul.task-list li input[type="checkbox"] {
 <li>Held up as example code</li>
 <li>Modified by someone brand new to both R and the project</li>
 </ul>
-<p>Make it easy on future OMNI-ites—and on your future self!</p>
+<p>Make it easy on future Omni-ites—and on your future self!</p>
 </section>
 <section id="when-are-data-clean" class="level2">
 <h2 class="anchored" data-anchor-id="when-are-data-clean">When are data clean?</h2>
-<p>✅ What Does It Mean to Have “Clean” Qualitative Data? For there to be project tasks that direct OMNI-ites to ‘clean qualitative data,’ and a guide to help in doing so, there should also be a shared understanding of what it means for qualitative data to be clean.</p>
-<p>📝 Definition of Clean Qualitative Data: At OMNI, qualitative data are considered clean when they are organized, de-identified, and ready for analysis or coding.</p>
-<p>That means the data:</p>
-<p>Accurately reflect the original source material (e.g., interviews, focus groups, or open-text survey responses) Have been transformed into a structure that makes them easy to navigate and analyze Protect the privacy and confidentiality of participants Are consistent, clear, and free of irrelevant clutter (like transcription artifacts) 🎯 What Makes a Qualitative Dataset “Analysis-Ready”? For qualitative text data to be ready for analysis, they should meet the following criteria:</p>
-<p>Speaker Information Is Clear and Consistent</p>
-<p>Participant speakers and interviewers are clearly labeled in the data. Each speaker’s text is grouped logically into segments, preserving conversational flow. Participant Identifiers Are Specified and Protected</p>
-<p>Real names, locations, and other direct identifiers have been removed or replaced with participant IDs or pseudonyms. Confidential information (e.g., agency names, job titles, organizations) is anonymized where necessary, following OMNI’s confidentiality guidelines. Questions Are Clearly Distinguished From Responses</p>
-<p>Interviewer questions (or prompts) are labeled or separated from participant responses, as appropriate. This can be done by adding question text as its own field in the dataset or by adding markers in the transcript. Text Segments Are Ordered and Organized</p>
-<p>The transcript text is ordered according to the flow of conversation. Segments are correctly time-sequenced (even if timestamps themselves are removed). Text Is Structured Into a Tidy, Rectangular Format</p>
-<p>Each row represents a single speaker turn or unit of analysis (e.g., a complete response to a question). Data are stored in a rectangular table (data frame), with columns for: Session name or group (e.g., “Educators” or “Public Health”) Participant ID or role (e.g., “Participant 1,” “Facilitator”) Text segment (the response or comment) Any relevant metadata (e.g., discussion section, date) Timestamps and Transcription Artifacts Are Removed</p>
-<p>All timestamps (e.g., [00:05:23], (0:12:45)) are deleted unless specifically required for analysis. Automated transcription quirks (e.g., repeated words, filler words, auto-captions like “[inaudible]”) are reviewed, cleaned, or flagged. Text Is Consistent in Style and Format</p>
-<p>All text is converted to lowercase, unless case is important for analysis. Spelling errors are corrected when they obscure meaning (but regional spellings or participant quirks may be preserved if relevant). Punctuation and spacing are standardized (no excessive whitespace, missing periods, etc.). Relevant Identifiers Are Added to the Dataset</p>
-<p>If there are multiple sessions or groups, these are labeled (e.g., “Educators,” “Public Health”). If there are themes or discussion sections (e.g., “Challenges,” “Recommendations”), these are identified. If codes are pre-assigned for analytic purposes (e.g., “Pre-implementation,” “Post-implementation”), they are included in the data structure. 💡 How Do We Know When Qualitative Data Are Clean? Here are some guiding questions to help determine when qualitative data are ready for analysis (i.e., clean):</p>
-<p>What is the plan for coding or analyzing this data?</p>
-<p>The analysis plan (or coding framework) should inform cleaning decisions. For example, if the team plans to do thematic coding, they’ll need text organized into meaningful speaker turns or responses. What needs to be anonymized?</p>
-<p>Identify any sensitive information that must be redacted or replaced to maintain confidentiality and ensure participant privacy. Are speaker turns properly attributed and easy to follow?</p>
-<p>Each speaker’s contributions should be clearly labeled, consistently formatted, and grouped logically. Are responses to specific questions clearly identifiable?</p>
-<p>If interviews or focus groups follow a semi-structured guide, it’s important to separate questions from responses for clarity in analysis. Is the structure of the data appropriate for the analytic tool?</p>
-<p>If the data are being uploaded to Dedoose, NVivo, or another platform, they should follow the required format (e.g., tidy data frame with speaker IDs and group names). Have all unnecessary artifacts been removed?</p>
-<p>Time stamps, filler words, and transcription errors that don’t add value to the analysis should be removed. Has the cleaned data been reviewed by someone else (QA check)?</p>
-<p>Whenever possible, have another OMNI-ite review the cleaned data for accuracy and completeness. ✨ Common Issues to Discuss Early in the Cleaning Process Just like in quantitative data cleaning, clarifying expectations at the start of a project will save time later. For qualitative projects, consider these:</p>
-<p>Will we analyze both facilitator questions and participant responses, or just participant responses? How will we handle overlapping speech, interruptions, or incomplete thoughts? Do we need to standardize participant roles (e.g., “Public Health Official” vs.&nbsp;“PH Staff”) for consistency? Are we preparing data for manual coding or automated text analysis? Do we need to translate or transcribe non-English responses? Do we need to connect text segments with broader context, such as the discussion theme or section of the focus group? 🚀 In the Following Sections… We’ll see how these fundamentals—like tidy qualitative data, pipes, and regular expressions—play out in real-world cleaning tasks, such as:</p>
-<p>Removing timestamps and filler words Labeling speakers and organizing segments Anonymizing sensitive information Structuring text for analysis software (Dedoose, NVivo, etc.) ✅ Quick Summary of “Clean Qualitative Data” at OMNI: Clean qualitative data are:</p>
-<p>Anonymized Clearly structured and labeled Organized for easy analysis Free of unnecessary artifacts Ready for use in coding and interpretation</p>
+<p><strong>What Does It Mean to Have “Clean” Qualitative Data?</strong> - For there to be project tasks that direct Omni-ites to ‘clean qualitative data,’ and a guide to help in doing so, there should also be a shared understanding of what it means for qualitative data to be clean.</p>
+<p><strong>Definition of Clean Qualitative Data</strong> - At Omni, qualitative data are considered clean when they are organized, de-identified, and ready for analysis or coding.</p>
+<p>That means the data: - Accurately reflect the original source material (e.g., interviews, focus groups, or open-text survey responses) Have been transformed into a structure that makes them easy to navigate and analyze Protect the privacy and confidentiality of participants Are consistent, clear, and free of irrelevant clutter (like transcription artifacts)</p>
+<p><strong>What Makes a Qualitative Dataset “Analysis-Ready”?</strong></p>
+<ul>
+<li>For qualitative text data to be ready for analysis, they should meet the following criteria:</li>
+</ul>
+<ol type="1">
+<li>Speaker Information Is Clear and Consistent</li>
+</ol>
+<ul>
+<li>Participant speakers and interviewers are clearly labeled in the data.</li>
+<li>Each speaker’s text is grouped logically into segments, preserving conversational flow.</li>
+</ul>
+<ol start="2" type="1">
+<li>Participant Identifiers Are Specified and Protected</li>
+</ol>
+<ul>
+<li>Real names, locations, and other direct identifiers have been removed or replaced with participant IDs or pseudonyms.</li>
+<li>Confidential information (e.g., agency names, job titles, organizations) is anonymized where necessary, following Omni’s confidentiality guidelines.</li>
+</ul>
+<ol start="3" type="1">
+<li>Questions Are Clearly Distinguished From Responses</li>
+</ol>
+<ul>
+<li>Interviewer questions (or prompts) are labeled or separated from participant responses, as appropriate. This can be done by adding question text as its own field in the dataset or by adding markers in the transcript.</li>
+</ul>
+<ol start="4" type="1">
+<li>Text Segments Are Ordered and Organized</li>
+</ol>
+<ul>
+<li>The transcript text is ordered according to the flow of conversation. Segments are correctly time-sequenced (even if timestamps themselves are removed).</li>
+</ul>
+<ol start="5" type="1">
+<li>Text Is Structured Into a Tidy, Rectangular Format</li>
+</ol>
+<ul>
+<li>Each row represents a single speaker turn or unit of analysis (e.g., a complete response to a question).</li>
+<li>Data are stored in a rectangular table (data frame), with columns for:
+<ul>
+<li>Session name or group (e.g., “Educators” or “Public Health”)</li>
+<li>Participant ID or role (e.g., “Participant 1”, “Facilitator”)</li>
+<li>Text segment (the response or comment)</li>
+<li>Any relevant metadata (e.g., discussion section, date)</li>
+<li>Transcription</li>
+</ul></li>
+</ul>
+<ol start="6" type="1">
+<li>Artifacts Are Removed</li>
+</ol>
+<ul>
+<li>All timestamps (e.g., [00:05:23], (0:12:45)) are deleted unless specifically required for analysis.</li>
+<li>Automated transcription quirks (e.g., repeated words, filler words, auto-captions like “[inaudible]”) are reviewed, cleaned, or flagged.</li>
+</ul>
+<ol start="7" type="1">
+<li>Text Is Consistent in Style and Format</li>
+</ol>
+<ul>
+<li>All text is converted to lowercase, unless case is important for analysis.</li>
+<li>Spelling errors are corrected when they obscure meaning (but regional spellings or participant quirks may be preserved if relevant).</li>
+<li>Punctuation and spacing are standardized (no excessive whitespace, missing periods, etc.).</li>
+</ul>
+<ol start="8" type="1">
+<li>Relevant Identifiers Are Added to the Dataset</li>
+</ol>
+<ul>
+<li>If there are multiple sessions or groups, these are labeled (e.g., “Educators,” “Public Health”).</li>
+<li>If there are themes or discussion sections (e.g., “Challenges,” “Recommendations”), these are identified.</li>
+<li>If codes are pre-assigned for analytic purposes (e.g., “Pre-implementation,” “Post-implementation”), they are included in the data structure.</li>
+</ul>
+<p><strong>How Do We Know When Qualitative Data Are Clean?</strong></p>
+<p>Here are some guiding questions to help determine when qualitative data are ready for analysis (i.e., clean):</p>
+<ul>
+<li><p>What is the plan for coding or analyzing this data?</p></li>
+<li><p>The analysis plan (or coding framework) should inform cleaning decisions. For example, if the team plans to do thematic coding, they’ll need text organized into meaningful speaker turns or responses. What needs to be anonymized?</p></li>
+<li><p>Identify any sensitive information that must be redacted or replaced to maintain confidentiality and ensure participant privacy. Are speaker turns properly attributed and easy to follow?</p></li>
+<li><p>Each speaker’s contributions should be clearly labeled, consistently formatted, and grouped logically. Are responses to specific questions clearly identifiable?</p></li>
+<li><p>If interviews or focus groups follow a semi-structured guide, it’s important to separate questions from responses for clarity in analysis. Is the structure of the data appropriate for the analytic tool?</p></li>
+<li><p>If the data are being uploaded to Dedoose, NVivo, or another platform, they should follow the required format (e.g., tidy data frame with speaker IDs and group names). Have all unnecessary artifacts been removed?</p></li>
+<li><p>Time stamps, filler words, and transcription errors that don’t add value to the analysis should be removed. Has the cleaned data been reviewed by someone else (QA check)?</p></li>
+<li><p>Whenever possible, have another Omni-ite review the cleaned data for accuracy and completeness.</p></li>
+</ul>
+<p><strong>Common Issues to Discuss Early in the Cleaning Process</strong></p>
+<p>Just like in quantitative data cleaning, clarifying expectations at the start of a project will save time later. For qualitative projects, consider these:</p>
+<ul>
+<li>Will we analyze both facilitator questions and participant responses, or just participant responses?</li>
+<li>How will we handle overlapping speech, interruptions, or incomplete thoughts?</li>
+<li>Do we need to standardize participant roles (e.g., “Public Health Official” vs.&nbsp;“PH Staff”) for consistency?</li>
+<li>Are we preparing data for manual coding or automated text analysis?</li>
+<li>Do we need to translate or transcribe non-English responses?</li>
+<li>Do we need to connect text segments with broader context, such as the discussion theme or section of the focus group?</li>
+</ul>
+<p><strong>Quick Summary of “Clean Qualitative Data” at Omni: Clean qualitative data are:</strong></p>
+<ul>
+<li>Anonymized</li>
+<li>Clearly structured and labeled</li>
+<li>Organized for easy analysis</li>
+<li>Free of unnecessary artifacts</li>
+<li>Ready for use in coding and interpretation</li>
+</ul>
 </section>
 <section id="how-do-i-report-the-results-of-data-cleaning" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-i-report-the-results-of-data-cleaning">How do I report the results of data cleaning?</h2>
-<p>📝 How to Report the Results of Qualitative Data Cleaning at OMNI Cleaning qualitative data is an interpretive and decision-heavy process, and those decisions need to be transparent. Reporting your cleaning process helps:</p>
+<p>📝 How to Report the Results of Qualitative Data Cleaning at Omni Cleaning qualitative data is an interpretive and decision-heavy process, and those decisions need to be transparent. Reporting your cleaning process helps:</p>
 <p>Project leads understand what’s been done and why. Provide documentation in case changes need to be made later. Build trust in the integrity of the cleaned dataset. Support future qualitative coding, interpretation, and reporting. Qualitative data cleaning produces results—changes to the text or data structure—that should be documented in a clear, shareable data cleaning report.</p>
 <p>📋 What to Include in a Qualitative Data Cleaning Report 1. Summary of the Dataset You Cleaned Start with an overview:</p>
 <p>How many transcripts or files were cleaned? How many sessions (e.g., focus groups, interviews) are included? What types of participants are represented (e.g., educators, public health professionals)? Example: This dataset includes transcripts from 8 focus groups, with 42 participants. Participants represent two stakeholder groups: Educators (n = 20) and Public Health Professionals (n = 22).</p>
@@ -299,9 +457,9 @@ Filler Words Removed “um,” “uh” except when indicating hesitation Case-b
 <h2 class="anchored" data-anchor-id="reading-your-data-into-r">Reading your data into R</h2>
 <p>First, we’ll need to read our data into R. Depending on how your raw text is stored, you’ll need to take various steps to read in your data for analysis. The goal is to turn any of your text into a dataframe with rows and columns of your text responses. In some cases, you may need to keep participant ID columns or other columns if you’re doing a mixed-method analysis. In other cases, you may be analyzing different focus groups and comparing them to eachother. Whatever you are doing, make sure your dataframe is set up or your analysis. If you are unsure about this, ask Hannah or a member of Qual BPT for some help!</p>
 <p>Here is an example of what your data may look like when you first read it into R.</p>
-<p><img src="dirty_data.png" class="img-fluid"></p>
+<p><img src="images/dirty_data.png" class="img-fluid"></p>
 <p>and here’s what we want it to look like (eventually) for most of our analysis needs.</p>
-<p><img src="clean_data.png" class="img-fluid"></p>
+<p><img src="images/clean_data.png" class="img-fluid"></p>
 <p>With clean data, we can:</p>
 <ul>
 <li><p>Compare participants’ responses across sessions and discussion sections. We could answer questions like:</p>
@@ -319,6 +477,195 @@ Filler Words Removed “um,” “uh” except when indicating hesitation Case-b
 <section id="zoom-transcripts" class="level3">
 <h3 class="anchored" data-anchor-id="zoom-transcripts">Zoom transcripts</h3>
 <p>One of the main forms of qualitative data we receive includes Zoom transcripts. Below is a function you can use to clean your Zoom transcripts and get them to a tidy format by entering the interviewer name(s), and key phrases used by the interviewer to mark the section of the discussion. For example, an interview might begin with an introduction, then include a discussion of barriers, and a discussion of strengths. We’ll likely want to separate these out into sections so our analyses can speak to each section independent of each other, rather than be clumped altogether.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># youll need these libraries for this function:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(officer)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>clean_transcript <span class="ot">&lt;-</span> <span class="cf">function</span>(file_path,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">file_type =</span> <span class="fu">c</span>(<span class="st">".docx"</span>, <span class="st">".txt"</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                             interviewers,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                             question_list,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                             section_labels,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                             session_name) {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Match file_type argument</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  file_type <span class="ot">&lt;-</span> <span class="fu">match.arg</span>(file_type)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 1. Load transcript based on file_type</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (file_type <span class="sc">==</span> <span class="st">".docx"</span>) {</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(file_path)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    text_data <span class="ot">&lt;-</span> <span class="fu">docx_summary</span>(doc)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> text_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="at">line =</span> doc_index, text)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (file_type <span class="sc">==</span> <span class="st">".txt"</span>) {</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    text_lines <span class="ot">&lt;-</span> <span class="fu">readLines</span>(file_path, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">line =</span> <span class="fu">seq_along</span>(text_lines), <span class="at">text =</span> text_lines)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Unsupported file type. Use '.docx' or '.txt'"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 2. Classify speaker: interviewer vs participant</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">speaker =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">str_detect</span>(text, <span class="fu">str_c</span>(interviewers, <span class="at">collapse =</span> <span class="st">"|"</span>)) <span class="sc">~</span> <span class="st">"interviewer"</span>,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"participant"</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>      text <span class="sc">!=</span> <span class="st">""</span>,                      <span class="co"># Remove blank rows</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"^</span><span class="sc">\\</span><span class="st">d+$"</span>),     <span class="co"># Remove number-only rows</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">str_detect</span>(text, <span class="st">"--&gt;"</span>)         <span class="co"># Remove timestamp markers</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 3. Extract participant &amp; interviewer names</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Participants</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  unique_participants <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(speaker <span class="sc">==</span> <span class="st">"participant"</span> <span class="sc">&amp;</span> <span class="fu">str_detect</span>(text, <span class="st">":"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">participant_name =</span> <span class="fu">str_extract</span>(text, <span class="st">"^[^:]+"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(participant_name) <span class="sc">%&gt;%</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">participant_id =</span> <span class="fu">paste0</span>(<span class="st">"P"</span>, <span class="fu">row_number</span>()))</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assign participant IDs back</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">participant_name =</span> <span class="fu">if_else</span>(</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>        speaker <span class="sc">==</span> <span class="st">"participant"</span> <span class="sc">&amp;</span> <span class="fu">str_detect</span>(text, <span class="st">":"</span>),</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        <span class="fu">str_extract</span>(text, <span class="st">"^[^:]+"</span>),</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>        <span class="cn">NA_character_</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(unique_participants, <span class="at">by =</span> <span class="st">"participant_name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>participant_name)</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Interviewers</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  unique_interviewers <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(speaker <span class="sc">==</span> <span class="st">"interviewer"</span> <span class="sc">&amp;</span> <span class="fu">str_detect</span>(text, <span class="st">":"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">interviewer_name =</span> <span class="fu">str_extract</span>(text, <span class="st">"^[^:]+"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(interviewer_name) <span class="sc">%&gt;%</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">interviewer_id =</span> <span class="fu">paste0</span>(<span class="st">"I"</span>, <span class="fu">row_number</span>()))</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assign interviewer IDs back</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>      <span class="at">interviewer_name =</span> <span class="fu">if_else</span>(</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>        speaker <span class="sc">==</span> <span class="st">"interviewer"</span> <span class="sc">&amp;</span> <span class="fu">str_detect</span>(text, <span class="st">":"</span>),</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>        <span class="fu">str_extract</span>(text, <span class="st">"^[^:]+"</span>),</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>        <span class="cn">NA_character_</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(unique_interviewers, <span class="at">by =</span> <span class="st">"interviewer_name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">participant_id =</span> <span class="fu">coalesce</span>(participant_id, interviewer_id)</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>interviewer_name, <span class="sc">-</span>interviewer_id)</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 4. Clean and Preprocess Text</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">str_remove</span>(text, <span class="st">".*?:</span><span class="sc">\\</span><span class="st">s*"</span>),   <span class="co"># Remove speaker names (before colon)</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">tolower</span>(text),                  <span class="co"># Convert to lowercase</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">"[^a-zA-Z0-9</span><span class="sc">\\</span><span class="st">s]"</span>, <span class="st">""</span>),  <span class="co"># Remove special characters (except spaces)</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">iconv</span>(text, <span class="at">from =</span> <span class="st">"UTF-8"</span>, <span class="at">to =</span> <span class="st">"ASCII//TRANSLIT"</span>)  <span class="co"># Convert non-ASCII characters</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 5. Create speaker segments BEFORE detecting questions</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(line) <span class="sc">%&gt;%</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(participant_id)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>      <span class="at">group_id =</span> <span class="fu">cumsum</span>(</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>        participant_id <span class="sc">!=</span> <span class="fu">lag</span>(participant_id, <span class="at">default =</span> <span class="fu">first</span>(participant_id))</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(group_id) <span class="sc">%&gt;%</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>      <span class="fu">across</span>(<span class="sc">-</span>text, first),                <span class="co"># Keep first of all other columns</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">str_c</span>(text, <span class="at">collapse =</span> <span class="st">" "</span>),  <span class="co"># Collapse text</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(line)</span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 6. Detect interviewer questions</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>      <span class="at">question =</span> <span class="fu">if_else</span>(</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>        speaker <span class="sc">==</span> <span class="st">"interviewer"</span> <span class="sc">&amp;</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>          <span class="fu">str_detect</span>(</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>            text,</span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>            <span class="fu">regex</span>(<span class="fu">str_c</span>(question_list, <span class="at">collapse =</span> <span class="st">"|"</span>), <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>          ),</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span>L,</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>        <span class="dv">0</span>L</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 7. Remove text before first question</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>  first_question_line <span class="ot">&lt;-</span> <span class="fu">min</span>(df<span class="sc">$</span>line[df<span class="sc">$</span>question <span class="sc">==</span> <span class="dv">1</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(line <span class="sc">&gt;=</span> first_question_line)</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 8. Assign section numbers</span></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">cumsum</span>(question <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Map section numbers to section labels</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>  section_map <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>    <span class="at">section =</span> <span class="fu">seq_along</span>(section_labels),</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>    <span class="at">section_label =</span> section_labels</span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Join section labels</span></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(section_map, <span class="at">by =</span> <span class="st">"section"</span>)</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 9. Remove interviewer lines AFTER section labels assigned</span></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(speaker <span class="sc">!=</span> <span class="st">"interviewer"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">session =</span> session_name)</span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ 10. Return final dataframe</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ================================</span></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>  final_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>      line,</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a>      speaker,</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>      participant_id,</span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>      question,</span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>      section,</span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>      section_label,</span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>      text,</span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>      session</span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(final_df)</span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>And when you want to clean the transcripts and mark the interviewer, you can add the names of the interviewers here.</p>
 <p>This function works for Zoom transcripts that are saved as Word documents or .txt files. There are few things you need to specify in the function, including updating the file path, the interviewers, setting your list of questions, adding section labels, and the session name.</p>
 <p>This example comes from the Loudoun County Opioid Abatement project where Shon, Lindsay, Hannah, Luke, Eden, and Arden are staffed, so any of them could have been an interviewer.</p>
@@ -333,7 +680,7 @@ Filler Words Removed “um,” “uh” except when indicating hesitation Case-b
 </section>
 <section id="excel-sheets" class="level3">
 <h3 class="anchored" data-anchor-id="excel-sheets">Excel sheets</h3>
-<p>Of course, we also tend to ask qualitative questions in some of our surveys at OMNI, and these types of data should be read in like quantitative data and should already be in a clean format if you follow the data cleaning guide (insert link to data cleaning guide).</p>
+<p>Of course, we also tend to ask qualitative questions in some of our surveys at Omni, and these types of data should be read in like quantitative data and should already be in a clean format if you follow the data cleaning guide (insert link to data cleaning guide).</p>
 </section>
 <section id="qualbpt-any-other-forms-of-text-we-use" class="level3">
 <h3 class="anchored" data-anchor-id="qualbpt-any-other-forms-of-text-we-use"><span class="citation" data-cites="QUALBPT">@QUALBPT</span> Any other forms of text we use?</h3>
@@ -343,8 +690,332 @@ Filler Words Removed “um,” “uh” except when indicating hesitation Case-b
 <section id="qa-checklist-for-qual-cleaning" class="level1">
 <h1>QA Checklist for Qual Cleaning</h1>
 <p>[ ] Are participant and interviewer roles correctly labeled? [ ] Have names, locations, and job titles been de-identified? [ ] Are timestamps removed (unless needed for analysis)? [ ] Are discussion sections correctly labeled? [ ] Has text been standardized (case, punctuation, spacing)? [ ] Is the cleaned dataset in a tidy format (one speaker turn per row)? [ ] Has the cleaned dataset been reviewed by another team member?</p>
+<div class="outer">
+  <div class="green-box" style="--bar-bg: #5776b2;
+              --bar-text-color: #FFFFFF;
+              --box-h: 90px;">
+    <div class="green-col">Cleaning and Pre-Processing Your Data</div>
+    <div class="green-col pattern">
+      <img src="images/Pattern-05-Periwinkle.png" alt="Pattern">
+    </div>
+  </div>
+</div>
+<p><br></p>
+<section id="terminology-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="terminology-1">Terminology</h2>
+<p>Before starting your pre-processing and analysis, it’s important to understand a few core terms. These concepts are essential for working with text data and deciding on the appropriate pre-processing and analysis steps.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tokenization</td>
+<td>Breaking text into units (words, phrases, sentences)</td>
+</tr>
+<tr class="even">
+<td>Stemming</td>
+<td>Reducing words to their root (e.g., “running” → “run”)</td>
+</tr>
+<tr class="odd">
+<td>Lemmatization</td>
+<td>Reducing to dictionary form (e.g., “better” → “good”)</td>
+</tr>
+<tr class="even">
+<td>Stop Words</td>
+<td>Common words often removed (e.g., “the”, “and”)</td>
+</tr>
+<tr class="odd">
+<td>Document-Term Matrix</td>
+<td>Table of word frequencies across documents</td>
+</tr>
+<tr class="even">
+<td>TF-IDF</td>
+<td>Term importance based on frequency and inverse document frequency</td>
+</tr>
+<tr class="odd">
+<td>Corpus</td>
+<td>Collection of text documents as one dataset</td>
+</tr>
+<tr class="even">
+<td>Dictionary</td>
+<td>List of keywords/phrases used to code or categorize text</td>
+</tr>
+</tbody>
+</table>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all packages </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(textstem)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sentimentr)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(omni)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><img src="images/preprocessing.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Pre-processing prepares your qualitative data for analysis by <strong>cleaning</strong>, <strong>organizing</strong>, and <strong>standardizing</strong> text. This step ensures the data is usable for word frequency, sentiment analysis, topic modeling, and other text mining techniques.</p>
+<p>You should always assess the <strong>scope and quality</strong> of your data first:</p>
+<ul>
+<li>Are the data cleaned (lowercase, removed participant names, punctuation, symbols)?</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div style="width:800px;">
+<div style="padding-left:10px;padding-bottom:3px;color:#081C39;border-left:5px solid #5776B2;font-size:11pt;">
 
 
+<p>Check out our function that does all of these data cleaning tasks for
+you in R! You can also segment your text by question, combine multiple
+interviews and focus groups into one dataset, and more.</p></div>
+</div>
+</div>
+</div>
+<center>
+<a href="https://www.example.com" target="_blank" rel="noopener" class="yellow-btn"> Cleaning transcripts function </a>
+</center>
+<ul>
+<li><p>How much text do you have? (Word counts per document/response.)</p></li>
+<li><p>How many participants contributed?</p></li>
+<li><p>How detailed or shallow are the responses?</p></li>
+<li><p>Whose voices are you analyzing?</p></li>
+</ul>
+<p>Once you understand your data, you can decide which pre-processing steps are appropriate.</p>
+</section>
+<section id="tokenization" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="tokenization">Tokenization</h2>
+<p>Tokenization breaks text into individual pieces—usually words, but sometimes phrases or sentences.</p>
+<ul>
+<li><p>Most text mining techniques require tokenized text.</p></li>
+<li><p>This is common for word frequency analysis, sentiment analysis, and topic modeling.</p></li>
+<li><p>After tokenization, we lose the flow of sentences which is generally okay for some analyses, but not for narrative analysis or content analysis.</p></li>
+</ul>
+<p><strong>What are Stop Words?</strong></p>
+<p>Stop words are common words like “the”, “and”, “but” that don’t add much meaning on their own. Because we want to focus on broader themes from our participants’ voices, we usually want to remove stop words after text is tokenized. This process allows us to focus on content-rich words, like nouns and verbs. We should remove stop words when running a word frequency analysis, topic modeling, or sentiment analysis.</p>
+<p>We can also create custom stop words that we want to remove from our analyses, for example, location names or project-specific words that appear frequently but aren’t relevant to the analysis.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>In the example below, my custom stop words are “travis” and “county”, and they’re added to the stop_words bank which includes other words like “but”, “is”, “the”, etc. If you’d like to see all of the stop words, see View(stop_words).</li>
+</ul>
+</section>
+<section id="stemming" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="stemming">Stemming</h2>
+<p>Stemming words cuts them down to their root forms (e.g., “running” becomes “run”). This pre-processing step should primarily be used for topic modeling or for other analyses that you decide that exact word form isn’t critical. This step is recommended to use with larger datasets, with typically hundreds of documents or more, but for our purposes we recommend stemming any time you have enough data for topic modeling (around 5,000 total words).</p>
+</section>
+<section id="lemmatization" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="lemmatization">Lemmatization</h2>
+<p>Lemmatization converts words to their dictionary root and keeps the words readable to the user (e.g., “better” becomes “good”). This pre-processing step should be used for word frequency analysis, sentiment analysis, or thematic/content analysis as it works will with small and large corpuses.</p>
+<p>Let’s compare the stem words, vs lemmatized words against the original tokenized words:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">line</th>
+<th style="text-align: left;">speaker</th>
+<th style="text-align: left;">participant_id</th>
+<th style="text-align: right;">question</th>
+<th style="text-align: right;">section</th>
+<th style="text-align: left;">section_label</th>
+<th style="text-align: left;">session</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">stem_word</th>
+<th style="text-align: left;">lem_word</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">biggest</td>
+<td style="text-align: left;">biggest</td>
+<td style="text-align: left;">big</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">challenges</td>
+<td style="text-align: left;">challeng</td>
+<td style="text-align: left;">challenge</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">transportation</td>
+<td style="text-align: left;">transport</td>
+<td style="text-align: left;">transportation</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">people</td>
+<td style="text-align: left;">peopl</td>
+<td style="text-align: left;">people</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">people</td>
+<td style="text-align: left;">peopl</td>
+<td style="text-align: left;">people</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">people</td>
+<td style="text-align: left;">peopl</td>
+<td style="text-align: left;">people</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">people</td>
+<td style="text-align: left;">peopl</td>
+<td style="text-align: left;">people</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">cars</td>
+<td style="text-align: left;">car</td>
+<td style="text-align: left;">car</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">makes</td>
+<td style="text-align: left;">make</td>
+<td style="text-align: left;">make</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">participant</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">Education</td>
+<td style="text-align: left;">difficult</td>
+<td style="text-align: left;">difficult</td>
+<td style="text-align: left;">difficult</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>When to Use Stemming vs.&nbsp;Lemmatization</caption>
+<colgroup>
+<col style="width: 69%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stemming</th>
+<th style="text-align: left;">Lemmatization</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">You need speed over accuracy</td>
+<td style="text-align: left;">Slower but more accurate</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Working with large datasets</td>
+<td style="text-align: left;">Better for small datasets</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Basic information retrieval tasks</td>
+<td style="text-align: left;">Better for nuanced analysis</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Search engines or topic modeling where fine detail isn’t critical</td>
+<td style="text-align: left;">Better for in-depth analysis</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Not concerned about human readability</td>
+<td style="text-align: left;">Maintains readable words)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+</section>
 </section>
 
 </main> <!-- /main -->

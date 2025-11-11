@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis</title>
+<title>Analysis Plan</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -175,11 +141,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
         <li>
+    <a class="dropdown-item" href="./analysis_plan.html">
+ <span class="dropdown-text">Analysis Plan</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./data_prep.html">
  <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./approach.qmd">
+    <a class="dropdown-item" href="./approach.html">
  <span class="dropdown-text">Omni’s Approach</span></a>
   </li>  
     </ul>
@@ -210,26 +180,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
+  <ul>
+  <li><a href="#planning-your-analysis" id="toc-planning-your-analysis" class="nav-link active" data-scroll-target="#planning-your-analysis">Planning Your Analysis</a>
   <ul class="collapse">
-  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">Purpose</a></li>
-  <li><a href="#what-this-guide-covers" id="toc-what-this-guide-covers" class="nav-link" data-scroll-target="#what-this-guide-covers">What This Guide Covers</a></li>
-  <li><a href="#omnis-approach-to-analysis" id="toc-omnis-approach-to-analysis" class="nav-link" data-scroll-target="#omnis-approach-to-analysis">Omni’s Approach to Analysis</a></li>
-  <li><a href="#choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai" id="toc-choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai" class="nav-link" data-scroll-target="#choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai">Choosing Your Analysis Tool: R vs.&nbsp;Dedoose vs.&nbsp;AI</a></li>
-  <li><a href="#planning-your-analysis" id="toc-planning-your-analysis" class="nav-link" data-scroll-target="#planning-your-analysis">Planning Your Analysis</a></li>
-  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology">Terminology</a></li>
-  <li><a href="#tokenization" id="toc-tokenization" class="nav-link" data-scroll-target="#tokenization">Tokenization</a></li>
-  <li><a href="#stemming" id="toc-stemming" class="nav-link" data-scroll-target="#stemming">Stemming</a></li>
-  <li><a href="#lemmatization" id="toc-lemmatization" class="nav-link" data-scroll-target="#lemmatization">Lemmatization</a></li>
+  <li><a href="#understanding-your-data-before-analysis" id="toc-understanding-your-data-before-analysis" class="nav-link" data-scroll-target="#understanding-your-data-before-analysis">Understanding Your Data Before Analysis</a></li>
+  <li><a href="#working-with-a-small-corpus" id="toc-working-with-a-small-corpus" class="nav-link" data-scroll-target="#working-with-a-small-corpus">Working with a Small Corpus</a></li>
+  <li><a href="#suggested-methods-by-dataset-size-and-purpose" id="toc-suggested-methods-by-dataset-size-and-purpose" class="nav-link" data-scroll-target="#suggested-methods-by-dataset-size-and-purpose">Suggested Methods by Dataset Size and Purpose</a></li>
+  <li><a href="#grouping-voices-to-guide-analysis" id="toc-grouping-voices-to-guide-analysis" class="nav-link" data-scroll-target="#grouping-voices-to-guide-analysis">Grouping Voices to Guide Analysis</a></li>
+  </ul></li>
   <li><a href="#word-frequency-analysis" id="toc-word-frequency-analysis" class="nav-link" data-scroll-target="#word-frequency-analysis">Word frequency analysis</a></li>
   <li><a href="#sentiment-analysis" id="toc-sentiment-analysis" class="nav-link" data-scroll-target="#sentiment-analysis">Sentiment analysis</a></li>
   <li><a href="#topic-modeling" id="toc-topic-modeling" class="nav-link" data-scroll-target="#topic-modeling">Topic modeling</a></li>
   <li><a href="#content-analysis" id="toc-content-analysis" class="nav-link" data-scroll-target="#content-analysis">Content analysis</a></li>
   <li><a href="#thematic-analysis-in-dedoose" id="toc-thematic-analysis-in-dedoose" class="nav-link" data-scroll-target="#thematic-analysis-in-dedoose">Thematic Analysis in Dedoose</a></li>
   <li><a href="#combining-analyses" id="toc-combining-analyses" class="nav-link" data-scroll-target="#combining-analyses">Combining analyses</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -238,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Analysis</h1>
+<h1 class="title">Analysis Plan</h1>
 </div>
 
 
@@ -255,423 +219,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<style>
-  .outer {
-    display: block;
-    width: 100%;
-  }
-
-  .green-box {
-    --box-h: 40px;                     /* height of the bar */
-    --bar-bg: #41816F;                 /* default background color */
-    --bar-text-color: #ffffff;         /* default text color */
-    --pattern-img: url("images/Pattern-01-Teal.png");
-
-    height: var(--box-h);
-    width: 100%;
-    display: flex;
-    background-color: var(--bar-bg);
-    color: var(--bar-text-color);
-    border-radius: 0;
-    overflow: visible;
-  }
-
-  .green-col {
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    padding-left: 1em;
-    font-size: 1.4rem;
-    font-weight: 300;
-    color: var(--bar-text-color);
-    white-space: nowrap;
-  }
-
-  .green-col.pattern {
-    flex: 0 0 auto;
-    padding: 0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background: none;
-  }
-
-  .green-col.pattern img {
-    height: 100%;
-    width: auto;
-    display: block;
-  }
-</style>
-<style>
-.yellow-btn {
-  display: inline-block;
-  background-color: #fcd82b;
-  color: #000000;
-  padding: 0.5em 1.2em;
-  text-decoration: none;
-  border: none;
-  border-radius: 0px;   /* squared edges? change to 0 */
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-.yellow-btn:hover {
-  background-color: #e6c323; /* slightly darker on hover */
-}
-</style>
-<!-- ```{=html} -->
-<!-- <div class="outer"> -->
-<!--   <div class="green-box" -->
-<!--        style="--bar-bg: #41816F; -->
-<!--               --bar-text-color: #FFFFFF; -->
-<!--               --box-h: 90px;"> -->
-<!--     <div class="green-col">Executive Summary</div> -->
-<!--     <div class="green-col pattern"> -->
-<!--       <img src="images/Pattern-01-Teal.png" alt="Pattern"> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </div> -->
-<!-- ``` -->
-<section id="executive-summary" class="level2">
-<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
-<div style="background-color: #c5dfd9; padding: 20px; border-radius: 0px;">
-<p>
-Omni’s qualitative analysis guide supports staff in conducting transparent, systematic, and actionable qualitative research in complex, real-world settings. Our clients often require timely, credible findings grounded in participants’ lived experiences. To meet these demands, this guide outlines practical workflows rooted in two complementary paradigms: <strong><span class="teal-600">pragmatism</span></strong> and <strong><span class="teal-600">critical realism</span></strong>.
-</p>
-<ul>
-<li>
-<strong><span class="teal-600">Pragmatism</span></strong> directs us to focus on real-world utility and actionable insights.
-</li>
-<li>
-<strong><span class="teal-600">Critical realism</span></strong> encourages us to understand participant perspectives while acknowledging how those perspectives are shaped by broader structures and contexts.
-</li>
-</ul>
-<p>
-Together, these paradigms support our commitment to meaningful, context-aware findings that are both usable and methodologically sound.
-</p>
-<p>
-This guide provides step-by-step instructions for conducting qualitative analysis, from data pre-processing to reporting. It includes techniques like word frequency analysis, sentiment analysis, thematic coding, content analysis, and topic modeling, all implemented with transparency and adaptability in mind.
-</p>
-</div>
-<section id="key-features-of-the-guide" class="level3">
-<h3 class="anchored" data-anchor-id="key-features-of-the-guide">Key Features of the Guide:</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div style="display:grid;grid-template-columns:50px 1fr;column-gap:10px;row-gap:10px;">
-<div style="background:#8AC0B3;width:30px;height:30px;display:flex;margin:auto;border-radius:100%;padding:10px;box-sizing:content-box;">
-<div style="margin:auto;background:#8AC0B3;"><!--?xml version="1.0" encoding="UTF-8"?-->
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewbox="0 0 70 70" fill="none" style="background:#8AC0B3;">
-  <path d="M11.1533 33.8992V51.0154C17.6637 55.4932 25.5468 58.1259 34.0449 58.1259C42.543 58.1259 49.6535 55.7482 55.9764 51.6604V34.2442L34.0449 42.1048L11.1533 33.8992Z" fill="white"></path>
-  <path d="M64.0792 35.0842V21.7708L34.0396 11L4 21.7708V26.6236L34.0396 37.3944L61.079 27.6962V36.1568L59.4364 36.7418V42.7873L65.7144 40.5371V34.4917L64.0717 35.0767L64.0792 35.0842ZM34.0396 23.5334C31.2419 23.5334 28.9693 22.7458 28.9693 21.7708C28.9693 20.7957 31.2419 20.0081 34.0396 20.0081C36.8373 20.0081 39.11 20.7957 39.11 21.7708C39.11 22.7458 36.8373 23.5334 34.0396 23.5334Z" fill="white"></path>
-</svg>
-</div>
-</div>
-<div style="display:flex;margin-top:auto;margin-bottom:auto;width:700px;"><p style="margin: 0"><strong>Tool Flexibility:</strong> While R is our preferred tool for reproducibility and integration with quantitative methods, the guide also includes best-practice workflows for using Dedoose (for team-based coding) and AI tools like NotebookLM (for early exploratory work).</p>
-</div>
-<div style="background:#8AC0B3;width:30px;height:30px;display:flex;margin:auto;border-radius:100%;padding:10px;box-sizing:content-box;">
-<div style="margin:auto;background:#8AC0B3;"><!--?xml version="1.0" encoding="UTF-8"?-->
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewbox="0 0 70 70" fill="none" style="background:#8AC0B3;">
-  <path d="M53.3253 13.6203L52.7102 13.9804C51.0301 14.9704 49.11 15.488 47.1598 15.488C43.3196 15.488 39.8168 13.5303 37.8067 10.2451L37.0416 9H33.7789L33.0138 10.2451C30.9962 13.5303 27.501 15.488 23.6607 15.488C21.703 15.488 19.7829 14.9629 18.1103 13.9804L17.4952 13.6203H14V25.6812C14 50.5155 33.4264 60.5137 34.2514 60.9262L35.4215 61.5112L36.5916 60.9262C37.4167 60.5137 56.843 50.5155 56.843 25.6812V13.6203H53.3478H53.3253ZM33.0963 44.26L24.2682 34.8468L28.0035 31.3441L33.0663 36.7445L42.772 26.2587L46.5298 29.739L33.0888 44.26H33.0963Z" fill="white"></path>
-</svg>
-</div>
-</div>
-<div style="display:flex;margin-top:auto;margin-bottom:auto;width:700px;"><p style="margin: 0"><strong>Method Selection Guidance:</strong> We offer practical decision points based on dataset size, analytic goals, and project context, ensuring methods match the scope and purpose of each evaluation.</p>
-</div>
-<div style="background:#8AC0B3;width:30px;height:30px;display:flex;margin:auto;border-radius:100%;padding:10px;box-sizing:content-box;">
-<div style="margin:auto;background:#8AC0B3;"><!--?xml version="1.0" encoding="UTF-8"?-->
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewbox="0 0 70 70" fill="none" style="background:#8AC0B3;">
-  <path d="M39.8104 37.1154C40.7339 37.1154 41.4944 36.4091 41.5895 35.5127C41.5963 35.4516 41.5963 35.3904 41.5963 35.3293C41.5963 35.2682 41.5963 35.2071 41.5895 35.1459C41.4944 34.2495 40.7339 33.5432 39.8104 33.5432C38.8258 33.5432 38.0245 34.3446 38.0245 35.3293C38.0245 36.314 38.8258 37.1154 39.8104 37.1154Z" fill="white"></path>
-  <path d="M20.6885 46.9017H49.575V23.5806H20.6885V46.9017ZM32.6193 34.562C32.6193 34.1885 32.918 33.8829 33.2983 33.8829H35.5527C36.0077 32.5314 37.0874 31.472 38.4523 31.0374V28.7283C38.4523 28.348 38.751 28.0492 39.1313 28.0492H40.4894C40.8629 28.0492 41.1684 28.348 41.1684 28.7283V31.0374C42.5333 31.472 43.613 32.5314 44.0679 33.8829H46.3224C46.7026 33.8829 47.0014 34.1885 47.0014 34.562V35.9203C47.0014 36.2938 46.7026 36.5994 46.3224 36.5994H44.1291C43.7081 38.0323 42.5944 39.1733 41.1684 39.6215V41.7539C41.1684 42.1342 40.8629 42.4331 40.4894 42.4331H39.1313C38.751 42.4331 38.4523 42.1342 38.4523 41.7539V39.6215C37.0263 39.1733 35.9126 38.0323 35.4916 36.5994H33.2983C32.918 36.5994 32.6193 36.2938 32.6193 35.9203V34.562ZM24.6201 28.1035C24.6201 27.73 24.9257 27.4244 25.2992 27.4244H26.6573C27.0307 27.4244 27.3363 27.73 27.3363 28.1035V42.3787C27.3363 42.7522 27.0307 43.0579 26.6573 43.0579H25.2992C24.9257 43.0579 24.6201 42.7522 24.6201 42.3787V28.1035Z" fill="white"></path>
-  <path d="M54.9056 17H15.3581C14.6043 17 14 17.6044 14 18.3582V52.1311C14 52.8781 14.6043 53.4894 15.3581 53.4894H54.9056C55.6593 53.4894 56.2636 52.8781 56.2636 52.1311V18.3582C56.2636 17.6044 55.6593 17 54.9056 17ZM52.2912 47.2957C52.2912 48.5793 51.2455 49.6183 49.9689 49.6183H20.3015C19.0181 49.6183 17.9724 48.5793 17.9724 47.2957V23.1868C17.9724 21.9033 19.0181 20.8642 20.3015 20.8642H49.9689C51.2455 20.8642 52.2912 21.9033 52.2912 23.1868V47.2957Z" fill="white"></path>
-</svg>
-</div>
-</div>
-<div style="display:flex;margin-top:auto;margin-bottom:auto;width:700px;"><p style="margin: 0"><strong>Structured Workflows:</strong> Omni workflows help analysts navigate all stages of qualitative analysis—from clarifying analytic frameworks and coding approaches to integrating qualitative and quantitative data in mixed-methods designs.</p>
-</div>
-<div style="background:#8AC0B3;width:30px;height:30px;display:flex;margin:auto;border-radius:100%;padding:10px;box-sizing:content-box;">
-<div style="margin:auto;background:#8AC0B3;"><!--?xml version="1.0" encoding="UTF-8"?-->
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewbox="0 0 70 70" fill="none" style="background:#8AC0B3;">
-  <path d="M39.8104 37.1154C40.7339 37.1154 41.4944 36.4091 41.5895 35.5127C41.5963 35.4516 41.5963 35.3904 41.5963 35.3293C41.5963 35.2682 41.5963 35.2071 41.5895 35.1459C41.4944 34.2495 40.7339 33.5432 39.8104 33.5432C38.8258 33.5432 38.0245 34.3446 38.0245 35.3293C38.0245 36.314 38.8258 37.1154 39.8104 37.1154Z" fill="white"></path>
-  <path d="M20.6885 46.9017H49.575V23.5806H20.6885V46.9017ZM32.6193 34.562C32.6193 34.1885 32.918 33.8829 33.2983 33.8829H35.5527C36.0077 32.5314 37.0874 31.472 38.4523 31.0374V28.7283C38.4523 28.348 38.751 28.0492 39.1313 28.0492H40.4894C40.8629 28.0492 41.1684 28.348 41.1684 28.7283V31.0374C42.5333 31.472 43.613 32.5314 44.0679 33.8829H46.3224C46.7026 33.8829 47.0014 34.1885 47.0014 34.562V35.9203C47.0014 36.2938 46.7026 36.5994 46.3224 36.5994H44.1291C43.7081 38.0323 42.5944 39.1733 41.1684 39.6215V41.7539C41.1684 42.1342 40.8629 42.4331 40.4894 42.4331H39.1313C38.751 42.4331 38.4523 42.1342 38.4523 41.7539V39.6215C37.0263 39.1733 35.9126 38.0323 35.4916 36.5994H33.2983C32.918 36.5994 32.6193 36.2938 32.6193 35.9203V34.562ZM24.6201 28.1035C24.6201 27.73 24.9257 27.4244 25.2992 27.4244H26.6573C27.0307 27.4244 27.3363 27.73 27.3363 28.1035V42.3787C27.3363 42.7522 27.0307 43.0579 26.6573 43.0579H25.2992C24.9257 43.0579 24.6201 42.7522 24.6201 42.3787V28.1035Z" fill="white"></path>
-  <path d="M54.9056 17H15.3581C14.6043 17 14 17.6044 14 18.3582V52.1311C14 52.8781 14.6043 53.4894 15.3581 53.4894H54.9056C55.6593 53.4894 56.2636 52.8781 56.2636 52.1311V18.3582C56.2636 17.6044 55.6593 17 54.9056 17ZM52.2912 47.2957C52.2912 48.5793 51.2455 49.6183 49.9689 49.6183H20.3015C19.0181 49.6183 17.9724 48.5793 17.9724 47.2957V23.1868C17.9724 21.9033 19.0181 20.8642 20.3015 20.8642H49.9689C51.2455 20.8642 52.2912 21.9033 52.2912 23.1868V47.2957Z" fill="white"></path>
-</svg>
-</div>
-</div>
-<div style="display:flex;margin-top:auto;margin-bottom:auto;width:700px;"><p style="margin: 0"><strong>Adaptability:</strong> Whether you're working with rich interview transcripts or brief open-ended survey responses, the guide provides adaptable tools that emphasize rigor, transparency, and context.</p>
-</div>
-</div>
-</div>
-</div>
-<p><br></p>
-<div class="cell">
-<div class="cell-output-display">
-<div style="width:700px;">
-<div style="padding-left:10px;padding-bottom:3px;color:#081C39;border-left:5px solid #41816F;font-size:11pt;">
-
-
-<p>By centering participant voices, documenting our methods clearly, and
-maintaining a reflexive stance, this guide strengthens the credibility
-and usefulness of Omni’s qualitative work. It equips staff with tools
-and strategies that not only meet evaluation standards but also foster
-accountability, responsiveness, and connection to the communities we
-serve.</p></div>
-</div>
-</div>
-</div>
-<p><br></p>
-<details>
-<summary>
-<strong>Version Control</strong>
-</summary>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Version</th>
-<th>Description</th>
-<th>Date released</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>-4.0</td>
-<td>Adding interactive features</td>
-<td>2025-08-14</td>
-</tr>
-<tr class="even">
-<td>-5.0</td>
-<td>Second draft for review and rebrand</td>
-<td>2025-08-14</td>
-</tr>
-<tr class="odd">
-<td>-6.0</td>
-<td>Initial draft for review</td>
-<td>2025-03-26</td>
-</tr>
-</tbody>
-</table>
-</details>
-<p><br></p>
-<!-- ```{=html} -->
-<!-- <div class="outer"> -->
-<!--   <div class="green-box" -->
-<!--        style="--bar-bg: #C65A8B; -->
-<!--               --bar-text-color: #FFFFFF; -->
-<!--               --box-h: 90px;"> -->
-<!--     <div class="green-col">Introduction</div> -->
-<!--     <div class="green-col pattern"> -->
-<!--       <img src="images/Pattern-02-Plum.png" alt="Pattern"> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </div> -->
-<!-- ``` -->
-<!-- <br> -->
-</section>
-</section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>At Omni, we conduct qualitative research in complex, real-world environments. Our clients and projects often require fast timelines, nuanced insights, and transparent methods that can stand up to external review. To meet these needs, we use systematic, reproducible qualitative analysis methods grounded in <strong><span class="plum-600">pragmatism</span></strong> and <strong><span class="plum-600">critical realism</span></strong>.</p>
-<p>This approach ensures our findings are actionable and reflect the realities and lived experiences of participants, while acknowledging the influence of context, interpretation, and limitations in our data.</p>
-<section id="purpose" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="purpose">Purpose</h2>
-<p>This guide was developed to support Omni staff in conducting methodologically sound, transparent, and reproducible qualitative analyses. It offers practical, step-by-step instructions and highlights best practices for text pre-processing, analysis, and reporting. Whether working with interview transcripts, focus groups, open-ended survey responses, or other text-based data, Omni teams can use this guide to produce findings that are both grounded in participants’ voices and useful for program improvement and decision-making.</p>
-<section id="how-does-this-guide-align-with-omnis-core-values" class="level4">
-<h4 class="anchored" data-anchor-id="how-does-this-guide-align-with-omnis-core-values">How does this guide align with Omni’s core values?</h4>
-<p><strong>Inquiry</strong> — Provides clear, rigorous methods that encourage thoughtful exploration of participants’ experiences.</p>
-<p><strong>Agility</strong> — Equips staff with adaptable tools to meet diverse project needs and respond efficiently to change.</p>
-<p><strong>Connection</strong> — Centers participants’ voices and strengthens relationships with the communities and partners we serve.</p>
-<p><strong>Accountability</strong> — Uses transparent, reproducible analysis practices to keep our work credible, ethical, and trustworthy.</p>
-</section>
-</section>
-<section id="what-this-guide-covers" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="what-this-guide-covers">What This Guide Covers</h2>
-<p>You’ll find guidance on:</p>
-<ul>
-<li><p><strong><span class="plum-600">Text mining / Natural Language Processing (NLP)</span></strong><br>
-(e.g., word frequency, sentiment analysis, topic modeling)</p></li>
-<li><p><strong><span class="plum-600">Thematic and content analysis</span></strong><br>
-(e.g., dictionary-based coding, thematic coding frameworks)</p></li>
-<li><p><strong><span class="plum-600">Narrative analysis <span class="citation" data-cites="qualBPT">@qualBPT</span> do we need?</span></strong><br>
-(Optional: e.g., structural analysis, language style matching)</p></li>
-<li><p><strong><span class="plum-600">Visualizing and reporting qualitative data</span></strong><br>
-(e.g., word clouds, bar charts, heatmaps, joint displays for mixed-methods)</p></li>
-</ul>
-<p>These methods can be applied to text from: Word documents (.docx), PDFs (.pdf), Zoom transcripts (.docx or .txt), open-ended survey responses (.xlsx or .csv), and more.</p>
-<p>In many applied settings, qualitative methods (and especially mixed-methods) are described in vague terms. Reports may mention “themes emerging” or “triangulating findings,” but rarely explain the actual process used to get there. This vagueness makes it hard to replicate or assess qualitative findings and limits their credibility.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div style="width:800px;">
-<div style="padding-left:10px;padding-bottom:3px;color:#081C39;border-left:5px solid #821C4C;font-size:11pt;">
-
-
-<p>At Omni, we aim to avoid vague or ad hoc practices. We document
-clear, systematic workflows that integrate qualitative insights with
-quantitative data when appropriate.</p></div>
-</div>
-</div>
-</div>
-<section id="why-are-existing-descriptions-of-methods-so-vague" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="why-are-existing-descriptions-of-methods-so-vague">Why Are Existing Descriptions of Methods So Vague?</h3>
-<p>Several factors explain the common lack of clarity in methodology:</p>
-<ul>
-<li><p>Different disciplines (e.g., public health vs.&nbsp;education research) use different frameworks, leading to inconsistent approaches.</p></li>
-<li><p>Quantitative research has standard tools (R, SPSS, Stata), but qualitative tools (NVivo, MAXQDA, Dedoose) often rely on manual processes and don’t always integrate cleanly with quantitative workflows.</p></li>
-<li><p>Qualitative analysis requires human interpretation and reflexivity. Documenting every step is time-consuming, and under tight timelines, many organizations skip this critical process.</p></li>
-<li><p>Qualitative and quantitative teams often work separately, without shared standards or mixed-methods integration.</p></li>
-</ul>
-<!-- [Hannah is just messing around here to see how an .mp4 reads into R and plays] -->
-<!-- ```{=html} -->
-<!-- <video width="640" height="360" controls> -->
-<!--   <source src="videos/test Video Project 1.mp4" type="video/mp4"> -->
-<!--   Your browser does not support the video tag. -->
-<!-- </video> -->
-<!-- ``` -->
-<!-- ```{=html} -->
-<!-- <div class="outer"> -->
-<!--   <div class="green-box" -->
-<!--        style="--bar-bg: #89A046; -->
-<!--               --bar-text-color: #FFFFFF; -->
-<!--               --box-h: 90px;"> -->
-<!--     <div class="green-col">Omni's Approach to Analysis</div> -->
-<!--     <div class="green-col pattern"> -->
-<!--       <img src="images/Pattern-03-Olive.png" alt="Pattern"> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </div> -->
-<!-- ``` -->
-</section>
-</section>
-<section id="omnis-approach-to-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="omnis-approach-to-analysis">Omni’s Approach to Analysis</h2>
-<p>Omni’s qualitative practice is grounded in <strong><span class="olive-green-600">pragmatism</span></strong> and <strong><span class="olive-green-600">critical realism</span></strong>.</p>
-<ul>
-<li><p><strong><span class="olive-green-600">Pragmatism</span></strong> means we focus on providing useful, actionable insights for real-world decision-making. Our goal is to help clients understand participants’ experiences in ways that inform policy, programs, and practice. This reflects a pragmatic stance rooted in the work of scholars like <a href="https://journals.sagepub.com/doi/pdf/10.1177/2345678906292462" target="_blank" rel="noopener"> Morgan (2007) </a> and <a href="https://www.taylorfrancis.com/books/mono/10.4324/9781351017831/explaining-society-berth-danermark-mats-ekstr%C3%B6m-jan-ch-karlsson" target="_blank" rel="noopener"> Danermark et al.&nbsp;(2015) </a>, emphasizing inquiry that is guided by consequences and utility.</p></li>
-<li><p><strong><span class="olive-green-600">Critical realism</span></strong> acknowledges that while participants’ experiences reflect real phenomena (barriers, challenges, successes), they are shaped by context and perspective. Influenced by <a href="https://www.tandfonline.com/doi/full/10.1080/13645579.2016.1144401" target="_blank" rel="noopener"> Fletcher’s (2017) </a> work and work by others, this perspective guides us to acknowledge our limitations, reflect on researcher influence, and avoid overstating claims.</p></li>
-<li><p>Omni’s qualitative practice draws on reflexive thematic analysis <a href="https://www.tandfonline.com/doi/abs/10.1191/1478088706qp063oa" target="_blank" rel="noopener"> (Clarke &amp; Braun, 2006) </a> and content analysis <a href="https://journals.sagepub.com/doi/abs/10.1177/1049732305276687" target="_blank" rel="noopener"> (Hseih &amp; Shannon, 2005) </a>, emphasizing the researcher’s active role in interpreting data and constructing themes, in alignment with our commitment to critical realism and methodological transparency.</p></li>
-</ul>
-<section id="transparent-and-systematic-workflows" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="transparent-and-systematic-workflows">Transparent and Systematic Workflows</h3>
-<p>At Omni, we use structured qualitative and mixed-methods workflows. These processes are transparent, systematic, and designed to integrate qualitative and quantitative findings when appropriate.</p>
-<p><img src="images/workflow_green.png" class="img-fluid"></p>
-<p><strong>Example Omni Workflow for Qualitative analysis:</strong></p>
-<ol type="1">
-<li>Clarify Purpose and Analytic Framework</li>
-</ol>
-<ul>
-<li><p>Define the evaluation questions and purpose of the qualitative analysis</p></li>
-<li><p>Select an analytic method</p></li>
-</ul>
-<ol start="2" type="1">
-<li>Prepare and Familiarize with the Data</li>
-</ol>
-<ul>
-<li><p>Clean transcripts/text</p></li>
-<li><p>Read through interviews, discussions, or sessions at least once (text like reports you may not need context for, use your discretion)</p></li>
-</ul>
-<ol start="3" type="1">
-<li>Systematic Coding of the Data</li>
-</ol>
-<ul>
-<li><p>Deductive, Inductive, or hybrid</p></li>
-<li><p>Deductive coding uses predefined codes (like our dictionaries) to apply to our data</p></li>
-<li><p>Inductive coding uses text mining or topic modeling to identify emergent themes</p></li>
-</ul>
-<ol start="4" type="1">
-<li>Theme Development and Refinement</li>
-</ol>
-<ul>
-<li>Analyze and refine codes/themes</li>
-</ul>
-<ol start="5" type="1">
-<li>Interpretation and Synthesis</li>
-</ol>
-<ul>
-<li>Compare themes to evaluation questions and contextual frameworks</li>
-</ul>
-<ol start="6" type="1">
-<li><p>Explore themes visually</p></li>
-<li><p>Get ready for reporting</p></li>
-</ol>
-</section>
-</section>
-<section id="choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai">Choosing Your Analysis Tool: R vs.&nbsp;Dedoose vs.&nbsp;AI</h2>
-<section id="r" class="level3">
-<h3 class="anchored" data-anchor-id="r">R</h3>
-<p><strong>Best when</strong></p>
-<ul>
-<li>Datasets are large or mixed (qual + quant) and need audit trails.<br>
-</li>
-<li>You want reproducibility, automation, and version control.<br>
-</li>
-<li>You’re under time constraints and have existing scripts/templates (IRR optional or phased).</li>
-</ul>
-<p><strong>Pros</strong></p>
-<ul>
-<li>Transparent, reproducible code and scalable pipelines.<br>
-</li>
-<li>Flexible: word frequency, sentiment, dictionaries, topic models.<br>
-</li>
-<li>Produces precise visuals and integrates survey/demographic data easily.</li>
-</ul>
-<p><strong>Cons</strong></p>
-<ul>
-<li>Steeper setup and learning curve.<br>
-</li>
-<li>Requires clear documentation to ensure shared understanding.</li>
-</ul>
-</section>
-<section id="dedoose" class="level3">
-<h3 class="anchored" data-anchor-id="dedoose">Dedoose</h3>
-<p><strong>Best when</strong></p>
-<ul>
-<li>Working collaboratively with a team or training new coders.<br>
-</li>
-<li>Analyzing small–moderate datasets.<br>
-</li>
-<li>Delivering quick turnarounds using built-in IRR workflows.</li>
-</ul>
-<p><strong>Pros</strong></p>
-<ul>
-<li>Multi-user collaboration, role permissions, IRR features.<br>
-</li>
-<li>Low barrier for non-programmers.</li>
-<li>Simple approach for line-by-line coding</li>
-</ul>
-<p><strong>Cons</strong></p>
-<ul>
-<li>License cost.<br>
-</li>
-<li>Limited automation/custom analyses compared to code.<br>
-</li>
-<li>Reproducibility and export trails less granular than scripted pipelines.</li>
-</ul>
-</section>
-<section id="ai" class="level3">
-<h3 class="anchored" data-anchor-id="ai">AI</h3>
-<p><strong>Best when</strong></p>
-<ul>
-<li>Very fast and low barrier (though not a replacement for traditional qualitative coding.<br>
-</li>
-<li>Analyzing short datasets, scoping questions, or drafting a codebook.<br>
-</li>
-<li>Preparing stakeholder previews before deeper human analysis.</li>
-</ul>
-<p><strong>Pros</strong></p>
-<ul>
-<li>Very fast and accessible; supports brainstorming structures.<br>
-</li>
-<li>Can summarize, cluster, and compare data quickly.<br>
-</li>
-<li>Useful for early iteration before moving to R or Dedoose.</li>
-</ul>
-<p><strong>Cons</strong></p>
-<ul>
-<li>Not a substitute for human interpretation; may produce hallucinations.</li>
-<li>Inconsistent across runs; lacks deep context if prompts are weak.<br>
-</li>
-<li>Data governance and privacy limits — avoid uploading sensitive data.</li>
-</ul>
-</section>
-</section>
 <section id="planning-your-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="planning-your-analysis">Planning Your Analysis</h2>
 <!-- Once pre-processed, your data is ready for analysis.  -->
@@ -720,8 +267,8 @@ quantitative data when appropriate.</p></div>
 <!-- | **Topic Modeling** | 5,000+ words | ❌ Low | Topic modeling relies on **statistical probability**. Anything under **5,000 words** will **struggle to produce meaningful, stable topics**. While you *can* run a topic model on smaller datasets (e.g., 2,000 words), the **results are less trustworthy**, prone to overfitting, and often **hard to interpret**. Not recommended without strong caveats. | -->
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-1f4b39bd20a1798fe783" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-1f4b39bd20a1798fe783">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Word Frequency","Sentiment Analysis","Content Analysis (Dictionary-based) or Thematic Analysis","Topic Modeling"],["500+ words","1,000+ words","1,000+ words (small dictionaries)","5,000+ words"],["✅ High","✅ Moderate","✅ Moderate","❌ Low"],["Works even on small datasets for exploratory insights. You can analyze under 500 words, but findings may feel anecdotal rather than robust. Best if presented as observations rather than firm conclusions.","Sentiment varies widely within small datasets. Under 1,000 words, tone shifts can skew results. You can use it in smaller datasets (500+ words), but you'll need careful interpretation and clear disclaimers.","Works well with small datasets, especially if using focused dictionaries with clearly defined terms. Fewer words mean fewer opportunities for themes to emerge, so results need contextualization.","Topic modeling relies on statistical probability. Anything under 5,000 words will struggle to produce meaningful, stable topics. While you can run a topic model on smaller datasets (e.g., 2,000 words), the results are less trustworthy, prone to overfitting, and often hard to interpret. Not recommended without strong caveats."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Analysis<\/th>\n      <th>Typical_Recommendation<\/th>\n      <th>Wiggle_Room_with_Word_Count<\/th>\n      <th>Why<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"autoWidth":true,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Analysis","targets":1},{"name":"Typical_Recommendation","targets":2},{"name":"Wiggle_Room_with_Word_Count","targets":3},{"name":"Why","targets":4}],"order":[],"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9be9882165dee2295a0b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9be9882165dee2295a0b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Word Frequency","Sentiment Analysis","Content Analysis (Dictionary-based) or Thematic Analysis","Topic Modeling"],["500+ words","1,000+ words","1,000+ words (small dictionaries)","5,000+ words"],["✅ High","✅ Moderate","✅ Moderate","❌ Low"],["Works even on small datasets for exploratory insights. You can analyze under 500 words, but findings may feel anecdotal rather than robust. Best if presented as observations rather than firm conclusions.","Sentiment varies widely within small datasets. Under 1,000 words, tone shifts can skew results. You can use it in smaller datasets (500+ words), but you'll need careful interpretation and clear disclaimers.","Works well with small datasets, especially if using focused dictionaries with clearly defined terms. Fewer words mean fewer opportunities for themes to emerge, so results need contextualization.","Topic modeling relies on statistical probability. Anything under 5,000 words will struggle to produce meaningful, stable topics. While you can run a topic model on smaller datasets (e.g., 2,000 words), the results are less trustworthy, prone to overfitting, and often hard to interpret. Not recommended without strong caveats."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Analysis<\/th>\n      <th>Typical_Recommendation<\/th>\n      <th>Wiggle_Room_with_Word_Count<\/th>\n      <th>Why<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"autoWidth":true,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Analysis","targets":1},{"name":"Typical_Recommendation","targets":2},{"name":"Wiggle_Room_with_Word_Count","targets":3},{"name":"Why","targets":4}],"order":[],"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
@@ -767,347 +314,6 @@ of your analysis.</p></div>
 </ul>
 <p>These decisions should align with the project’s goals and be clearly documented in reports and presentations.</p>
 </section>
-<section id="ready-for-pre-processing" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="ready-for-pre-processing">Ready for Pre-processing?</h3>
-<p>Once you understand your data, you’re ready to start <strong>pre-processing</strong>!</p>
-<p><br></p>
-<div class="outer">
-  <div class="green-box" style="--bar-bg: #5776b2;
-              --bar-text-color: #FFFFFF;
-              --box-h: 90px;">
-    <div class="green-col">Cleaning and Pre-Processing Your Data</div>
-    <div class="green-col pattern">
-      <img src="images/Pattern-05-Periwinkle.png" alt="Pattern">
-    </div>
-  </div>
-</div>
-<p><br></p>
-</section>
-</section>
-<section id="terminology" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="terminology">Terminology</h2>
-<p>Before starting your pre-processing and analysis, it’s important to understand a few core terms. These concepts are essential for working with text data and deciding on the appropriate pre-processing and analysis steps.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 31%">
-<col style="width: 68%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Term</strong></th>
-<th><strong>Definition</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Tokenization</td>
-<td>Breaking text into units (words, phrases, sentences)</td>
-</tr>
-<tr class="even">
-<td>Stemming</td>
-<td>Reducing words to their root (e.g., “running” → “run”)</td>
-</tr>
-<tr class="odd">
-<td>Lemmatization</td>
-<td>Reducing to dictionary form (e.g., “better” → “good”)</td>
-</tr>
-<tr class="even">
-<td>Stop Words</td>
-<td>Common words often removed (e.g., “the”, “and”)</td>
-</tr>
-<tr class="odd">
-<td>Document-Term Matrix</td>
-<td>Table of word frequencies across documents</td>
-</tr>
-<tr class="even">
-<td>TF-IDF</td>
-<td>Term importance based on frequency and inverse document frequency</td>
-</tr>
-<tr class="odd">
-<td>Corpus</td>
-<td>Collection of text documents as one dataset</td>
-</tr>
-<tr class="even">
-<td>Dictionary</td>
-<td>List of keywords/phrases used to code or categorize text</td>
-</tr>
-</tbody>
-</table>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all packages </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(textstem)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sentimentr)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(omni)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="width:40%;">
-<p><img src="images/preprocessing.png" class="img-fluid"></p>
-</div>
-</div>
-<p>Pre-processing prepares your qualitative data for analysis by <strong>cleaning</strong>, <strong>organizing</strong>, and <strong>standardizing</strong> text. This step ensures the data is usable for word frequency, sentiment analysis, topic modeling, and other text mining techniques.</p>
-<p>You should always assess the <strong>scope and quality</strong> of your data first:</p>
-<ul>
-<li>Are the data cleaned (lowercase, removed participant names, punctuation, symbols)?</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div style="width:800px;">
-<div style="padding-left:10px;padding-bottom:3px;color:#081C39;border-left:5px solid #5776B2;font-size:11pt;">
-
-
-<p>Check out our function that does all of these data cleaning tasks for
-you in R! You can also segment your text by question, combine multiple
-interviews and focus groups into one dataset, and more.</p></div>
-</div>
-</div>
-</div>
-<center>
-<a href="https://www.example.com" target="_blank" rel="noopener" class="yellow-btn"> Cleaning transcripts function </a>
-</center>
-<ul>
-<li><p>How much text do you have? (Word counts per document/response.)</p></li>
-<li><p>How many participants contributed?</p></li>
-<li><p>How detailed or shallow are the responses?</p></li>
-<li><p>Whose voices are you analyzing?</p></li>
-</ul>
-<p>Once you understand your data, you can decide which pre-processing steps are appropriate.</p>
-</section>
-<section id="tokenization" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="tokenization">Tokenization</h2>
-<p>Tokenization breaks text into individual pieces—usually words, but sometimes phrases or sentences.</p>
-<ul>
-<li><p>Most text mining techniques require tokenized text.</p></li>
-<li><p>This is common for word frequency analysis, sentiment analysis, and topic modeling.</p></li>
-<li><p>After tokenization, we lose the flow of sentences which is generally okay for some analyses, but not for narrative analysis or content analysis.</p></li>
-</ul>
-<p><strong>What are Stop Words?</strong></p>
-<p>Stop words are common words like “the”, “and”, “but” that don’t add much meaning on their own. Because we want to focus on broader themes from our participants’ voices, we usually want to remove stop words after text is tokenized. This process allows us to focus on content-rich words, like nouns and verbs. We should remove stop words when running a word frequency analysis, topic modeling, or sentiment analysis.</p>
-<p>We can also create custom stop words that we want to remove from our analyses, for example, location names or project-specific words that appear frequently but aren’t relevant to the analysis.</p>
-<p><strong>Example:</strong></p>
-<ul>
-<li>In the example below, my custom stop words are “travis” and “county”, and they’re added to the stop_words bank which includes other words like “but”, “is”, “the”, etc. If you’d like to see all of the stop words, see View(stop_words).</li>
-</ul>
-</section>
-<section id="stemming" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="stemming">Stemming</h2>
-<p>Stemming words cuts them down to their root forms (e.g., “running” becomes “run”). This pre-processing step should primarily be used for topic modeling or for other analyses that you decide that exact word form isn’t critical. This step is recommended to use with larger datasets, with typically hundreds of documents or more, but for our purposes we recommend stemming any time you have enough data for topic modeling (around 5,000 total words).</p>
-</section>
-<section id="lemmatization" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="lemmatization">Lemmatization</h2>
-<p>Lemmatization converts words to their dictionary root and keeps the words readable to the user (e.g., “better” becomes “good”). This pre-processing step should be used for word frequency analysis, sentiment analysis, or thematic/content analysis as it works will with small and large corpuses.</p>
-<p>Let’s compare the stem words, vs lemmatized words against the original tokenized words:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 10%">
-<col style="width: 13%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 12%">
-<col style="width: 8%">
-<col style="width: 13%">
-<col style="width: 8%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">line</th>
-<th style="text-align: left;">speaker</th>
-<th style="text-align: left;">participant_id</th>
-<th style="text-align: right;">question</th>
-<th style="text-align: right;">section</th>
-<th style="text-align: left;">section_label</th>
-<th style="text-align: left;">session</th>
-<th style="text-align: left;">word</th>
-<th style="text-align: left;">stem_word</th>
-<th style="text-align: left;">lem_word</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">biggest</td>
-<td style="text-align: left;">biggest</td>
-<td style="text-align: left;">big</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">challenges</td>
-<td style="text-align: left;">challeng</td>
-<td style="text-align: left;">challenge</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">transportation</td>
-<td style="text-align: left;">transport</td>
-<td style="text-align: left;">transportation</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">people</td>
-<td style="text-align: left;">peopl</td>
-<td style="text-align: left;">people</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">people</td>
-<td style="text-align: left;">peopl</td>
-<td style="text-align: left;">people</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">people</td>
-<td style="text-align: left;">peopl</td>
-<td style="text-align: left;">people</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">people</td>
-<td style="text-align: left;">peopl</td>
-<td style="text-align: left;">people</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">cars</td>
-<td style="text-align: left;">car</td>
-<td style="text-align: left;">car</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">makes</td>
-<td style="text-align: left;">make</td>
-<td style="text-align: left;">make</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">participant</td>
-<td style="text-align: left;">P1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;">difficult</td>
-<td style="text-align: left;">difficult</td>
-<td style="text-align: left;">difficult</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>When to Use Stemming vs.&nbsp;Lemmatization</caption>
-<colgroup>
-<col style="width: 69%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Stemming</th>
-<th style="text-align: left;">Lemmatization</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">You need speed over accuracy</td>
-<td style="text-align: left;">Slower but more accurate</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Working with large datasets</td>
-<td style="text-align: left;">Better for small datasets</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Basic information retrieval tasks</td>
-<td style="text-align: left;">Better for nuanced analysis</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Search engines or topic modeling where fine detail isn’t critical</td>
-<td style="text-align: left;">Better for in-depth analysis</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Not concerned about human readability</td>
-<td style="text-align: left;">Maintains readable words)</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><br></p>
-<div class="outer">
-  <div class="green-box" style="--bar-bg: #F7b925;
-              --bar-text-color: #FFFFFF;
-              --box-h: 90px;">
-    <div class="green-col">Analyses</div>
-    <div class="green-col pattern">
-      <img src="images/Pattern-06-Yellow.png" alt="Pattern">
-    </div>
-  </div>
-</div>
-<p><br></p>
 </section>
 <section id="word-frequency-analysis" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="word-frequency-analysis">Word frequency analysis</h2>
@@ -1135,7 +341,7 @@ interviews and focus groups into one dataset, and more.</p></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="analysis_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="analysis_plan_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1157,7 +363,7 @@ interviews and focus groups into one dataset, and more.</p></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="analysis_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="analysis_plan_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1330,7 +536,6 @@ docs    prevention treatment harm_reduction
 <p>No single method can fully capture the richness and complexity of qualitative data. At Omni, we often combine different qualitative analysis approaches to explore various angles of our data and answer nuanced evaluation questions. Pairing methods like word frequency, sentiment analysis, content analysis, and thematic analysis can help reveal both patterns and meaning, ensuring our findings are grounded in evidence and provide actionable insights.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

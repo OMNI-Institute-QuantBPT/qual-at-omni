@@ -1,0 +1,448 @@
+---
+title: Approach
+toc-depth: 2
+---
+
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(janitor)
+library(omni)
+library(scales)
+```
+
+```{=html}
+<style>
+  .outer {
+    display: block;
+    width: 100%;
+  }
+
+  .green-box {
+    --box-h: 40px;                     /* height of the bar */
+    --bar-bg: #41816F;                 /* default background color */
+    --bar-text-color: #ffffff;         /* default text color */
+    --pattern-img: url("images/Pattern-01-Teal.png");
+
+    height: var(--box-h);
+    width: 100%;
+    display: flex;
+    background-color: var(--bar-bg);
+    color: var(--bar-text-color);
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .green-col {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--bar-text-color);
+    white-space: nowrap;
+  }
+
+  .green-col.pattern {
+    flex: 0 0 auto;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: none;
+  }
+
+  .green-col.pattern img {
+    height: 100%;
+    width: auto;
+    display: block;
+  }
+</style>
+```
+
+```{=html}
+<style>
+.yellow-btn {
+  display: inline-block;
+  background-color: #fcd82b;
+  color: #000000;
+  padding: 0.5em 1.2em;
+  text-decoration: none;
+  border: none;
+  border-radius: 0px;   /* squared edges? change to 0 */
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.yellow-btn:hover {
+  background-color: #e6c323; /* slightly darker on hover */
+}
+</style>
+```
+
+<!-- ```{=html} -->
+<!-- <div class="outer"> -->
+<!--   <div class="green-box" -->
+<!--        style="--bar-bg: #41816F; -->
+<!--               --bar-text-color: #FFFFFF; -->
+<!--               --box-h: 90px;"> -->
+<!--     <div class="green-col">Executive Summary</div> -->
+<!--     <div class="green-col pattern"> -->
+<!--       <img src="images/Pattern-01-Teal.png" alt="Pattern"> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
+<!-- ``` -->
+
+## Executive Summary
+
+<div style="background-color: #c5dfd9; padding: 20px; border-radius: 0px;">
+  <p>Omni's qualitative analysis guide supports staff in conducting transparent, systematic, and actionable qualitative research in complex, real-world settings. Our clients often require timely, credible findings grounded in participants' lived experiences. To meet these demands, this guide outlines practical workflows rooted in two complementary paradigms: **[pragmatism]{.teal-600}** and **[critical realism]{.teal-600}**.</p>
+
+  <ul>
+    <li>**[Pragmatism]{.teal-600}** directs us to focus on real-world utility and actionable insights.</li>
+    <li>**[Critical realism]{.teal-600}** encourages us to understand participant perspectives while acknowledging how those perspectives are shaped by broader structures and contexts.</li>
+  </ul>
+
+  <p>Together, these paradigms support our commitment to meaningful, context-aware findings that are both usable and methodologically sound.</p>
+
+  <p>This guide provides step-by-step instructions for conducting qualitative analysis, from data pre-processing to reporting. It includes techniques like word frequency analysis, sentiment analysis, thematic coding, content analysis, and topic modeling, all implemented with transparency and adaptability in mind.</p>
+
+</div>
+
+### Key Features of the Guide:
+
+```{r, echo=FALSE}
+width_px <- 50
+text_width <- 700
+icon_color_fg <- "white"
+icon_color_bg <- 'teal-400'
+
+icon_text_grid(
+    omni_icon('education', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        text = '<strong>Tool Flexibility:</strong> While R is our preferred tool for reproducibility and integration with quantitative methods, the guide also includes best-practice workflows for using Dedoose (for team-based coding) and AI tools like NotebookLM (for early exploratory work).',
+        text_width
+    ),
+    omni_icon('security', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '<strong>Method Selection Guidance:</strong> We offer practical decision points based on dataset size, analytic goals, and project context, ensuring methods match the scope and purpose of each evaluation.',
+        text_width
+    ),
+    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '<strong>Structured Workflows:</strong> Omni workflows help analysts navigate all stages of qualitative analysis—from clarifying analytic frameworks and coding approaches to integrating qualitative and quantitative data in mixed-methods designs.',
+        text_width
+    ),
+    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '<strong>Adaptability:</strong> Whether you\'re working with rich interview transcripts or brief open-ended survey responses, the guide provides adaptable tools that emphasize rigor, transparency, and context.',
+        text_width
+    ),
+    column_gap_px = 10, # default is 10
+    row_gap_px = 10, # default is 10
+    width_px = width_px
+)
+```
+
+<br>
+
+```{r, echo=FALSE}
+omni::callout_box(
+    text = "By centering participant voices, documenting our methods clearly, and maintaining a reflexive stance, this guide strengthens the credibility and usefulness of Omni's qualitative work. It equips staff with tools and strategies that not only meet evaluation standards but also foster accountability, responsiveness, and connection to the communities we serve.",
+    color = "teal-600",
+    fixed_width_px = 700
+)
+```
+
+<br>
+
+<details>
+<summary><strong>Version Control</strong></summary>
+
+| Version | Description              | Date released |
+|---------|--------------------------|---------------|
+| -4.0    | Adding interactive features   | 2025-08-14    |
+| -5.0    | Second draft for review and rebrand   | 2025-08-14    |
+| -6.0    | Initial draft for review  | 2025-03-26    |
+
+</details>
+
+<br>
+
+<!-- ```{=html} -->
+<!-- <div class="outer"> -->
+<!--   <div class="green-box" -->
+<!--        style="--bar-bg: #C65A8B; -->
+<!--               --bar-text-color: #FFFFFF; -->
+<!--               --box-h: 90px;"> -->
+<!--     <div class="green-col">Introduction</div> -->
+<!--     <div class="green-col pattern"> -->
+<!--       <img src="images/Pattern-02-Plum.png" alt="Pattern"> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
+<!-- ``` -->
+
+<!-- <br> -->
+
+# Introduction 
+
+At Omni, we conduct qualitative research in complex, real-world
+environments. Our clients and projects often require fast timelines,
+nuanced insights, and transparent methods that can stand up to external
+review. To meet these needs, we use systematic, reproducible qualitative
+analysis methods grounded in **[pragmatism]{.plum-600}** and **[critical realism]{.plum-600}**.
+
+This approach ensures our findings are actionable and reflect the
+realities and lived experiences of participants, while acknowledging the
+influence of context, interpretation, and limitations in our data.
+
+## Purpose {.unnumbered}
+
+This guide was developed to support Omni staff in conducting
+methodologically sound, transparent, and reproducible qualitative
+analyses. It offers practical, step-by-step instructions and highlights
+best practices for text pre-processing, analysis, and reporting. Whether
+working with interview transcripts, focus groups, open-ended survey
+responses, or other text-based data, Omni teams can use this guide to
+produce findings that are both grounded in participants’ voices and
+useful for program improvement and decision-making.
+
+#### How does this guide align with Omni's core values?
+
+**Inquiry** 
+— Provides clear, rigorous methods that encourage thoughtful exploration of participants’ experiences.
+
+**Agility** 
+— Equips staff with adaptable tools to meet diverse project needs and respond efficiently to change.  
+
+**Connection** 
+— Centers participants’ voices and strengthens relationships with the communities and partners we serve.  
+
+**Accountability** 
+— Uses transparent, reproducible analysis practices to keep our work credible, ethical, and trustworthy.  
+
+
+## What This Guide Covers {.unnumbered}
+
+You’ll find guidance on:
+
+-   **[Text mining / Natural Language Processing (NLP)]{.plum-600}**\
+    (e.g., word frequency, sentiment analysis, topic modeling)
+
+-   **[Thematic and content analysis]{.plum-600}**\
+    (e.g., dictionary-based coding, thematic coding frameworks)
+
+-   **[Narrative analysis @qualBPT do we need?]{.plum-600}**\
+    (Optional: e.g., structural analysis, language style matching)
+
+-   **[Visualizing and reporting qualitative data]{.plum-600}**\
+    (e.g., word clouds, bar charts, heatmaps, joint displays for
+    mixed-methods)
+
+These methods can be applied to text from: Word documents (.docx), PDFs
+(.pdf), Zoom transcripts (.docx or .txt), open-ended survey responses
+(.xlsx or .csv), and more.
+
+In many applied settings, qualitative methods (and especially
+mixed-methods) are described in vague terms. Reports may mention "themes
+emerging" or "triangulating findings," but rarely explain the actual
+process used to get there. This vagueness makes it hard to replicate or
+assess qualitative findings and limits their credibility.
+
+```{r, echo=FALSE}
+omni::callout_box(
+    text = "At Omni, we aim to avoid vague or ad hoc practices. We document clear, systematic workflows that integrate qualitative insights with
+quantitative data when appropriate.",
+    color = "plum-600",
+fixed_width_px = 800
+)
+```
+
+### Why Are Existing Descriptions of Methods So Vague? {.unnumbered}
+
+Several factors explain the common lack of clarity in methodology:
+
+-   Different disciplines (e.g., public health vs. education research)
+    use different frameworks, leading to inconsistent approaches.
+
+-   Quantitative research has standard tools (R, SPSS, Stata), but
+    qualitative tools (NVivo, MAXQDA, Dedoose) often rely on manual
+    processes and don't always integrate cleanly with quantitative
+    workflows.
+
+-   Qualitative analysis requires human interpretation and reflexivity.
+    Documenting every step is time-consuming, and under tight timelines,
+    many organizations skip this critical process.
+
+-   Qualitative and quantitative teams often work separately, without
+    shared standards or mixed-methods integration.
+
+<!-- [Hannah is just messing around here to see how an .mp4 reads into R and plays] -->
+<!-- ```{=html} -->
+<!-- <video width="640" height="360" controls> -->
+<!--   <source src="videos/test Video Project 1.mp4" type="video/mp4"> -->
+<!--   Your browser does not support the video tag. -->
+<!-- </video> -->
+
+<!-- ``` -->
+
+<!-- ```{=html} -->
+<!-- <div class="outer"> -->
+<!--   <div class="green-box" -->
+<!--        style="--bar-bg: #89A046; -->
+<!--               --bar-text-color: #FFFFFF; -->
+<!--               --box-h: 90px;"> -->
+<!--     <div class="green-col">Omni's Approach to Analysis</div> -->
+<!--     <div class="green-col pattern"> -->
+<!--       <img src="images/Pattern-03-Olive.png" alt="Pattern"> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
+<!-- ``` -->
+
+## Omni's Approach to Analysis
+
+Omni’s qualitative practice is grounded in **[pragmatism]{.olive-green-600}** and **[critical realism]{.olive-green-600}**.
+
+-   **[Pragmatism]{.olive-green-600}** means we focus on providing useful, actionable insights for real-world decision-making. Our goal is to help clients
+    understand participants’ experiences in ways that inform policy,
+    programs, and practice. This reflects a pragmatic stance rooted in
+    the work of scholars like <a href="https://journals.sagepub.com/doi/pdf/10.1177/2345678906292462" target="_blank" rel="noopener">
+      Morgan (2007)
+    </a>
+    and <a href="https://www.taylorfrancis.com/books/mono/10.4324/9781351017831/explaining-society-berth-danermark-mats-ekstr%C3%B6m-jan-ch-karlsson" target="_blank" rel="noopener">
+      Danermark et al. (2015)
+    </a>, emphasizing inquiry that is guided by consequences and utility.
+
+-   **[Critical realism]{.olive-green-600}** acknowledges that while participants’ experiences reflect real phenomena (barriers, challenges,
+    successes), they are shaped by context and perspective. Influenced
+    by <a href="https://www.tandfonline.com/doi/full/10.1080/13645579.2016.1144401" target="_blank" rel="noopener">
+      Fletcher’s (2017)
+    </a> work and work by others, this perspective guides us to acknowledge
+    our limitations, reflect on researcher influence, and avoid
+    overstating claims.
+
+-   Omni’s qualitative practice draws on reflexive thematic analysis
+  <a href="https://www.tandfonline.com/doi/abs/10.1191/1478088706qp063oa" target="_blank" rel="noopener">
+    (Clarke &amp; Braun, 2006)
+  </a>
+  and content analysis
+  <a href="https://journals.sagepub.com/doi/abs/10.1177/1049732305276687" target="_blank" rel="noopener">
+    (Hseih &amp; Shannon, 2005)
+  </a>,
+  emphasizing the researcher’s active role in interpreting data and
+  constructing themes, in alignment with our commitment to critical
+  realism and methodological transparency.
+
+### Transparent and Systematic Workflows {.unnumbered}
+
+At Omni, we use structured qualitative and mixed-methods workflows.
+These processes are transparent, systematic, and designed to integrate
+qualitative and quantitative findings when appropriate.
+
+![](images/workflow_green.png)
+
+**Example Omni Workflow for Qualitative analysis:**
+
+1.  Clarify Purpose and Analytic Framework
+
+  -  Define the evaluation questions and purpose of the qualitative
+    analysis
+
+  -  Select an analytic method
+
+2.  Prepare and Familiarize with the Data
+
+  -  Clean transcripts/text
+
+  -  Read through interviews, discussions, or sessions at least once
+    (text like reports you may not need context for, use your
+    discretion)
+
+3.  Systematic Coding of the Data
+
+  -  Deductive, Inductive, or hybrid
+
+  -  Deductive coding uses predefined codes (like our dictionaries) to
+    apply to our data
+
+  -  Inductive coding uses text mining or topic modeling to identify
+    emergent themes
+
+4.  Theme Development and Refinement
+
+  -  Analyze and refine codes/themes
+
+5.  Interpretation and Synthesis
+
+  -  Compare themes to evaluation questions and contextual frameworks
+
+6.  Explore themes visually
+
+7.  Get ready for reporting
+
+## Choosing Your Analysis Tool: R vs. Dedoose vs. AI {.unnumbered}
+
+### R
+
+**Best when**
+
+- Datasets are large or mixed (qual + quant) and need audit trails.  
+- You want reproducibility, automation, and version control.  
+- You’re under time constraints and have existing scripts/templates (IRR optional or phased).
+
+**Pros**
+
+- Transparent, reproducible code and scalable pipelines.  
+- Flexible: word frequency, sentiment, dictionaries, topic models.  
+- Produces precise visuals and integrates survey/demographic data easily.
+
+**Cons**
+
+- Steeper setup and learning curve.  
+- Requires clear documentation to ensure shared understanding.
+
+### Dedoose
+
+**Best when**
+
+- Working collaboratively with a team or training new coders.  
+- Analyzing small–moderate datasets.  
+- Delivering quick turnarounds using built-in IRR workflows.
+
+**Pros**
+
+- Multi-user collaboration, role permissions, IRR features.  
+- Low barrier for non-programmers.
+- Simple approach for line-by-line coding
+
+**Cons**
+
+- License cost.  
+- Limited automation/custom analyses compared to code.  
+- Reproducibility and export trails less granular than scripted pipelines.
+
+### AI
+
+**Best when**
+
+- Very fast and low barrier (though not a replacement for traditional qualitative coding.  
+- Analyzing short datasets, scoping questions, or drafting a codebook.  
+- Preparing stakeholder previews before deeper human analysis.
+
+**Pros**
+
+- Very fast and accessible; supports brainstorming structures.  
+- Can summarize, cluster, and compare data quickly.  
+- Useful for early iteration before moving to R or Dedoose.
+
+**Cons**
+
+- Not a substitute for human interpretation; may produce hallucinations.
+- Inconsistent across runs; lacks deep context if prompts are weak.  
+- Data governance and privacy limits — avoid uploading sensitive data.
+
+
+

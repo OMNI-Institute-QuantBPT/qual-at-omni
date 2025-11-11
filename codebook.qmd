@@ -1,0 +1,40 @@
+---
+title: Codebook
+toc-depth: 2
+---
+
+Omni’s core value of #accountability ensures that all of the work we do promotes accuracy, is transparent, and represents the lived experiences of our partners and the communities that we work with. Within the qualitative work that we do, this means that we keep detailed notes about 1) our coding decisions, 2) what those codes mean, and 3) how these codes build to the bigger picture in our analysis. Key to ensuring that we remain #accountable in our work, is the development of a codebook for every qualitative analysis conducted at Omni. Doing so is in alignment with [Omni’s Fundamental Qualitative Standards](fun_standards.qmd) and can lead to smoother, more transparent qualitative analyses and writeups.
+
+Below you will find an example codebook template, an annotated codebook example, and a filled out codebook example. Every project at Omni that involves a qualitative analysis must include a fully-completed codebook that lives somewhere in the project’s space, either within Confluence or Dropbox. Codebooks should be accessible to the entire team, not just those conducting the analysis, and it is recommended that the codebook is shared in spaces alongside other key project information (i.e., Trello, Confluence main pages).
+
+Note: The structures of a codebook may change depending on the type of analysis that is completed. For example, if we are doing a content analysis, then we will not need the theme or theme description columns. You are also welcome to add additional columns with relevant information, such as notes, memos, and inclusion/exclusion criteria. It is important to ensure that the codes and their definitions remain clear, so we caution against including too much additional information. In rare instances, codebooks may be a deliverable on a project. In these instance, speak to the client about what they would like to have included. An example of a codebook deliverable can be found [here](https://www.dropbox.com/scl/fi/mht7l500ttc98woec9ad9/MCDPH24-KII-Codebook.pptx?rlkey=ar4vpckygw8pnof8jb259vwqq&st=z034qtmz&dl=0). 
+
+# How to Use the Codebook Template
+
+The codebook template should be created and added into either Confluence or Dropbox as soon as it is determined that a qualitative analysis will be conducted on a project. Whether or not the codebook is filled out before analysis depends on whether you are conducting:
+
+- Inductive Coding (i.e., you do not know your codes until you start reading through the data), or
+- Deductive Coding (i.e., you know what information you are looking to get out of the data before you start coding)
+
+If you are conducting inductive coding, then your codebook will be empty prior to analysis. Instead, you will fill out the codebook as you go, ensuring that your codebook aligns 1:1 with your coding structure in Dedoose or R.
+
+If you are conducting deductive coding, then your codebook will be populated prior to analysis. These initial codes should be determined by the team ahead of time and will be closely tied to the evaluation/research questions.
+
+Regardless of your inductive or deductive approach the codebook will be a living document until analysis is completed. As you are coding your data, you will likely find new ideas emerge that may be important for reporting. You will want to add these into your codebook. Similarly, if codes change or evolve over time, you will want to update your codebook accordingly. The process of when you readjust your codebook is up to you, but it should align with your coding scheme in the software you are using at the end of every coding session in case another team member needs to take over or look at what you’ve found so far.
+
+If multiple coders are coding one dataset, then they should be in constant communication about new codes, definitions, and adjustments to the codebook.
+
+## Codebook Template
+
+| Theme | Theme Description | Code | Code Type | Definition | Representative Quote(s) |
+|:------|:------------------|:-----|:-----------|:------------|:-------------------------|
+| <span style="color:black">Label of the theme that was created based on the codes</span> | <span style="color:black">Definition of the theme</span> | <span style="color:black">Label of the code from within your coding structure (either in Dedoose or R)</span> | <span style="color:black">Whether the code is a parent code (i.e., high-level code) or child code (i.e., sub-code building up to the parent code)</span> | <span style="color:black">How the code was defined by the coder</span> | <span style="color:black">Example quotes from the data that can help a reader better understand what the code means</span> |
+
+## Codebooks for Dedoose
+
+Dedoose also allows you to import and export codebooks. For project teams that will be using Dedoose, it may be helpful to opt for a structure that allows for easy importing and exporting of codes. In order to import your codes, Dedoose requires an Excel spreadsheet with the following column headings: Id, Parent Id, Title, Description, Weighted, Weight Minimum, Weight Maximum, and Weight Default. 
+
+To note, while this is helpful for ease of use in Dedoose, a codebook structured in this way will not likely be clear for clients or for new team members. Because of this, we recommend using this structure to import your codes into Dedoose AND then using Omni’s codebook template as you are coding your data to ensure that you have a clear and transparent codebook.
+
+More information on the code import process for Dedoose can be found on their [help page](https://helpdesk.dedoose.com/hc/en-us/articles/24189062779149-Import-Codes-via-Excel).
+
