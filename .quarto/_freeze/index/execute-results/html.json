@@ -1,0 +1,17 @@
+{
+  "hash": "bf74736110b6ec33809ef0d07f6b7f74",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Omni Quarto Website Template\"\n---\n\n::: {.cell}\n\n:::\n\n\n\nThis is a Quarto website template, made for the [Omni Institute](https://www.omni.org/).\n\nIt's based on Omni branding and is intended to be easy to customize using Quarto.\n\nBy default, it contains 3 pages:\n\n- [Home](./index.qmd): the page you're currently in\n- [Use this template](./about.qmd): a short tutorial on how to use this website template\n- [Customization](./customization.qmd): a list of nice customizations you can make with Quarto, and how to do them\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

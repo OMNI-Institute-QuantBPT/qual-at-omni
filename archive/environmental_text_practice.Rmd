@@ -1,0 +1,140 @@
+---
+title: "Project title"
+subtitle: "What you are doing"
+author: "Who is doing it"
+date: "`r Sys.Date()`"
+output:
+  omni::omni_html_memo:
+    hypothesis: true
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.path='figs/',
+                      echo=FALSE, # change to TRUE if most code chunks should knit to report 
+                      warning=FALSE, 
+                      message=FALSE)
+```
+
+```{r packages, echo=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(knitr)
+library(janitor)
+library(omni)
+library(stringr)
+library(pdftools)
+
+# this generates bib for all packages   
+knitr::write_bib(c(.packages(), "bookdown"), "packages.bib")
+
+```
+
+**Guidance for this template**
+
+\* - \* - \*
+
+Dear OMNI-ite, In using this template, please remember to use the [OMNI
+stye guide and best
+practices](https://omniinstitute.atlassian.net/wiki/spaces/Quant/pages/198673178/R+Syntax+Best+Practices)
+for writing syntax and cleaning data.
+
+If possible and relevant, arrange for someone to review your code using
+the [code review
+template](https://omniinstitute.atlassian.net/wiki/spaces/Quant/pages/504659969/R+Code+Review+Checklist+Template)
+(which can be loaded as a template from any project page in Confluence).
+
+The next section, 'File Description', should be filled out and kept in
+the document after knitting. It is important to clarify what the
+document does - what it takes in as inputs - what it produces - and any
+key steps or caveats that future users might need to be aware of.
+
+delete the text between the \* - \* - \*
+
+\* - \* - \*
+
+## File Description {.unnumbered}
+
+Inputs: *what does this file take in as inputs? Perhaps excel files, the
+results of a survey saved in excel, some clean data saved as an rds
+file. Indicate any assumptions about the file like if it is supposed to
+be cleaned, stored in a certain folder, have an extension in the file
+name after a certain date, etc*
+
+Outputs: *what does the file produce? is it a cleaned version of a
+dataset, is it a series of tables stored to an excel workbook? Is the
+knitted rmd the 'output', along with the tables and figures that will be
+generated here? Give a short description of what the intention of this
+file is*
+
+Process: *are there any key steps that need to happen within this file,
+the major steps - if possible, list the major aspects of the script in a
+short but clear outline*
+
+Notes or caveats: *are there additional things that should be noted
+about the script? Perhaps it is run iteratively every few months or so,
+but after the first few iterations the file structure of the input file
+changed and some new code chunks had to be added below to adjust.
+Perhaps there is a section of the code that has to do an unusual or
+highly specialized operation and some additional context could be
+helpful.*
+
+```{r}
+# Load the PDF files
+files <- list.files(path = "data", pattern = ".pdf$", full.names = TRUE)
+
+# Define keywords
+keywords <- c("food",
+              "foods",
+              "food environment", 
+              "food scarcity",
+              "food access",
+              "climate",
+              "omni",
+              "tornado", 
+              "community", 
+              "climate change")
+
+# Initialize a matrix to store the word counts
+file_length <- length(files)
+word_length <- length(keywords)
+
+# Pre-allocate the word_count matrix to store the counts
+word_count <- matrix(0, nrow = file_length, ncol = word_length)
+colnames(word_count) <- keywords
+rownames(word_count) <- basename(files)  # Optionally, use file names as row names
+
+# Loop through the files and keywords
+for (j in 1:file_length) {
+  
+  # Read and clean the PDF text for the current file
+  P1 <- pdftools::pdf_text(pdf = files[j]) %>%
+    str_to_lower() %>%
+    str_replace_all("\n", "") %>%
+    str_replace_all("[:digit:]", "") %>%
+    str_replace_all("[:punct:]", "") %>%
+    str_replace_all("\\s+", " ") %>% 
+    str_trim()
+  
+  # Loop through the keywords
+  for (i in 1:word_length) {
+    
+    # Count occurrences of the keyword in the current file text
+    word_count[j, i] <- P1 %>%
+      str_count(keywords[i]) %>%
+      sum()
+  }
+}
+
+word_count %>%
+  as.data.frame() %>%
+  omni_table()
+
+```
+
+# Header 1
+
+## Sub header
