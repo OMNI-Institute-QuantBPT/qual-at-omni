@@ -12,12 +12,12 @@ website:
         text: Fundamental Standards
       - text: Methods
         menu:
-        - href: interviews.qmd
-        - href: food.qmd
-        - href: incentives.qmd
+        - href: "interviews.qmd"
+        - href: "food.qmd"
+        - href: "incentives.qmd"
       - text: Analysis
         menu: 
-        - text: "Data Prep"
+        # - text: "Data Prep"
         - href: "data_prep.qmd"
     background: "#081c39"
     foreground: white
