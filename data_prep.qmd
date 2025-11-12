@@ -866,7 +866,7 @@ analysis steps.
 | Stop Words | Common words often removed (e.g., "the", "and") |
 | Document-Term Matrix | Table of word frequencies across documents |
 | TF-IDF | Term importance based on frequency and inverse document frequency |
-| Corpus | Collection of text documents as one dataset |
+| Dataset | Collection of text documents as one dataset |
 | Dictionary | List of keywords/phrases used to code or categorize text |
 
 ::::: columns
@@ -1038,7 +1038,7 @@ Lemmatization converts words to their dictionary root and keeps the
 words readable to the user (e.g., "better" becomes "good"). This
 pre-processing step should be used for word frequency analysis,
 sentiment analysis, or thematic/content analysis as it works will with
-small and large corpuses.
+small and large datasets.
 
 ```{r}
 

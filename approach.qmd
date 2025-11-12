@@ -429,7 +429,7 @@ qualitative and quantitative findings when appropriate.
 **Best when**
 
 - Very fast and low barrier (though not a replacement for traditional qualitative coding.  
-- Analyzing short datasets, scoping questions, or drafting a codebook.  
+- Analyzing small datasets, scoping questions, or drafting a codebook.  
 - Preparing stakeholder previews before deeper human analysis.
 
 **Pros**

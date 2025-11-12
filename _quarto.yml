@@ -22,12 +22,12 @@ website:
 
       - text: Analysis
         menu:
+          - text: "Omni's Approach"
+            href: approach.qmd
           - text: "Analysis Plan"
             href: analysis_plan.qmd
           - text: "Data Cleaning"
             href: data_prep.qmd
-          - text: "Omni's Approach"
-            href: approach.qmd
             
       - text: Resources
         menu:
