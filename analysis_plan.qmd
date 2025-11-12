@@ -3,75 +3,6 @@ title: "Analysis Plan"
 editor: visual
 ---
 
-```{r, echo=FALSE}
-library(tidyverse)
-library(janitor)
-library(omni)
-library(scales)
-library(tidytext)
-library(quanteda)
-library(textstem)
-library(sentimentr)
-library(topicmodels)
-library(flextable)
-library(knitr)
-```
-
-```{r, echo=TRUE}
-
-# Create a fake, tidy qualitative dataset
-text_data <- tibble(
-  line = 1:10,
-  speaker = c("interviewer", "participant", "participant", "interviewer", "participant",
-              "participant", "interviewer", "participant", "participant", "participant"),
-  participant_id = c("I1", "P1", "P2", "I1", "P1", "P2", "I1", "P1", "P2", "P1"),
-  question = c(1, 0, 0, 1, 0, 0, 1, 0, 0, 0),
-  section = c(1, 1, 1, 2, 2, 2, 3, 3, 3, 3),
-  section_label = c("Introduction", "Introduction", "Introduction", "Barriers", 
-                    "Barriers", "Barriers", "Recommendations", "Recommendations", 
-                    "Recommendations", "Recommendations"),
-  text = c(
-    "Can you tell me about your experience accessing services in the county?",
-    "Sure, I think one of the biggest challenges is transportation in Travis County. There are many people here who do not own their own cars which makes it difficult to access any type of treatment services. On top of that, the buses are never on time so people have to do a lot of planning ahead of time to get to their appointment.",
-    "I agree, especially for people in rural areas. It's hard to get to services.",
-    "What kinds of barriers do you see in your community?",
-    "Travis county definitely has a lack of awareness about available programs.",
-    "Also, the application process is confusing and time-consuming. The health administrative offices used to post the applications at midnight and they would take new clients on a rolling basis, so by the time it was morning all applications would be filled.",
-    "What are your recommendations for improving access?",
-    "More outreach and education campaigns would help Travis county residents, rather than wasting time on trying to get policy changes.",
-    "Simplifying the application process would make a big difference.",
-    "Providing transportation vouchers could also improve access."
-  ),
-  session = c(rep("Education", 5), rep("Public Health", 5))
-) %>% 
-  mutate(text = tolower(text),
-         text = str_replace_all(text, "[^a-zA-Z0-9\\s]", ""))
-
-text_data <- text_data %>% 
-  filter(speaker != "interviewer")
-
-# Tokenize text
-tokenized_text <- text_data %>% 
-  unnest_tokens(word, text)
-
-# Use standard stop words + custom ones (e.g., counties, names)
-my_stop_words <- bind_rows(stop_words, 
-                           data.frame(word = c("travis", 
-                                               "county"), lexicon = "custom"))
-
-cleaned_text <- tokenized_text %>% 
-  anti_join(my_stop_words, by = "word")
-
-library(textstem)
-
-stemmed_text <- cleaned_text %>%
-  mutate(stem_word = stem_words(word))
-
-
-lemmatized_text <- cleaned_text %>% 
-  mutate(lem_word = lemmatize_words(word))
-```
-
 ## What this page covers:
 
 Selecting the right analysis depends on:
@@ -146,7 +77,7 @@ datatable(
 
 <br>
 
-**[Note]{.orange-red-600}:** If you are working with open-ended responses from a survey and have data from 30 or fewer participants, carefully consider whether the data are sufficient for meaningful analysis. In many cases, it is appropriate to report that there were too few responses to analyze systematically. However, if you need to report findings, be transparent about limitations. Focus on describing frequently mentioned key words, rather than inferring broader themes. Avoid suggesting consensus when data are limited, and clearly state that findings reflect input from a small number of participants Transparent reporting maintains the credibility of your analysis.
+[**Note**]{.orange-red-600}**:** If you are working with open-ended responses from a survey and have data from 30 or fewer participants, carefully consider whether the data are sufficient for meaningful analysis. In many cases, it is appropriate to report that there were too few responses to analyze systematically. However, if you need to report findings, be transparent about limitations. Focus on describing frequently mentioned key words, rather than inferring broader themes. Avoid suggesting consensus when data are limited, and clearly state that findings reflect input from a small number of participants Transparent reporting maintains the credibility of your analysis.
 
 ### Grouping Voices to Guide Analysis {.unnumbered}
 
@@ -171,11 +102,80 @@ These decisions should align with the project’s goals and be clearly documente
 
 ## Word frequency analysis {.unnumbered}
 
-**[Word frequency analysis]{.teal-600}** is a simple and effective method that counts how often specific words appear in your dataset. It’s often used early in qualitative analysis to get a general sense of prominent topics, but it can also be applied as a stand-alone method to identify frequently mentioned issues in participant responses. Word frequency works best when you have a reasonable amount of text to analyze. As a general best practice, having at least 100–200 content words (excluding stop words) allows for more reliable interpretation of patterns, though smaller datasets can still offer preliminary insights.
+[**Word frequency analysis**]{.teal-600} is a simple and effective method that counts how often specific words appear in your dataset. It’s often used early in qualitative analysis to get a general sense of prominent topics, but it can also be applied as a stand-alone method to identify frequently mentioned issues in participant responses. Word frequency works best when you have a reasonable amount of text to analyze. As a general best practice, having at least 100–200 content words (excluding stop words) allows for more reliable interpretation of patterns, though smaller datasets can still offer preliminary insights.
 
 To ensure accuracy, it’s important to pre-process your text. Using lemmatized words helps avoid counting variations like “run” and “running” separately, and removing stop words—common words such as “the” or “and”—allows you to focus on terms that carry more meaning. In cases where participants mention names of places or projects repeatedly, custom stop word lists can also help refine the results.
 
 While word frequency counts themselves do not explain context or meaning, they can help point to emerging themes by highlighting concepts that recur across participants or within particular sections of discussion. For example, if words like “transportation,” “access,” and “barrier” frequently appear in responses about service challenges, they signal a potential theme that warrants deeper exploration. Word frequency analysis can also help guide more interpretive methods such as thematic or content analysis, and is most useful when findings are contextualized within the broader dataset and research goals.
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(janitor)
+library(omni)
+library(scales)
+library(tidytext)
+library(quanteda)
+library(textstem)
+library(sentimentr)
+library(topicmodels)
+library(flextable)
+library(knitr)
+```
+
+```{r, echo=TRUE}
+
+# Create a fake, tidy qualitative dataset
+text_data <- tibble(
+  line = 1:10,
+  speaker = c("interviewer", "participant", "participant", "interviewer", "participant",
+              "participant", "interviewer", "participant", "participant", "participant"),
+  participant_id = c("I1", "P1", "P2", "I1", "P1", "P2", "I1", "P1", "P2", "P1"),
+  question = c(1, 0, 0, 1, 0, 0, 1, 0, 0, 0),
+  section = c(1, 1, 1, 2, 2, 2, 3, 3, 3, 3),
+  section_label = c("Introduction", "Introduction", "Introduction", "Barriers", 
+                    "Barriers", "Barriers", "Recommendations", "Recommendations", 
+                    "Recommendations", "Recommendations"),
+  text = c(
+    "Can you tell me about your experience accessing services in the county?",
+    "Sure, I think one of the biggest challenges is transportation in Travis County. There are many people here who do not own their own cars which makes it difficult to access any type of treatment services. On top of that, the buses are never on time so people have to do a lot of planning ahead of time to get to their appointment.",
+    "I agree, especially for people in rural areas. It's hard to get to services.",
+    "What kinds of barriers do you see in your community?",
+    "Travis county definitely has a lack of awareness about available programs.",
+    "Also, the application process is confusing and time-consuming. The health administrative offices used to post the applications at midnight and they would take new clients on a rolling basis, so by the time it was morning all applications would be filled.",
+    "What are your recommendations for improving access?",
+    "More outreach and education campaigns would help Travis county residents, rather than wasting time on trying to get policy changes.",
+    "Simplifying the application process would make a big difference.",
+    "Providing transportation vouchers could also improve access."
+  ),
+  session = c(rep("Education", 5), rep("Public Health", 5))
+) %>% 
+  mutate(text = tolower(text),
+         text = str_replace_all(text, "[^a-zA-Z0-9\\s]", ""))
+
+text_data <- text_data %>% 
+  filter(speaker != "interviewer")
+
+# Tokenize text
+tokenized_text <- text_data %>% 
+  unnest_tokens(word, text)
+
+# Use standard stop words + custom ones (e.g., counties, names)
+my_stop_words <- bind_rows(stop_words, 
+                           data.frame(word = c("travis", 
+                                               "county"), lexicon = "custom"))
+
+cleaned_text <- tokenized_text %>% 
+  anti_join(my_stop_words, by = "word")
+
+library(textstem)
+
+stemmed_text <- cleaned_text %>%
+  mutate(stem_word = stem_words(word))
+
+
+lemmatized_text <- cleaned_text %>% 
+  mutate(lem_word = lemmatize_words(word))
+```
 
 ```{r, echo=TRUE}
 # %%%%%%%%%%%%%%% Word frequencies %%%%%%%%%%%%%%%
@@ -199,7 +199,7 @@ word_counts %>%
 
 ## Sentiment analysis {.unnumbered}
 
-**[Sentiment analysis]{.teal}** is a method that measures the emotional tone of text by categorizing words or phrases as positive, negative, or neutral. It can be used to quickly gauge participants’ attitudes toward a topic or to assess the overall tone of responses across interviews, focus groups, or surveys. Sentiment analysis works best when you have larger amounts of text (ideally, datasets with several hundred words or more) because emotional tone can vary within short responses, making sentiment harder to interpret in very small datasets. However, it can still offer insights in smaller datasets when applied carefully and when results are presented as exploratory.
+[**Sentiment analysis**]{.teal} is a method that measures the emotional tone of text by categorizing words or phrases as positive, negative, or neutral. It can be used to quickly gauge participants’ attitudes toward a topic or to assess the overall tone of responses across interviews, focus groups, or surveys. Sentiment analysis works best when you have larger amounts of text (ideally, datasets with several hundred words or more) because emotional tone can vary within short responses, making sentiment harder to interpret in very small datasets. However, it can still offer insights in smaller datasets when applied carefully and when results are presented as exploratory.
 
 Best practices for sentiment analysis include pre-processing your text by removing stop words and standardizing language through lemmatization. This ensures consistent scoring and avoids misclassifications due to word variations. Sentiment analysis typically relies on pre-built lexicons (vocabularies), such as Bing, AFINN, or the NRC Emotion Lexicon, which assign emotional values to words. It’s important to note that these lexicons were often designed for general use (such as social media text) and may require customization to fit specific public health or social science contexts. For example, in health-related interviews, a word like "treatment" might appear frequently and carry different sentiment depending on the discussion’s focus.
 
@@ -268,7 +268,7 @@ rec_data_with_scores <- cleaned_text %>%
 
 ```
 
-**[Tip for finding quotes by tone]{.teal-600}**
+[**Tip for finding quotes by tone**]{.teal-600}
 
 Let's say you want to pull a quote to include in a report and you know that you want it to be a positively toned quote in a "recommendations" section of your discussion. You can use the sentimentr package to gather sentiments of each sentence (or segment) and sort by sentiment score to find the quote with the most positive tone in your criteria.
 
@@ -297,13 +297,13 @@ text_data_with_sentiment <- text_data %>%
 text_data_with_sentiment
 ```
 
-**[Mixed-methods with sentiment analysis]{.teal-600}**
+[**Mixed-methods with sentiment analysis**]{.teal-600}
 
 Because sentiment analysis gives you a numeric output as a sentiment score, you can imagine instances where you may want to compare sentiment scores between groups, correlate sentiment scores with other variables in a quantitative survey, or conduct pre-post comparisons.
 
 ## Topic modeling {.unnumbered}
 
-**[Topic modeling]{.teal-600}** is an automated method used to identify themes or topics across large collections of text. It uses algorithms to group together words that frequently appear in similar contexts, helping reveal hidden patterns or structures in qualitative data. Topic modeling is especially useful when you have large datasets—typically a minimum of 5,000 words or more spread across multiple documents or participant responses. The method works best when documents are of relatively similar length, which helps the model assign topics more evenly.
+[**Topic modeling**]{.teal-600} is an automated method used to identify themes or topics across large collections of text. It uses algorithms to group together words that frequently appear in similar contexts, helping reveal hidden patterns or structures in qualitative data. Topic modeling is especially useful when you have large datasets—typically a minimum of 5,000 words or more spread across multiple documents or participant responses. The method works best when documents are of relatively similar length, which helps the model assign topics more evenly.
 
 This method is **not** recommended for use on smaller datasets and would be considered poor practice to rely on it to generate meaningful insights. If you don't have enough data for this analysis, consider using the content analysis strategy to identify themes in the data.
 
@@ -357,7 +357,7 @@ top_terms_3
 
 ## Content analysis {.unnumbered}
 
-**[Content analysis]{.teal-600}** is a method used to count how often predefined concepts, themes, or categories appear in qualitative data. It relies on a dictionary—a list of key terms or phrases—designed to reflect your evaluation questions or coding framework. Content analysis works well for both small and large datasets, making it a flexible tool when you want to systematically measure the presence of specific themes across interviews, focus groups, or open-ended survey responses.
+[**Content analysis**]{.teal-600} is a method used to count how often predefined concepts, themes, or categories appear in qualitative data. It relies on a dictionary—a list of key terms or phrases—designed to reflect your evaluation questions or coding framework. Content analysis works well for both small and large datasets, making it a flexible tool when you want to systematically measure the presence of specific themes across interviews, focus groups, or open-ended survey responses.
 
 A key requirement for effective content analysis is a carefully designed dictionary that accurately captures the concepts you're interested in. This might include terms related to barriers, facilitators, or recommendations, depending on the project’s goals. Best practice is to validate the dictionary by reviewing examples of matched text to make sure the terms are identifying the intended content. You may need to refine the dictionary over time, adding synonyms or removing words that generate false positives.
 
@@ -491,7 +491,7 @@ Here’s how to approach it:
 -   Clearly state the number of participants or excerpts that informed each theme.
 -   Make your interpretive lens and limitations explicit - especially when datasets are small or uneven across groups
 
-**[Thematic analysis in Dedoose should still reflect Omni’s commitment to critical realism: treat participant input as reflecting real issues shaped by context and perspective, and be transparent about what the data can—and cannot—support.]{.teal-600}**
+[**Thematic analysis in Dedoose should still reflect Omni’s commitment to critical realism: treat participant input as reflecting real issues shaped by context and perspective, and be transparent about what the data can—and cannot—support.**]{.teal-600}
 
 ## Combining analyses {.unnumbered}
 
@@ -499,25 +499,11 @@ No single method can fully capture the richness and complexity of qualitative da
 
 ## Draft Your Analysis Plan
 
-**[Two especially helpful documents to have before qualitative data collection and cleaning begins are:]{.plum-600}**
+[**Two especially helpful documents to have before qualitative data collection and cleaning begins are:**]{.plum-600}
 
-- A **[codebook](codebook.qmd)** (or at least a data dictionary). This helps ensure consistency in how we treat things like speaker names, special terminology, or sensitive content. 
-- A **[data analysis plan](https://omniinstitute.atlassian.net/wiki/spaces/Quant/pages/375226966/Guide+for+data+analysis+plans)**. This outlines the team’s
-approach to coding and analysis and helps identify if additional
-cleaning steps are necessary. For example: anonymizing sensitive details
-or removing artifacts from automated transcription tools (timestamps,
-filler words, etc.). This step should happen before data collection begins, but may be slightly adjusted given the quality and count of data received after data collection finishes. 
+-   A [**codebook**](codebook.qmd) (or at least a data dictionary). This helps ensure consistency in how we treat things like speaker names, special terminology, or sensitive content.
+-   A [**data analysis plan**](https://omniinstitute.atlassian.net/wiki/spaces/Quant/pages/375226966/Guide+for+data+analysis+plans). This outlines the team’s approach to coding and analysis and helps identify if additional cleaning steps are necessary. For example: anonymizing sensitive details or removing artifacts from automated transcription tools (timestamps, filler words, etc.). This step should happen before data collection begins, but may be slightly adjusted given the quality and count of data received after data collection finishes.
 
-Whenever possible, we expect teams to develop a data analysis plan and request any available data dictionaries or
-codebooks from the client or partner organizations who collected the
-data. However, you may need to create a codebook if one doesn’t
-exist—feel free to reach out to the QualBPT (or whichever team you want
-to point folks to) if you need support.
+Whenever possible, we expect teams to develop a data analysis plan and request any available data dictionaries or codebooks from the client or partner organizations who collected the data. However, you may need to create a codebook if one doesn’t exist—feel free to reach out to the QualBPT (or whichever team you want to point folks to) if you need support.
 
-In many cases, the people drafting the analysis plan are different from
-those cleaning the qualitative data, so strong cross-team communication
-is essential. We recommend including the qualitative data cleaner (or
-cleaning team) in project discussions as early as possible. When
-drafting the analysis plan, think through what text cleaning steps will
-be necessary to make the data usable for coding, protect participant
-confidentiality, and meet the project’s goals.
+In many cases, the people drafting the analysis plan are different from those cleaning the qualitative data, so strong cross-team communication is essential. We recommend including the qualitative data cleaner (or cleaning team) in project discussions as early as possible. When drafting the analysis plan, think through what text cleaning steps will be necessary to make the data usable for coding, protect participant confidentiality, and meet the project’s goals.
