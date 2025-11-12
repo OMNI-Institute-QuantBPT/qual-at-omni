@@ -17,7 +17,7 @@ library(flextable)
 library(knitr)
 ```
 
-```{r}
+```{r, echo=TRUE}
 
 # Create a fake, tidy qualitative dataset
 text_data <- tibble(
@@ -72,82 +72,57 @@ lemmatized_text <- cleaned_text %>%
   mutate(lem_word = lemmatize_words(word))
 ```
 
-## Planning Your Analysis
-
-<!-- Once pre-processed, your data is ready for analysis.  -->
+## What this page covers:
 
 Selecting the right analysis depends on:
 
 -   How much data you have
-
 -   Your research question(s)
-
 -   Whether you need exploratory insights or answers to specific questions
-
 -   Your integrative framework (if conducting mixed-methods)
 
-### Understanding Your Data Before Analysis {.unnumbered}
+## Understanding Your Data Before Analysis
 
 Before starting pre-processing or analysis, it’s important to assess the scope and quality of your data. Take time to understand:
 
 -   How many participants are included?
-
 -   How much text do you have (word count, number of responses)?
-
 -   How detailed are the responses (in-depth vs. brief)?
-
 -   How are participants grouped (by stakeholder type, session, etc.)?
-
 -   Whose voices are most important to elevate in this analysis?
 
 This step ensures you choose methods that fit your dataset and align with your project goals. For example:
 
 -   Smaller datasets (under \~2,000 words) are well-suited to word frequency, sentiment analysis, or basic content analysis.
-
 -   Larger datasets (5,000+ words) can support topic modeling or advanced thematic analysis. You can also conduct word frequency, sentiment analysis, or basic content analysis.
 
 Assessing your data upfront helps set realistic expectations for analysis and ensures your findings are grounded, transparent, and defensible.
 
-### Working with a Small Dataset {.unnumbered}
+## Working with a Small Dataset {.unnumbered}
 
 At Omni, qualitative research often happens in real-world settings, with tight timelines and limited participant availability. We may aim for 10 interviews and complete 5. We may expect long, detailed conversations and instead get brief answers. Even with these constraints, small datasets can still provide meaningful insights, especially when there is consistency across participant experiences.
 
 When working with limited data:
 
 -   Focus on what participants actually shared, rather than attempting to generalize.
-
 -   Document patterns and recurring concerns, while linking them clearly to the project’s research questions.
-
 -   Be transparent about the number of participants, the methods used, and any limitations in interpretation.
 
 Smaller samples can still highlight critical issues—such as barriers to access or common recommendations for program improvement—but the scope and representativeness of these findings should be clearly communicated.
 
-### Suggested Methods by Dataset Size and Purpose {.unnumbered}
-
-<!-- | **Analysis** | **Typical Recommendation** | **Wiggle Room with Word Count** | **Why** | -->
-
-<!-- |-----------------|-----------------|-----------------|---------------------| -->
-
-<!-- | **Word Frequency** | 500+ words | ✅ High | Works even on **small datasets** for exploratory insights. You can analyze **under 500 words**, but findings may feel anecdotal rather than robust. Best if presented as observations rather than firm conclusions. | -->
-
-<!-- | **Sentiment Analysis** | 1,000+ words | ✅ Moderate | Sentiment varies widely within small datasets. Under **1,000 words**, **tone shifts** can skew results. You *can* use it in smaller datasets (500+ words), but you'll need **careful interpretation** and clear disclaimers. | -->
-
-<!-- | **Content Analysis (Dictionary-based) or Thematic Analysis** | 1,000+ words (small dictionaries) | ✅ Moderate | Works **well with small datasets**, especially if using **focused dictionaries** with clearly defined terms. Fewer words mean fewer opportunities for themes to emerge, so **results need contextualization**. | -->
-
-<!-- | **Topic Modeling** | 5,000+ words | ❌ Low | Topic modeling relies on **statistical probability**. Anything under **5,000 words** will **struggle to produce meaningful, stable topics**. While you *can* run a topic model on smaller datasets (e.g., 2,000 words), the **results are less trustworthy**, prone to overfitting, and often **hard to interpret**. Not recommended without strong caveats. | -->
+## Suggested Methods by Dataset Size and Purpose {.unnumbered}
 
 ```{r echo=FALSE}
 library(DT)
 
-# Your table data
 df <- data.frame(
   Analysis = c("Word Frequency", "Sentiment Analysis", 
                "Content Analysis (Dictionary-based) or Thematic Analysis", 
                "Topic Modeling"),
-  Typical_Recommendation = c("500+ words", "1,000+ words", 
+  `Recommendation` = c("500+ words", "1,000+ words", 
                               "1,000+ words (small dictionaries)", 
                               "5,000+ words"),
-  Wiggle_Room_with_Word_Count = c("✅ High", "✅ Moderate", "✅ Moderate", "❌ Low"),
+  `Word Count Wiggle Room` = c("✅ High", "✅ Moderate", "✅ Moderate", "❌ Low"),
   Why = c(
     "Works even on small datasets for exploratory insights. You can analyze under 500 words, but findings may feel anecdotal rather than robust. Best if presented as observations rather than firm conclusions.",
     "Sentiment varies widely within small datasets. Under 1,000 words, tone shifts can skew results. You can use it in smaller datasets (500+ words), but you'll need careful interpretation and clear disclaimers.",
@@ -159,9 +134,10 @@ df <- data.frame(
 
 datatable(
   df,
-  escape = FALSE,  # lets you keep emoji and HTML formatting
+  escape = FALSE,
   options = list(
-    pageLength = 5,
+    dom = 't',       # removes search, pagination, etc.
+    ordering = FALSE, # disables column sorting
     autoWidth = TRUE
   )
 )
@@ -170,54 +146,38 @@ datatable(
 
 <br>
 
-> Note: If you are working with open-ended responses from a survey
-and have data from 30 or fewer participants, carefully consider
-whether the data are sufficient for meaningful analysis. In many
-cases, it is appropriate to report that there were too few responses to analyze systematically. However, if you need to report findings, be transparent about limitations. Focus on describing frequently mentioned key words, rather than inferring broader themes. Avoid suggesting consensus when data are limited, and clearly state that findings reflect input from a small number of participants Transparent reporting maintains the credibility of your analysis.
+**[Note]{.orange-red-600}:** If you are working with open-ended responses from a survey and have data from 30 or fewer participants, carefully consider whether the data are sufficient for meaningful analysis. In many cases, it is appropriate to report that there were too few responses to analyze systematically. However, if you need to report findings, be transparent about limitations. Focus on describing frequently mentioned key words, rather than inferring broader themes. Avoid suggesting consensus when data are limited, and clearly state that findings reflect input from a small number of participants Transparent reporting maintains the credibility of your analysis.
 
 ### Grouping Voices to Guide Analysis {.unnumbered}
 
 Before you start coding or analyzing, decide:
 
 -   Whose voices are we centering in this analysis?
-
 -   How will we group participant responses?
 
 Your grouping choices influence:
 
 -   Which perspectives are highlighted
-
 -   How themes emerge
-
 -   What questions you can answer
 
 At Omni, we might group data by:
 
 -   Participant (individual experiences)
-
 -   Vested Partner Group (e.g., educators vs. public health professionals)
-
 -   Discussion Section (e.g., barriers vs. recommendations)
 
 These decisions should align with the project’s goals and be clearly documented in reports and presentations.
 
 ## Word frequency analysis {.unnumbered}
 
-::::: columns
-::: {.column width="30%"}
-![](images/analysis3.png)
-:::
-
-::: {.column width="70%"}
-Word frequency analysis is a simple and effective method that counts how often specific words appear in your dataset. It’s often used early in qualitative analysis to get a general sense of prominent topics, but it can also be applied as a stand-alone method to identify frequently mentioned issues in participant responses. Word frequency works best when you have a reasonable amount of text to analyze. As a general best practice, having at least 100–200 content words (excluding stop words) allows for more reliable interpretation of patterns, though smaller datasets can still offer preliminary insights.
+**[Word frequency analysis]{.teal-600}** is a simple and effective method that counts how often specific words appear in your dataset. It’s often used early in qualitative analysis to get a general sense of prominent topics, but it can also be applied as a stand-alone method to identify frequently mentioned issues in participant responses. Word frequency works best when you have a reasonable amount of text to analyze. As a general best practice, having at least 100–200 content words (excluding stop words) allows for more reliable interpretation of patterns, though smaller datasets can still offer preliminary insights.
 
 To ensure accuracy, it’s important to pre-process your text. Using lemmatized words helps avoid counting variations like “run” and “running” separately, and removing stop words—common words such as “the” or “and”—allows you to focus on terms that carry more meaning. In cases where participants mention names of places or projects repeatedly, custom stop word lists can also help refine the results.
-:::
-:::::
 
 While word frequency counts themselves do not explain context or meaning, they can help point to emerging themes by highlighting concepts that recur across participants or within particular sections of discussion. For example, if words like “transportation,” “access,” and “barrier” frequently appear in responses about service challenges, they signal a potential theme that warrants deeper exploration. Word frequency analysis can also help guide more interpretive methods such as thematic or content analysis, and is most useful when findings are contextualized within the broader dataset and research goals.
 
-```{r}
+```{r, echo=TRUE}
 # %%%%%%%%%%%%%%% Word frequencies %%%%%%%%%%%%%%%
 # Word counts
 word_counts <- lemmatized_text %>%
@@ -233,13 +193,13 @@ word_counts %>%
   geom_col() +
   coord_flip() +
   labs(title = "Top 10 Most Frequent Words", x = "Word", y = "Count") +
-  theme_omni()
+  theme_omni(plot_background_color = "White")
 
 ```
 
 ## Sentiment analysis {.unnumbered}
 
-**Sentiment analysis** is a method that measures the emotional tone of text by categorizing words or phrases as positive, negative, or neutral. It can be used to quickly gauge participants’ attitudes toward a topic or to assess the overall tone of responses across interviews, focus groups, or surveys. Sentiment analysis works best when you have larger amounts of text—ideally, datasets with several hundred words or more—because emotional tone can vary within short responses, making sentiment harder to interpret in very small datasets. However, it can still offer insights in smaller datasets when applied carefully and when results are presented as exploratory.
+**[Sentiment analysis]{.teal}** is a method that measures the emotional tone of text by categorizing words or phrases as positive, negative, or neutral. It can be used to quickly gauge participants’ attitudes toward a topic or to assess the overall tone of responses across interviews, focus groups, or surveys. Sentiment analysis works best when you have larger amounts of text (ideally, datasets with several hundred words or more) because emotional tone can vary within short responses, making sentiment harder to interpret in very small datasets. However, it can still offer insights in smaller datasets when applied carefully and when results are presented as exploratory.
 
 Best practices for sentiment analysis include pre-processing your text by removing stop words and standardizing language through lemmatization. This ensures consistent scoring and avoids misclassifications due to word variations. Sentiment analysis typically relies on pre-built lexicons (vocabularies), such as Bing, AFINN, or the NRC Emotion Lexicon, which assign emotional values to words. It’s important to note that these lexicons were often designed for general use (such as social media text) and may require customization to fit specific public health or social science contexts. For example, in health-related interviews, a word like "treatment" might appear frequently and carry different sentiment depending on the discussion’s focus.
 
@@ -268,13 +228,13 @@ sentiment_summary %>%
   geom_col() +
   labs(title = "Sentiment Analysis", x = "Sentiment", y = "Word Count") +
   scale_fill_omni_discrete() +
-  theme_omni()
+  theme_omni(plot_background_color = "White")
 
 ```
 
 Here is another example of how a sentiment analysis can be vizzed. The figure below is grouped by listening session and the portion of discussion in each listening session. The dark blues represent a more negative sentiment and the tan represents a more positive sentiment. We can see that Community Based Organizations had very positive sentiment when discussing treatment and recovery in their sessions, and negative sentiment about community impact. These polarizing sentiment results may cause us to look further in the CBO transcripts to see what people were positive and negative about in the respective discussions.
 
-![](images/Sentiment Analysis.png)
+![](images/Sentiment%20Analysis.png)
 
 ```{r}
 
@@ -308,13 +268,13 @@ rec_data_with_scores <- cleaned_text %>%
 
 ```
 
-**Tip for finding quotes by tone**
+**[Tip for finding quotes by tone]{.teal-600}**
 
 Let's say you want to pull a quote to include in a report and you know that you want it to be a positively toned quote in a "recommendations" section of your discussion. You can use the sentimentr package to gather sentiments of each sentence (or segment) and sort by sentiment score to find the quote with the most positive tone in your criteria.
 
 See an example below:
 
-```{r}
+```{r, echo=TRUE}
 
 library(sentimentr)
 
@@ -337,13 +297,13 @@ text_data_with_sentiment <- text_data %>%
 text_data_with_sentiment
 ```
 
-**Mixed-methods with sentiment analysis**
+**[Mixed-methods with sentiment analysis]{.teal-600}**
 
 Because sentiment analysis gives you a numeric output as a sentiment score, you can imagine instances where you may want to compare sentiment scores between groups, correlate sentiment scores with other variables in a quantitative survey, or conduct pre-post comparisons.
 
 ## Topic modeling {.unnumbered}
 
-Topic modeling is an automated method used to identify themes or topics across large collections of text. It uses algorithms to group together words that frequently appear in similar contexts, helping reveal hidden patterns or structures in qualitative data. Topic modeling is especially useful when you have large datasets—typically a minimum of 5,000 words or more spread across multiple documents or participant responses. The method works best when documents are of relatively similar length, which helps the model assign topics more evenly.
+**[Topic modeling]{.teal-600}** is an automated method used to identify themes or topics across large collections of text. It uses algorithms to group together words that frequently appear in similar contexts, helping reveal hidden patterns or structures in qualitative data. Topic modeling is especially useful when you have large datasets—typically a minimum of 5,000 words or more spread across multiple documents or participant responses. The method works best when documents are of relatively similar length, which helps the model assign topics more evenly.
 
 This method is **not** recommended for use on smaller datasets and would be considered poor practice to rely on it to generate meaningful insights. If you don't have enough data for this analysis, consider using the content analysis strategy to identify themes in the data.
 
@@ -351,7 +311,7 @@ Before running a topic model, it’s important to pre-process your text. Best pr
 
 Topic modeling can complement manual coding by offering a high-level view of common themes, pointing analysts toward areas that may warrant deeper exploration. For example, a topic model might surface clusters of words related to barriers (“transportation,” “access,” “cost”) and another cluster about solutions (“education,” “outreach,” “support”), giving you a starting point for thematic analysis. Commonly used R packages for topic modeling include topicmodels, which provides algorithms like Latent Dirichlet Allocation (LDA), and tm for pre-processing and managing textual data.
 
-```{r}
+```{r, echo=TRUE}
 
 library(tm)
 library(topicmodels)
@@ -397,7 +357,7 @@ top_terms_3
 
 ## Content analysis {.unnumbered}
 
-Content analysis is a method used to count how often predefined concepts, themes, or categories appear in qualitative data. It relies on a dictionary—a list of key terms or phrases—designed to reflect your evaluation questions or coding framework. Content analysis works well for both small and large datasets, making it a flexible tool when you want to systematically measure the presence of specific themes across interviews, focus groups, or open-ended survey responses.
+**[Content analysis]{.teal-600}** is a method used to count how often predefined concepts, themes, or categories appear in qualitative data. It relies on a dictionary—a list of key terms or phrases—designed to reflect your evaluation questions or coding framework. Content analysis works well for both small and large datasets, making it a flexible tool when you want to systematically measure the presence of specific themes across interviews, focus groups, or open-ended survey responses.
 
 A key requirement for effective content analysis is a carefully designed dictionary that accurately captures the concepts you're interested in. This might include terms related to barriers, facilitators, or recommendations, depending on the project’s goals. Best practice is to validate the dictionary by reviewing examples of matched text to make sure the terms are identifying the intended content. You may need to refine the dictionary over time, adding synonyms or removing words that generate false positives.
 
@@ -483,102 +443,81 @@ Here’s how to approach it:
 
 1.  Start by familiarizing yourself with the data by doing a full read through of transcripts or responses before beginning coding. Review notes taken during the interview/focus group during this time.
 
-- Use memos to reflect on initial impressions, patterns, and researcher assumptions.
+-   Use memos to reflect on initial impressions, patterns, and researcher assumptions.
 
-2. Determine whether the analysis should use an inductive or deductive apporach
+2.  Determine whether the analysis should use an inductive or deductive apporach
 
-- In an inductive approach, the researcher reads through the data and generates codes as they go. These codes are often grounded in a mix of participant realities and researcher interpretations. Note: If an inductive approach is determined, then the codebook should be generated and iterated upon after the first round of coding (see below).
+-   In an inductive approach, the researcher reads through the data and generates codes as they go. These codes are often grounded in a mix of participant realities and researcher interpretations. Note: If an inductive approach is determined, then the codebook should be generated and iterated upon after the first round of coding (see below).
+-   In a deductive approach, the researcher predefines a coding structure and reads through the data applying codes to excerpts. These codes more often heavily rely on the research questions and decisions made by the research team/clients. Note: If a deductive approach is determined, then a codebook should be generated prior to the start of analysis.
+-   Determining an inductive versus deductive approach should be communicated with the project lead. The Qual BPT is available to consult on this decision.
 
-- In a deductive approach, the researcher predefines a coding structure and reads through the data applying codes to excerpts. These codes more often heavily rely on the research questions and decisions made by the research team/clients. Note: If a deductive approach is determined, then a codebook should be generated prior to the start of analysis.
+3.  Conduct your first round of coding applying codes broadly, with the intent to synthesize and further detail codes on the second round of coding.
 
-- Determining an inductive versus deductive approach should be communicated with the project lead. The Qual BPT is available to consult on this decision.
+-   The first round of coding will generally create a lot of new codes (if taking an inductive approach). This is expected and completely normal as codes will be synthesized into broader categories later on.
+-   Always use a parent code/child code structure to increase transparency and accuracy in your coding. Parent codes are the broader subject, while child codes are granular topics that make up that topic.
+    -   For example:
+        -   Programmatic Challenges (Parent Code)
+        -   Small budgets (child code)
+        -   Limited staff (child code)
+        -   Funding cuts (child code)
+-   Parent codes and child codes should be explicitly referenced in your codebook
+-   Every code, both parent code and child code, should have an attached definition so that others who revisit your codes know exactly what that code means
 
-3. Conduct your first round of coding applying codes broadly, with the intent to synthesize and further detail codes on the second round of coding.
+4.  Conduct your second round of coding applying codes on a more limited basis and collapsing code categories into an organized structure, redefining codes as needed
 
-- The first round of coding will generally create a lot of new codes (if taking an inductive approach). This is expected and completely normal as codes will be synthesized into broader categories later on.
+-   In your second round of coding it is common to find that some of your initial codes overlap. In cases where the information is contextually the same, you should collapse these codes for clarity and redefine the final code if needed.
+    -   For example, transportation issues + lack of reliable transportation = transportation challenges
+-   Any updates to your codes should be reflected in your codebook
 
-- Always use a parent code/child code structure to increase transparency and accuracy in your coding. Parent codes are the broader subject, while child codes are granular topics that make up that topic.
+5.  Construct themes thoughtfully after coding, reviewing excerpts by code and grouping them into broader themes that reflect patterns across participants
 
-  - For example:
+-   If you have followed a clear parent code/child code structure, then your themes will likely stem from those. Typically, our research/evaluation questions guide the development of our themes.
+    -   For example,
+        -   Evaluation question = What challenges did sub-awardees face over the course of the funding cycle?
+        -   Theme 1: Limited Capacity for Organizational Growth
+            -   Code 1: Limited funding
+            -   Code 2: Limited staff
+            -   Code 3: Budget cuts
+-   Dedoose’s Code Co-Occurrence and Code Application tools can assist you in identifying themes that stem from patterns between codes
 
-    - Programmatic Challenges (Parent Code)
+6.  Acknowledge the researcher’s role and reflect on how your perspective, language, and interpretation influenced coding and theme development
 
-    - Small budgets (child code)
+-   Be cautious not to overstate findings. Instead, describe patterns and nuances across participant groups, rather than presenting your findings as a consensus across the group.
+-   Recognize outliers. Some participants may have had a vastly different experience from other participants. Determine whether these experiences should be reported under another theme or in a standalone section.
 
-    - Limited staff (child code)
+7.  Document everything and keep a record of how codes and themes evolved
 
-    - Funding cuts (child code)
-    
-- Parent codes and child codes should be explicitly referenced in your codebook
+-   Omni’s Qualitative Fundamental Standards foster transparency in the way that we do our qualitative work. Always keep a copy of the raw transcripts (pre-cleaning) to ensure that the raw data is maintained. Additionally, ensure that you are communicating your coding decisions with your team and ask another team member, or a member of the Qual BPT to review your coding, codes, code structures, codebook, and themes.
+-   Clearly state the number of participants or excerpts that informed each theme.
+-   Make your interpretive lens and limitations explicit - especially when datasets are small or uneven across groups
 
-- Every code, both parent code and child code, should have an attached definition so that others who revisit your codes know exactly what that code means
-
-4. Conduct your second round of coding applying codes on a more limited basis and collapsing code categories into an organized structure, redefining codes as needed
-
-- In your second round of coding it is common to find that some of your initial codes overlap. In cases where the information is contextually the same, you should collapse these codes for clarity and redefine the final code if needed.
-
-  - For example, transportation issues + lack of reliable transportation = transportation challenges
-  
-- Any updates to your codes should be reflected in your codebook
-
-5. Construct themes thoughtfully after coding, reviewing excerpts by code and grouping them into broader themes that reflect patterns across participants
-
-- If you have followed a clear parent code/child code structure, then your themes will likely stem from those. Typically, our research/evaluation questions guide the development of our themes.
-
-  - For example,
-
-    - Evaluation question = What challenges did sub-awardees face over the course of the funding cycle?
-
-    - Theme 1: Limited Capacity for Organizational Growth
-
-      - Code 1: Limited funding
-
-      - Code 2: Limited staff
-
-      - Code 3: Budget cuts
-
-- Dedoose’s Code Co-Occurrence and Code Application tools can assist you in identifying themes that stem from patterns between codes
-
-6. Acknowledge the researcher’s role and reflect on how your perspective, language, and interpretation influenced coding and theme development
-
-- Be cautious not to overstate findings. Instead, describe patterns and nuances across participant groups, rather than presenting your findings as a consensus across the group.
-
-- Recognize outliers. Some participants may have had a vastly different experience from other participants. Determine whether these experiences should be reported under another theme or in a standalone section.
-
-7. Document everything and keep a record of how codes and themes evolved
-
-- Omni’s Qualitative Fundamental Standards foster transparency in the way that we do our qualitative work. Always keep a copy of the raw transcripts (pre-cleaning) to ensure that the raw data is maintained. Additionally, ensure that you are communicating your coding decisions with your team and ask another team member, or a member of the Qual BPT to review your coding, codes, code structures, codebook, and themes.
-
-- Clearly state the number of participants or excerpts that informed each theme.
-
-- Make your interpretive lens and limitations explicit - especially when datasets are small or uneven across groups
-
-<!-- 2.  Develop Codes Iteratively Begin with inductive coding (bottom-up), focusing on what participants actually say. -->
-
-<!-- Avoid pre-loading the codebook unless doing deductive analysis is needed for evaluation purposes. -->
-
-<!-- Use Dedoose’s “Descriptor” fields to track context (e.g., stakeholder group, session type) for later analysis. -->
-
-<!-- 3.  Apply Codes Reflexively Apply codes carefully, updating definitions and merging/splitting codes as needed. -->
-
-<!-- Encourage coders to discuss disagreements and maintain an audit trail of key coding decisions. -->
-
-<!-- 4.  Construct Themes Thoughtfully After coding, review excerpts by code and group them into broader themes that reflect patterns across participants. -->
-
-<!-- Use Dedoose’s “Code Co-Occurrence” and “Code Application” tools to explore theme structure. -->
-
-<!-- 5.  Acknowledge Researcher Role Reflect on how your perspective, language, and interpretation influence theme development. -->
-
-<!-- Be cautious not to overstate findings; describe patterns and nuance rather than asserting consensus. -->
-
-<!-- 6.  Document Everything Keep a record of how codes and themes evolved. -->
-
-<!-- Clearly state the number of participants or excerpts that informed each theme. -->
-
-<!-- Make your interpretive lens and limitations explicit—especially when datasets are small or uneven across groups. -->
-
-> Thematic analysis in Dedoose should still reflect Omni’s commitment to critical realism: treat participant input as reflecting real issues shaped by context and perspective, and be transparent about what the data can—and cannot—support.
+**[Thematic analysis in Dedoose should still reflect Omni’s commitment to critical realism: treat participant input as reflecting real issues shaped by context and perspective, and be transparent about what the data can—and cannot—support.]{.teal-600}**
 
 ## Combining analyses {.unnumbered}
 
 No single method can fully capture the richness and complexity of qualitative data. At Omni, we often combine different qualitative analysis approaches to explore various angles of our data and answer nuanced evaluation questions. Pairing methods like word frequency, sentiment analysis, content analysis, and thematic analysis can help reveal both patterns and meaning, ensuring our findings are grounded in evidence and provide actionable insights.
+
+## Draft Your Analysis Plan
+
+**[Two especially helpful documents to have before qualitative data collection and cleaning begins are:]{.plum-600}**
+
+- A **[codebook](codebook.qmd)** (or at least a data dictionary). This helps ensure consistency in how we treat things like speaker names, special terminology, or sensitive content. 
+- A **[data analysis plan](https://omniinstitute.atlassian.net/wiki/spaces/Quant/pages/375226966/Guide+for+data+analysis+plans)**. This outlines the team’s
+approach to coding and analysis and helps identify if additional
+cleaning steps are necessary. For example: anonymizing sensitive details
+or removing artifacts from automated transcription tools (timestamps,
+filler words, etc.). This step should happen before data collection begins, but may be slightly adjusted given the quality and count of data received after data collection finishes. 
+
+Whenever possible, we expect teams to develop a data analysis plan and request any available data dictionaries or
+codebooks from the client or partner organizations who collected the
+data. However, you may need to create a codebook if one doesn’t
+exist—feel free to reach out to the QualBPT (or whichever team you want
+to point folks to) if you need support.
+
+In many cases, the people drafting the analysis plan are different from
+those cleaning the qualitative data, so strong cross-team communication
+is essential. We recommend including the qualitative data cleaner (or
+cleaning team) in project discussions as early as possible. When
+drafting the analysis plan, think through what text cleaning steps will
+be necessary to make the data usable for coding, protect participant
+confidentiality, and meet the project’s goals.

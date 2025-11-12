@@ -215,11 +215,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#planning-your-analysis" id="toc-planning-your-analysis" class="nav-link active" data-scroll-target="#planning-your-analysis">Planning Your Analysis</a>
-  <ul class="collapse">
+  <li><a href="#what-this-page-covers" id="toc-what-this-page-covers" class="nav-link active" data-scroll-target="#what-this-page-covers">What this page covers:</a></li>
   <li><a href="#understanding-your-data-before-analysis" id="toc-understanding-your-data-before-analysis" class="nav-link" data-scroll-target="#understanding-your-data-before-analysis">Understanding Your Data Before Analysis</a></li>
   <li><a href="#working-with-a-small-dataset" id="toc-working-with-a-small-dataset" class="nav-link" data-scroll-target="#working-with-a-small-dataset">Working with a Small Dataset</a></li>
-  <li><a href="#suggested-methods-by-dataset-size-and-purpose" id="toc-suggested-methods-by-dataset-size-and-purpose" class="nav-link" data-scroll-target="#suggested-methods-by-dataset-size-and-purpose">Suggested Methods by Dataset Size and Purpose</a></li>
+  <li><a href="#suggested-methods-by-dataset-size-and-purpose" id="toc-suggested-methods-by-dataset-size-and-purpose" class="nav-link" data-scroll-target="#suggested-methods-by-dataset-size-and-purpose">Suggested Methods by Dataset Size and Purpose</a>
+  <ul class="collapse">
   <li><a href="#grouping-voices-to-guide-analysis" id="toc-grouping-voices-to-guide-analysis" class="nav-link" data-scroll-target="#grouping-voices-to-guide-analysis">Grouping Voices to Guide Analysis</a></li>
   </ul></li>
   <li><a href="#word-frequency-analysis" id="toc-word-frequency-analysis" class="nav-link" data-scroll-target="#word-frequency-analysis">Word frequency analysis</a></li>
@@ -228,6 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#content-analysis" id="toc-content-analysis" class="nav-link" data-scroll-target="#content-analysis">Content analysis</a></li>
   <li><a href="#thematic-analysis-in-dedoose" id="toc-thematic-analysis-in-dedoose" class="nav-link" data-scroll-target="#thematic-analysis-in-dedoose">Thematic Analysis in Dedoose</a></li>
   <li><a href="#combining-analyses" id="toc-combining-analyses" class="nav-link" data-scroll-target="#combining-analyses">Combining analyses</a></li>
+  <li><a href="#draft-your-analysis-plan" id="toc-draft-your-analysis-plan" class="nav-link" data-scroll-target="#draft-your-analysis-plan">Draft Your Analysis Plan</a></li>
   </ul>
 </nav>
     </div>
@@ -253,97 +254,141 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="planning-your-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="planning-your-analysis">Planning Your Analysis</h2>
-<!-- Once pre-processed, your data is ready for analysis.  -->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a fake, tidy qualitative dataset</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>text_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">line =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">speaker =</span> <span class="fu">c</span>(<span class="st">"interviewer"</span>, <span class="st">"participant"</span>, <span class="st">"participant"</span>, <span class="st">"interviewer"</span>, <span class="st">"participant"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">"participant"</span>, <span class="st">"interviewer"</span>, <span class="st">"participant"</span>, <span class="st">"participant"</span>, <span class="st">"participant"</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">participant_id =</span> <span class="fu">c</span>(<span class="st">"I1"</span>, <span class="st">"P1"</span>, <span class="st">"P2"</span>, <span class="st">"I1"</span>, <span class="st">"P1"</span>, <span class="st">"P2"</span>, <span class="st">"I1"</span>, <span class="st">"P1"</span>, <span class="st">"P2"</span>, <span class="st">"P1"</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">question =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">section =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">section_label =</span> <span class="fu">c</span>(<span class="st">"Introduction"</span>, <span class="st">"Introduction"</span>, <span class="st">"Introduction"</span>, <span class="st">"Barriers"</span>, </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Barriers"</span>, <span class="st">"Barriers"</span>, <span class="st">"Recommendations"</span>, <span class="st">"Recommendations"</span>, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Recommendations"</span>, <span class="st">"Recommendations"</span>),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="fu">c</span>(</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Can you tell me about your experience accessing services in the county?"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sure, I think one of the biggest challenges is transportation in Travis County. There are many people here who do not own their own cars which makes it difficult to access any type of treatment services. On top of that, the buses are never on time so people have to do a lot of planning ahead of time to get to their appointment."</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"I agree, especially for people in rural areas. It's hard to get to services."</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"What kinds of barriers do you see in your community?"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Travis county definitely has a lack of awareness about available programs."</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Also, the application process is confusing and time-consuming. The health administrative offices used to post the applications at midnight and they would take new clients on a rolling basis, so by the time it was morning all applications would be filled."</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"What are your recommendations for improving access?"</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"More outreach and education campaigns would help Travis county residents, rather than wasting time on trying to get policy changes."</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Simplifying the application process would make a big difference."</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Providing transportation vouchers could also improve access."</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">session =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Education"</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">"Public Health"</span>, <span class="dv">5</span>))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">tolower</span>(text),</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">text =</span> <span class="fu">str_replace_all</span>(text, <span class="st">"[^a-zA-Z0-9</span><span class="sc">\\</span><span class="st">s]"</span>, <span class="st">""</span>))</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>text_data <span class="ot">&lt;-</span> text_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(speaker <span class="sc">!=</span> <span class="st">"interviewer"</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenize text</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>tokenized_text <span class="ot">&lt;-</span> text_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Use standard stop words + custom ones (e.g., counties, names)</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>my_stop_words <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(stop_words, </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">data.frame</span>(<span class="at">word =</span> <span class="fu">c</span>(<span class="st">"travis"</span>, </span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"county"</span>), <span class="at">lexicon =</span> <span class="st">"custom"</span>))</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>cleaned_text <span class="ot">&lt;-</span> tokenized_text <span class="sc">%&gt;%</span> </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(my_stop_words, <span class="at">by =</span> <span class="st">"word"</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(textstem)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>stemmed_text <span class="ot">&lt;-</span> cleaned_text <span class="sc">%&gt;%</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stem_word =</span> <span class="fu">stem_words</span>(word))</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>lemmatized_text <span class="ot">&lt;-</span> cleaned_text <span class="sc">%&gt;%</span> </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lem_word =</span> <span class="fu">lemmatize_words</span>(word))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="what-this-page-covers" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-page-covers">What this page covers:</h2>
 <p>Selecting the right analysis depends on:</p>
 <ul>
-<li><p>How much data you have</p></li>
-<li><p>Your research question(s)</p></li>
-<li><p>Whether you need exploratory insights or answers to specific questions</p></li>
-<li><p>Your integrative framework (if conducting mixed-methods)</p></li>
+<li>How much data you have</li>
+<li>Your research question(s)</li>
+<li>Whether you need exploratory insights or answers to specific questions</li>
+<li>Your integrative framework (if conducting mixed-methods)</li>
 </ul>
-<section id="understanding-your-data-before-analysis" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="understanding-your-data-before-analysis">Understanding Your Data Before Analysis</h3>
+</section>
+<section id="understanding-your-data-before-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-your-data-before-analysis">Understanding Your Data Before Analysis</h2>
 <p>Before starting pre-processing or analysis, it’s important to assess the scope and quality of your data. Take time to understand:</p>
 <ul>
-<li><p>How many participants are included?</p></li>
-<li><p>How much text do you have (word count, number of responses)?</p></li>
-<li><p>How detailed are the responses (in-depth vs.&nbsp;brief)?</p></li>
-<li><p>How are participants grouped (by stakeholder type, session, etc.)?</p></li>
-<li><p>Whose voices are most important to elevate in this analysis?</p></li>
+<li>How many participants are included?</li>
+<li>How much text do you have (word count, number of responses)?</li>
+<li>How detailed are the responses (in-depth vs.&nbsp;brief)?</li>
+<li>How are participants grouped (by stakeholder type, session, etc.)?</li>
+<li>Whose voices are most important to elevate in this analysis?</li>
 </ul>
 <p>This step ensures you choose methods that fit your dataset and align with your project goals. For example:</p>
 <ul>
-<li><p>Smaller datasets (under ~2,000 words) are well-suited to word frequency, sentiment analysis, or basic content analysis.</p></li>
-<li><p>Larger datasets (5,000+ words) can support topic modeling or advanced thematic analysis. You can also conduct word frequency, sentiment analysis, or basic content analysis.</p></li>
+<li>Smaller datasets (under ~2,000 words) are well-suited to word frequency, sentiment analysis, or basic content analysis.</li>
+<li>Larger datasets (5,000+ words) can support topic modeling or advanced thematic analysis. You can also conduct word frequency, sentiment analysis, or basic content analysis.</li>
 </ul>
 <p>Assessing your data upfront helps set realistic expectations for analysis and ensures your findings are grounded, transparent, and defensible.</p>
 </section>
-<section id="working-with-a-small-dataset" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="working-with-a-small-dataset">Working with a Small Dataset</h3>
+<section id="working-with-a-small-dataset" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="working-with-a-small-dataset">Working with a Small Dataset</h2>
 <p>At Omni, qualitative research often happens in real-world settings, with tight timelines and limited participant availability. We may aim for 10 interviews and complete 5. We may expect long, detailed conversations and instead get brief answers. Even with these constraints, small datasets can still provide meaningful insights, especially when there is consistency across participant experiences.</p>
 <p>When working with limited data:</p>
 <ul>
-<li><p>Focus on what participants actually shared, rather than attempting to generalize.</p></li>
-<li><p>Document patterns and recurring concerns, while linking them clearly to the project’s research questions.</p></li>
-<li><p>Be transparent about the number of participants, the methods used, and any limitations in interpretation.</p></li>
+<li>Focus on what participants actually shared, rather than attempting to generalize.</li>
+<li>Document patterns and recurring concerns, while linking them clearly to the project’s research questions.</li>
+<li>Be transparent about the number of participants, the methods used, and any limitations in interpretation.</li>
 </ul>
 <p>Smaller samples can still highlight critical issues—such as barriers to access or common recommendations for program improvement—but the scope and representativeness of these findings should be clearly communicated.</p>
 </section>
-<section id="suggested-methods-by-dataset-size-and-purpose" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="suggested-methods-by-dataset-size-and-purpose">Suggested Methods by Dataset Size and Purpose</h3>
-<!-- | **Analysis** | **Typical Recommendation** | **Wiggle Room with Word Count** | **Why** | -->
-<!-- |-----------------|-----------------|-----------------|---------------------| -->
-<!-- | **Word Frequency** | 500+ words | ✅ High | Works even on **small datasets** for exploratory insights. You can analyze **under 500 words**, but findings may feel anecdotal rather than robust. Best if presented as observations rather than firm conclusions. | -->
-<!-- | **Sentiment Analysis** | 1,000+ words | ✅ Moderate | Sentiment varies widely within small datasets. Under **1,000 words**, **tone shifts** can skew results. You *can* use it in smaller datasets (500+ words), but you'll need **careful interpretation** and clear disclaimers. | -->
-<!-- | **Content Analysis (Dictionary-based) or Thematic Analysis** | 1,000+ words (small dictionaries) | ✅ Moderate | Works **well with small datasets**, especially if using **focused dictionaries** with clearly defined terms. Fewer words mean fewer opportunities for themes to emerge, so **results need contextualization**. | -->
-<!-- | **Topic Modeling** | 5,000+ words | ❌ Low | Topic modeling relies on **statistical probability**. Anything under **5,000 words** will **struggle to produce meaningful, stable topics**. While you *can* run a topic model on smaller datasets (e.g., 2,000 words), the **results are less trustworthy**, prone to overfitting, and often **hard to interpret**. Not recommended without strong caveats. | -->
+<section id="suggested-methods-by-dataset-size-and-purpose" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="suggested-methods-by-dataset-size-and-purpose">Suggested Methods by Dataset Size and Purpose</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-cf30c7a0ff30b1b69f59" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-cf30c7a0ff30b1b69f59">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Word Frequency","Sentiment Analysis","Content Analysis (Dictionary-based) or Thematic Analysis","Topic Modeling"],["500+ words","1,000+ words","1,000+ words (small dictionaries)","5,000+ words"],["✅ High","✅ Moderate","✅ Moderate","❌ Low"],["Works even on small datasets for exploratory insights. You can analyze under 500 words, but findings may feel anecdotal rather than robust. Best if presented as observations rather than firm conclusions.","Sentiment varies widely within small datasets. Under 1,000 words, tone shifts can skew results. You can use it in smaller datasets (500+ words), but you'll need careful interpretation and clear disclaimers.","Works well with small datasets, especially if using focused dictionaries with clearly defined terms. Fewer words mean fewer opportunities for themes to emerge, so results need contextualization.","Topic modeling relies on statistical probability. Anything under 5,000 words will struggle to produce meaningful, stable topics. While you can run a topic model on smaller datasets (e.g., 2,000 words), the results are less trustworthy, prone to overfitting, and often hard to interpret. Not recommended without strong caveats."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Analysis<\/th>\n      <th>Typical_Recommendation<\/th>\n      <th>Wiggle_Room_with_Word_Count<\/th>\n      <th>Why<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"autoWidth":true,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Analysis","targets":1},{"name":"Typical_Recommendation","targets":2},{"name":"Wiggle_Room_with_Word_Count","targets":3},{"name":"Why","targets":4}],"order":[],"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-b376f063eaf11b1a61de" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b376f063eaf11b1a61de">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Word Frequency","Sentiment Analysis","Content Analysis (Dictionary-based) or Thematic Analysis","Topic Modeling"],["500+ words","1,000+ words","1,000+ words (small dictionaries)","5,000+ words"],["✅ High","✅ Moderate","✅ Moderate","❌ Low"],["Works even on small datasets for exploratory insights. You can analyze under 500 words, but findings may feel anecdotal rather than robust. Best if presented as observations rather than firm conclusions.","Sentiment varies widely within small datasets. Under 1,000 words, tone shifts can skew results. You can use it in smaller datasets (500+ words), but you'll need careful interpretation and clear disclaimers.","Works well with small datasets, especially if using focused dictionaries with clearly defined terms. Fewer words mean fewer opportunities for themes to emerge, so results need contextualization.","Topic modeling relies on statistical probability. Anything under 5,000 words will struggle to produce meaningful, stable topics. While you can run a topic model on smaller datasets (e.g., 2,000 words), the results are less trustworthy, prone to overfitting, and often hard to interpret. Not recommended without strong caveats."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Analysis<\/th>\n      <th>Recommendation<\/th>\n      <th>Word.Count.Wiggle.Room<\/th>\n      <th>Why<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","ordering":false,"autoWidth":true,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Analysis","targets":1},{"name":"Recommendation","targets":2},{"name":"Word.Count.Wiggle.Room","targets":3},{"name":"Why","targets":4}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br></p>
-<blockquote class="blockquote">
-<p>Note: If you are working with open-ended responses from a survey and have data from 30 or fewer participants, carefully consider whether the data are sufficient for meaningful analysis. In many cases, it is appropriate to report that there were too few responses to analyze systematically. However, if you need to report findings, be transparent about limitations. Focus on describing frequently mentioned key words, rather than inferring broader themes. Avoid suggesting consensus when data are limited, and clearly state that findings reflect input from a small number of participants Transparent reporting maintains the credibility of your analysis.</p>
-</blockquote>
-</section>
+<p><strong><span class="orange-red-600">Note</span>:</strong> If you are working with open-ended responses from a survey and have data from 30 or fewer participants, carefully consider whether the data are sufficient for meaningful analysis. In many cases, it is appropriate to report that there were too few responses to analyze systematically. However, if you need to report findings, be transparent about limitations. Focus on describing frequently mentioned key words, rather than inferring broader themes. Avoid suggesting consensus when data are limited, and clearly state that findings reflect input from a small number of participants Transparent reporting maintains the credibility of your analysis.</p>
 <section id="grouping-voices-to-guide-analysis" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="grouping-voices-to-guide-analysis">Grouping Voices to Guide Analysis</h3>
 <p>Before you start coding or analyzing, decide:</p>
 <ul>
-<li><p>Whose voices are we centering in this analysis?</p></li>
-<li><p>How will we group participant responses?</p></li>
+<li>Whose voices are we centering in this analysis?</li>
+<li>How will we group participant responses?</li>
 </ul>
 <p>Your grouping choices influence:</p>
 <ul>
-<li><p>Which perspectives are highlighted</p></li>
-<li><p>How themes emerge</p></li>
-<li><p>What questions you can answer</p></li>
+<li>Which perspectives are highlighted</li>
+<li>How themes emerge</li>
+<li>What questions you can answer</li>
 </ul>
 <p>At Omni, we might group data by:</p>
 <ul>
-<li><p>Participant (individual experiences)</p></li>
-<li><p>Vested Partner Group (e.g., educators vs.&nbsp;public health professionals)</p></li>
-<li><p>Discussion Section (e.g., barriers vs.&nbsp;recommendations)</p></li>
+<li>Participant (individual experiences)</li>
+<li>Vested Partner Group (e.g., educators vs.&nbsp;public health professionals)</li>
+<li>Discussion Section (e.g., barriers vs.&nbsp;recommendations)</li>
 </ul>
 <p>These decisions should align with the project’s goals and be clearly documented in reports and presentations.</p>
 </section>
 </section>
 <section id="word-frequency-analysis" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="word-frequency-analysis">Word frequency analysis</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img src="images/analysis3.png" class="img-fluid"></p>
-</div><div class="column" style="width:70%;">
-<p>Word frequency analysis is a simple and effective method that counts how often specific words appear in your dataset. It’s often used early in qualitative analysis to get a general sense of prominent topics, but it can also be applied as a stand-alone method to identify frequently mentioned issues in participant responses. Word frequency works best when you have a reasonable amount of text to analyze. As a general best practice, having at least 100–200 content words (excluding stop words) allows for more reliable interpretation of patterns, though smaller datasets can still offer preliminary insights.</p>
+<p><strong><span class="teal-600">Word frequency analysis</span></strong> is a simple and effective method that counts how often specific words appear in your dataset. It’s often used early in qualitative analysis to get a general sense of prominent topics, but it can also be applied as a stand-alone method to identify frequently mentioned issues in participant responses. Word frequency works best when you have a reasonable amount of text to analyze. As a general best practice, having at least 100–200 content words (excluding stop words) allows for more reliable interpretation of patterns, though smaller datasets can still offer preliminary insights.</p>
 <p>To ensure accuracy, it’s important to pre-process your text. Using lemmatized words helps avoid counting variations like “run” and “running” separately, and removing stop words—common words such as “the” or “and”—allows you to focus on terms that carry more meaning. In cases where participants mention names of places or projects repeatedly, custom stop word lists can also help refine the results.</p>
-</div>
-</div>
 <p>While word frequency counts themselves do not explain context or meaning, they can help point to emerging themes by highlighting concepts that recur across participants or within particular sections of discussion. For example, if words like “transportation,” “access,” and “barrier” frequently appear in responses about service challenges, they signal a potential theme that warrants deeper exploration. Word frequency analysis can also help guide more interpretive methods such as thematic or content analysis, and is most useful when findings are contextualized within the broader dataset and research goals.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %%%%%%%%%%%%%%% Word frequencies %%%%%%%%%%%%%%%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Word counts</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>word_counts <span class="ot">&lt;-</span> lemmatized_text <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(word_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   word             n
@@ -355,6 +400,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5 applications     2
 6 process          2</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the word counts</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>word_counts <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(word, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Most Frequent Words"</span>, <span class="at">x =</span> <span class="st">"Word"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_omni</span>(<span class="at">plot_background_color =</span> <span class="st">"White"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -366,24 +420,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="sentiment-analysis" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sentiment-analysis">Sentiment analysis</h2>
-<p><strong>Sentiment analysis</strong> is a method that measures the emotional tone of text by categorizing words or phrases as positive, negative, or neutral. It can be used to quickly gauge participants’ attitudes toward a topic or to assess the overall tone of responses across interviews, focus groups, or surveys. Sentiment analysis works best when you have larger amounts of text—ideally, datasets with several hundred words or more—because emotional tone can vary within short responses, making sentiment harder to interpret in very small datasets. However, it can still offer insights in smaller datasets when applied carefully and when results are presented as exploratory.</p>
+<p><strong><span class="teal">Sentiment analysis</span></strong> is a method that measures the emotional tone of text by categorizing words or phrases as positive, negative, or neutral. It can be used to quickly gauge participants’ attitudes toward a topic or to assess the overall tone of responses across interviews, focus groups, or surveys. Sentiment analysis works best when you have larger amounts of text (ideally, datasets with several hundred words or more) because emotional tone can vary within short responses, making sentiment harder to interpret in very small datasets. However, it can still offer insights in smaller datasets when applied carefully and when results are presented as exploratory.</p>
 <p>Best practices for sentiment analysis include pre-processing your text by removing stop words and standardizing language through lemmatization. This ensures consistent scoring and avoids misclassifications due to word variations. Sentiment analysis typically relies on pre-built lexicons (vocabularies), such as Bing, AFINN, or the NRC Emotion Lexicon, which assign emotional values to words. It’s important to note that these lexicons were often designed for general use (such as social media text) and may require customization to fit specific public health or social science contexts. For example, in health-related interviews, a word like “treatment” might appear frequently and carry different sentiment depending on the discussion’s focus.</p>
 <p>While sentiment analysis doesn’t capture nuance or context in the way manual coding can, it can highlight patterns of emotional tone across datasets or within specific discussion topics. For example, sentiment analysis might reveal that participants express more negative sentiment when discussing barriers to accessing services, and more positive sentiment when discussing recommendations for future improvements. These insights can help guide deeper qualitative coding or serve as an additional layer of analysis to support findings. As with any automated method, it’s important to review and interpret results in context and to document any limitations or adaptations made to the analysis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get sentiment lexicon (if you wanted to test for positive, negative, and 8 emotions, replace "bing" with "nrc")</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>bing <span class="ot">&lt;-</span> <span class="fu">get_sentiments</span>(<span class="st">"bing"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with your text</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>sentiment_data <span class="ot">&lt;-</span> lemmatized_text <span class="sc">%&gt;%</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(bing, <span class="at">by =</span> <span class="st">"word"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Count positive vs negative</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>sentiment_summary <span class="ot">&lt;-</span> sentiment_data <span class="sc">%&gt;%</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sentiment)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>sentiment_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get sentiment lexicon (if you wanted to test for positive, negative, and 8 emotions, replace "bing" with "nrc")</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>bing <span class="ot">&lt;-</span> <span class="fu">get_sentiments</span>(<span class="st">"bing"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with your text</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sentiment_data <span class="ot">&lt;-</span> lemmatized_text <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(bing, <span class="at">by =</span> <span class="st">"word"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Count positive vs negative</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>sentiment_summary <span class="ot">&lt;-</span> sentiment_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sentiment)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>sentiment_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   sentiment     n
@@ -391,13 +445,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1 negative      5
 2 positive      3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sentiment_summary <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sentiment, <span class="at">y =</span> n, <span class="at">fill =</span> sentiment)) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sentiment Analysis"</span>, <span class="at">x =</span> <span class="st">"Sentiment"</span>, <span class="at">y =</span> <span class="st">"Word Count"</span>) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_omni_discrete</span>() <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_omni</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sentiment_summary <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sentiment, <span class="at">y =</span> n, <span class="at">fill =</span> sentiment)) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sentiment Analysis"</span>, <span class="at">x =</span> <span class="st">"Sentiment"</span>, <span class="at">y =</span> <span class="st">"Word Count"</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_omni_discrete</span>() <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_omni</span>(<span class="at">plot_background_color =</span> <span class="st">"White"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -408,10 +462,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Here is another example of how a sentiment analysis can be vizzed. The figure below is grouped by listening session and the portion of discussion in each listening session. The dark blues represent a more negative sentiment and the tan represents a more positive sentiment. We can see that Community Based Organizations had very positive sentiment when discussing treatment and recovery in their sessions, and negative sentiment about community impact. These polarizing sentiment results may cause us to look further in the CBO transcripts to see what people were positive and negative about in the respective discussions.</p>
 <p><img src="images/Sentiment Analysis.png" class="img-fluid"></p>
-<p><strong>Tip for finding quotes by tone</strong></p>
+<p><strong><span class="teal-600">Tip for finding quotes by tone</span></strong></p>
 <p>Let’s say you want to pull a quote to include in a report and you know that you want it to be a positively toned quote in a “recommendations” section of your discussion. You can use the sentimentr package to gather sentiments of each sentence (or segment) and sort by sentiment score to find the quote with the most positive tone in your criteria.</p>
 <p>See an example below:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sentimentr)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>text_data_wsentiment <span class="ot">&lt;-</span> <span class="fu">sentiment</span>(text_data<span class="sc">$</span>text)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>sentiment_summary <span class="ot">&lt;-</span> text_data_wsentiment <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(element_id) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_sentiment =</span> <span class="fu">mean</span>(sentiment, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_sentiment =</span> <span class="fu">sd</span>(sentiment, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_sentences =</span> <span class="fu">n</span>()</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine summarized sentiment scores with your original data</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>text_data_with_sentiment <span class="ot">&lt;-</span> text_data <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">element_id =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(sentiment_summary, <span class="at">by =</span> <span class="st">"element_id"</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># View the combined data</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>text_data_with_sentiment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7 × 12
    line speaker     participant_id question section section_label  text  session
@@ -427,22 +500,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #   sd_sentiment &lt;dbl&gt;, n_sentences &lt;int&gt;</code></pre>
 </div>
 </div>
-<p><strong>Mixed-methods with sentiment analysis</strong></p>
+<p><strong><span class="teal-600">Mixed-methods with sentiment analysis</span></strong></p>
 <p>Because sentiment analysis gives you a numeric output as a sentiment score, you can imagine instances where you may want to compare sentiment scores between groups, correlate sentiment scores with other variables in a quantitative survey, or conduct pre-post comparisons.</p>
 </section>
 <section id="topic-modeling" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="topic-modeling">Topic modeling</h2>
-<p>Topic modeling is an automated method used to identify themes or topics across large collections of text. It uses algorithms to group together words that frequently appear in similar contexts, helping reveal hidden patterns or structures in qualitative data. Topic modeling is especially useful when you have large datasets—typically a minimum of 5,000 words or more spread across multiple documents or participant responses. The method works best when documents are of relatively similar length, which helps the model assign topics more evenly.</p>
+<p><strong><span class="teal-600">Topic modeling</span></strong> is an automated method used to identify themes or topics across large collections of text. It uses algorithms to group together words that frequently appear in similar contexts, helping reveal hidden patterns or structures in qualitative data. Topic modeling is especially useful when you have large datasets—typically a minimum of 5,000 words or more spread across multiple documents or participant responses. The method works best when documents are of relatively similar length, which helps the model assign topics more evenly.</p>
 <p>This method is <strong>not</strong> recommended for use on smaller datasets and would be considered poor practice to rely on it to generate meaningful insights. If you don’t have enough data for this analysis, consider using the content analysis strategy to identify themes in the data.</p>
 <p>Before running a topic model, it’s important to pre-process your text. Best practices include stemming words to reduce variation (so that “run” and “running” are treated as the same word) and removing stop words to focus on meaningful content. Topic modeling doesn’t require predefined codes or themes, making it a good exploratory tool for surfacing unexpected topics in your data. However, it’s important to remember that these topics are generated algorithmically—they group terms based on statistical patterns, not human interpretation. <strong>As a result, human review is always needed to interpret and label the topics in a way that makes sense for your project and participants.</strong></p>
 <p>Topic modeling can complement manual coding by offering a high-level view of common themes, pointing analysts toward areas that may warrant deeper exploration. For example, a topic model might surface clusters of words related to barriers (“transportation,” “access,” “cost”) and another cluster about solutions (“education,” “outreach,” “support”), giving you a starting point for thematic analysis. Commonly used R packages for topic modeling include topicmodels, which provides algorithms like Latent Dirichlet Allocation (LDA), and tm for pre-processing and managing textual data.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Document-Term Matrix (DTM)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>dtm <span class="ot">&lt;-</span> stemmed_text <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">document =</span> <span class="dv">1</span>, word) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cast_dtm</span>(document, word, n)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit LDA models with 2 and 3 topics</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>lda_model_2 <span class="ot">&lt;-</span> <span class="fu">LDA</span>(dtm, <span class="at">k =</span> <span class="dv">2</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">1234</span>))</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>lda_model_3 <span class="ot">&lt;-</span> <span class="fu">LDA</span>(dtm, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">1234</span>))</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare perplexity (lower is better)</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>perplexity_2 <span class="ot">&lt;-</span> <span class="fu">perplexity</span>(lda_model_2)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>perplexity_3 <span class="ot">&lt;-</span> <span class="fu">perplexity</span>(lda_model_3)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Print perplexity values to see how many topics we should go with- in this case 2 topics perform better than 3</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>perplexity_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 46.1033</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>perplexity_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 46.13593</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View top terms for both models</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>topics_2 <span class="ot">&lt;-</span> <span class="fu">tidy</span>(lda_model_2, <span class="at">matrix =</span> <span class="st">"beta"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>topics_3 <span class="ot">&lt;-</span> <span class="fu">tidy</span>(lda_model_3, <span class="at">matrix =</span> <span class="st">"beta"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Top terms for 2-topic model</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>top_terms_2 <span class="ot">&lt;-</span> topics_2 <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">10</span>, beta) <span class="sc">%&gt;%</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Top terms for 3-topic model</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>top_terms_3 <span class="ot">&lt;-</span> topics_3 <span class="sc">%&gt;%</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">10</span>, beta) <span class="sc">%&gt;%</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the top terms to compare interpretability</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>top_terms_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 3
 # Groups:   topic [2]
@@ -469,6 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 19     2 buses          0.0254
 20     2 simplifying    0.0253</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>top_terms_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 3
 # Groups:   topic [3]
@@ -490,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="content-analysis" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="content-analysis">Content analysis</h2>
-<p>Content analysis is a method used to count how often predefined concepts, themes, or categories appear in qualitative data. It relies on a dictionary—a list of key terms or phrases—designed to reflect your evaluation questions or coding framework. Content analysis works well for both small and large datasets, making it a flexible tool when you want to systematically measure the presence of specific themes across interviews, focus groups, or open-ended survey responses.</p>
+<p><strong><span class="teal-600">Content analysis</span></strong> is a method used to count how often predefined concepts, themes, or categories appear in qualitative data. It relies on a dictionary—a list of key terms or phrases—designed to reflect your evaluation questions or coding framework. Content analysis works well for both small and large datasets, making it a flexible tool when you want to systematically measure the presence of specific themes across interviews, focus groups, or open-ended survey responses.</p>
 <p>A key requirement for effective content analysis is a carefully designed dictionary that accurately captures the concepts you’re interested in. This might include terms related to barriers, facilitators, or recommendations, depending on the project’s goals. Best practice is to validate the dictionary by reviewing examples of matched text to make sure the terms are identifying the intended content. You may need to refine the dictionary over time, adding synonyms or removing words that generate false positives.</p>
 <p>Content analysis can help answer questions like “How frequently do participants mention prevention strategies?” or “What percentage of responses reference funding challenges?” It is particularly useful when you need to quantify qualitative data for reporting purposes, or when you want to compare how frequently themes appear across different stakeholder groups. In R, the quanteda package offers efficient tools for dictionary-based content analysis, allowing you to apply a dictionary and quickly summarize how often key terms or concepts appear in the dataset.</p>
 <div class="cell">
@@ -550,91 +661,87 @@ docs    prevention treatment harm_reduction
 <li>Determine whether the analysis should use an inductive or deductive apporach</li>
 </ol>
 <ul>
-<li><p>In an inductive approach, the researcher reads through the data and generates codes as they go. These codes are often grounded in a mix of participant realities and researcher interpretations. Note: If an inductive approach is determined, then the codebook should be generated and iterated upon after the first round of coding (see below).</p></li>
-<li><p>In a deductive approach, the researcher predefines a coding structure and reads through the data applying codes to excerpts. These codes more often heavily rely on the research questions and decisions made by the research team/clients. Note: If a deductive approach is determined, then a codebook should be generated prior to the start of analysis.</p></li>
-<li><p>Determining an inductive versus deductive approach should be communicated with the project lead. The Qual BPT is available to consult on this decision.</p></li>
+<li>In an inductive approach, the researcher reads through the data and generates codes as they go. These codes are often grounded in a mix of participant realities and researcher interpretations. Note: If an inductive approach is determined, then the codebook should be generated and iterated upon after the first round of coding (see below).</li>
+<li>In a deductive approach, the researcher predefines a coding structure and reads through the data applying codes to excerpts. These codes more often heavily rely on the research questions and decisions made by the research team/clients. Note: If a deductive approach is determined, then a codebook should be generated prior to the start of analysis.</li>
+<li>Determining an inductive versus deductive approach should be communicated with the project lead. The Qual BPT is available to consult on this decision.</li>
 </ul>
 <ol start="3" type="1">
 <li>Conduct your first round of coding applying codes broadly, with the intent to synthesize and further detail codes on the second round of coding.</li>
 </ol>
 <ul>
-<li><p>The first round of coding will generally create a lot of new codes (if taking an inductive approach). This is expected and completely normal as codes will be synthesized into broader categories later on.</p></li>
-<li><p>Always use a parent code/child code structure to increase transparency and accuracy in your coding. Parent codes are the broader subject, while child codes are granular topics that make up that topic.</p>
+<li>The first round of coding will generally create a lot of new codes (if taking an inductive approach). This is expected and completely normal as codes will be synthesized into broader categories later on.</li>
+<li>Always use a parent code/child code structure to increase transparency and accuracy in your coding. Parent codes are the broader subject, while child codes are granular topics that make up that topic.
 <ul>
-<li><p>For example:</p>
+<li>For example:
 <ul>
-<li><p>Programmatic Challenges (Parent Code)</p></li>
-<li><p>Small budgets (child code)</p></li>
-<li><p>Limited staff (child code)</p></li>
-<li><p>Funding cuts (child code)</p></li>
+<li>Programmatic Challenges (Parent Code)</li>
+<li>Small budgets (child code)</li>
+<li>Limited staff (child code)</li>
+<li>Funding cuts (child code)</li>
 </ul></li>
 </ul></li>
-<li><p>Parent codes and child codes should be explicitly referenced in your codebook</p></li>
-<li><p>Every code, both parent code and child code, should have an attached definition so that others who revisit your codes know exactly what that code means</p></li>
+<li>Parent codes and child codes should be explicitly referenced in your codebook</li>
+<li>Every code, both parent code and child code, should have an attached definition so that others who revisit your codes know exactly what that code means</li>
 </ul>
 <ol start="4" type="1">
 <li>Conduct your second round of coding applying codes on a more limited basis and collapsing code categories into an organized structure, redefining codes as needed</li>
 </ol>
 <ul>
-<li><p>In your second round of coding it is common to find that some of your initial codes overlap. In cases where the information is contextually the same, you should collapse these codes for clarity and redefine the final code if needed.</p>
+<li>In your second round of coding it is common to find that some of your initial codes overlap. In cases where the information is contextually the same, you should collapse these codes for clarity and redefine the final code if needed.
 <ul>
 <li>For example, transportation issues + lack of reliable transportation = transportation challenges</li>
 </ul></li>
-<li><p>Any updates to your codes should be reflected in your codebook</p></li>
+<li>Any updates to your codes should be reflected in your codebook</li>
 </ul>
 <ol start="5" type="1">
 <li>Construct themes thoughtfully after coding, reviewing excerpts by code and grouping them into broader themes that reflect patterns across participants</li>
 </ol>
 <ul>
-<li><p>If you have followed a clear parent code/child code structure, then your themes will likely stem from those. Typically, our research/evaluation questions guide the development of our themes.</p>
+<li>If you have followed a clear parent code/child code structure, then your themes will likely stem from those. Typically, our research/evaluation questions guide the development of our themes.
 <ul>
-<li><p>For example,</p>
+<li>For example,
 <ul>
-<li><p>Evaluation question = What challenges did sub-awardees face over the course of the funding cycle?</p></li>
-<li><p>Theme 1: Limited Capacity for Organizational Growth</p>
+<li>Evaluation question = What challenges did sub-awardees face over the course of the funding cycle?</li>
+<li>Theme 1: Limited Capacity for Organizational Growth
 <ul>
-<li><p>Code 1: Limited funding</p></li>
-<li><p>Code 2: Limited staff</p></li>
-<li><p>Code 3: Budget cuts</p></li>
+<li>Code 1: Limited funding</li>
+<li>Code 2: Limited staff</li>
+<li>Code 3: Budget cuts</li>
 </ul></li>
 </ul></li>
 </ul></li>
-<li><p>Dedoose’s Code Co-Occurrence and Code Application tools can assist you in identifying themes that stem from patterns between codes</p></li>
+<li>Dedoose’s Code Co-Occurrence and Code Application tools can assist you in identifying themes that stem from patterns between codes</li>
 </ul>
 <ol start="6" type="1">
 <li>Acknowledge the researcher’s role and reflect on how your perspective, language, and interpretation influenced coding and theme development</li>
 </ol>
 <ul>
-<li><p>Be cautious not to overstate findings. Instead, describe patterns and nuances across participant groups, rather than presenting your findings as a consensus across the group.</p></li>
-<li><p>Recognize outliers. Some participants may have had a vastly different experience from other participants. Determine whether these experiences should be reported under another theme or in a standalone section.</p></li>
+<li>Be cautious not to overstate findings. Instead, describe patterns and nuances across participant groups, rather than presenting your findings as a consensus across the group.</li>
+<li>Recognize outliers. Some participants may have had a vastly different experience from other participants. Determine whether these experiences should be reported under another theme or in a standalone section.</li>
 </ul>
 <ol start="7" type="1">
 <li>Document everything and keep a record of how codes and themes evolved</li>
 </ol>
 <ul>
-<li><p>Omni’s Qualitative Fundamental Standards foster transparency in the way that we do our qualitative work. Always keep a copy of the raw transcripts (pre-cleaning) to ensure that the raw data is maintained. Additionally, ensure that you are communicating your coding decisions with your team and ask another team member, or a member of the Qual BPT to review your coding, codes, code structures, codebook, and themes.</p></li>
-<li><p>Clearly state the number of participants or excerpts that informed each theme.</p></li>
-<li><p>Make your interpretive lens and limitations explicit - especially when datasets are small or uneven across groups</p></li>
+<li>Omni’s Qualitative Fundamental Standards foster transparency in the way that we do our qualitative work. Always keep a copy of the raw transcripts (pre-cleaning) to ensure that the raw data is maintained. Additionally, ensure that you are communicating your coding decisions with your team and ask another team member, or a member of the Qual BPT to review your coding, codes, code structures, codebook, and themes.</li>
+<li>Clearly state the number of participants or excerpts that informed each theme.</li>
+<li>Make your interpretive lens and limitations explicit - especially when datasets are small or uneven across groups</li>
 </ul>
-<!-- 2.  Develop Codes Iteratively Begin with inductive coding (bottom-up), focusing on what participants actually say. -->
-<!-- Avoid pre-loading the codebook unless doing deductive analysis is needed for evaluation purposes. -->
-<!-- Use Dedoose’s “Descriptor” fields to track context (e.g., stakeholder group, session type) for later analysis. -->
-<!-- 3.  Apply Codes Reflexively Apply codes carefully, updating definitions and merging/splitting codes as needed. -->
-<!-- Encourage coders to discuss disagreements and maintain an audit trail of key coding decisions. -->
-<!-- 4.  Construct Themes Thoughtfully After coding, review excerpts by code and group them into broader themes that reflect patterns across participants. -->
-<!-- Use Dedoose’s “Code Co-Occurrence” and “Code Application” tools to explore theme structure. -->
-<!-- 5.  Acknowledge Researcher Role Reflect on how your perspective, language, and interpretation influence theme development. -->
-<!-- Be cautious not to overstate findings; describe patterns and nuance rather than asserting consensus. -->
-<!-- 6.  Document Everything Keep a record of how codes and themes evolved. -->
-<!-- Clearly state the number of participants or excerpts that informed each theme. -->
-<!-- Make your interpretive lens and limitations explicit—especially when datasets are small or uneven across groups. -->
-<blockquote class="blockquote">
-<p>Thematic analysis in Dedoose should still reflect Omni’s commitment to critical realism: treat participant input as reflecting real issues shaped by context and perspective, and be transparent about what the data can—and cannot—support.</p>
-</blockquote>
+<p><strong><span class="teal-600">Thematic analysis in Dedoose should still reflect Omni’s commitment to critical realism: treat participant input as reflecting real issues shaped by context and perspective, and be transparent about what the data can—and cannot—support.</span></strong></p>
 </section>
 <section id="combining-analyses" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="combining-analyses">Combining analyses</h2>
 <p>No single method can fully capture the richness and complexity of qualitative data. At Omni, we often combine different qualitative analysis approaches to explore various angles of our data and answer nuanced evaluation questions. Pairing methods like word frequency, sentiment analysis, content analysis, and thematic analysis can help reveal both patterns and meaning, ensuring our findings are grounded in evidence and provide actionable insights.</p>
+</section>
+<section id="draft-your-analysis-plan" class="level2">
+<h2 class="anchored" data-anchor-id="draft-your-analysis-plan">Draft Your Analysis Plan</h2>
+<p><strong><span class="plum-600">Two especially helpful documents to have before qualitative data collection and cleaning begins are:</span></strong></p>
+<ul>
+<li>A <strong><a href="./codebook.html">codebook</a></strong> (or at least a data dictionary). This helps ensure consistency in how we treat things like speaker names, special terminology, or sensitive content.</li>
+<li>A <strong><a href="https://omniinstitute.atlassian.net/wiki/spaces/Quant/pages/375226966/Guide+for+data+analysis+plans">data analysis plan</a></strong>. This outlines the team’s approach to coding and analysis and helps identify if additional cleaning steps are necessary. For example: anonymizing sensitive details or removing artifacts from automated transcription tools (timestamps, filler words, etc.). This step should happen before data collection begins, but may be slightly adjusted given the quality and count of data received after data collection finishes.</li>
+</ul>
+<p>Whenever possible, we expect teams to develop a data analysis plan and request any available data dictionaries or codebooks from the client or partner organizations who collected the data. However, you may need to create a codebook if one doesn’t exist—feel free to reach out to the QualBPT (or whichever team you want to point folks to) if you need support.</p>
+<p>In many cases, the people drafting the analysis plan are different from those cleaning the qualitative data, so strong cross-team communication is essential. We recommend including the qualitative data cleaner (or cleaning team) in project discussions as early as possible. When drafting the analysis plan, think through what text cleaning steps will be necessary to make the data usable for coding, protect participant confidentiality, and meet the project’s goals.</p>
 
 
 </section>

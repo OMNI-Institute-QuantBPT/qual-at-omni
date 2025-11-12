@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Approach</title>
+<title>Omni’s Approach to Qualitative Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,13 +162,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul class="collapse">
   <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">Purpose</a></li>
-  <li><a href="#what-this-guide-covers" id="toc-what-this-guide-covers" class="nav-link" data-scroll-target="#what-this-guide-covers">What This Guide Covers</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#why-are-existing-descriptions-of-methods-so-vague" id="toc-why-are-existing-descriptions-of-methods-so-vague" class="nav-link" data-scroll-target="#why-are-existing-descriptions-of-methods-so-vague">Why Are Existing Descriptions of Methods So Vague?</a></li>
   <li><a href="#omnis-approach-to-analysis" id="toc-omnis-approach-to-analysis" class="nav-link" data-scroll-target="#omnis-approach-to-analysis">Omni’s Approach to Analysis</a></li>
   <li><a href="#choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai" id="toc-choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai" class="nav-link" data-scroll-target="#choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai">Choosing Your Analysis Tool: R vs.&nbsp;Dedoose vs.&nbsp;AI</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -177,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Approach</h1>
+<h1 class="title">Omni’s Approach to Qualitative Analysis</h1>
 </div>
 
 
@@ -291,164 +288,28 @@ Together, these paradigms support our commitment to meaningful, context-aware fi
 This guide provides step-by-step instructions for conducting qualitative analysis, from data pre-processing to reporting. It includes techniques like word frequency analysis, sentiment analysis, thematic coding, content analysis, and topic modeling, all implemented with transparency and adaptability in mind.
 </p>
 </div>
-<section id="key-features-of-the-guide" class="level3">
-<h3 class="anchored" data-anchor-id="key-features-of-the-guide">Key Features of the Guide:</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div style="display:grid;grid-template-columns:50px 1fr;column-gap:10px;row-gap:10px;">
-<div style="background:#8AC0B3;width:30px;height:30px;display:flex;margin:auto;border-radius:100%;padding:10px;box-sizing:content-box;">
-<div style="margin:auto;background:#8AC0B3;"><!--?xml version="1.0" encoding="UTF-8"?-->
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewbox="0 0 70 70" fill="none" style="background:#8AC0B3;">
-  <path d="M11.1533 33.8992V51.0154C17.6637 55.4932 25.5468 58.1259 34.0449 58.1259C42.543 58.1259 49.6535 55.7482 55.9764 51.6604V34.2442L34.0449 42.1048L11.1533 33.8992Z" fill="white"></path>
-  <path d="M64.0792 35.0842V21.7708L34.0396 11L4 21.7708V26.6236L34.0396 37.3944L61.079 27.6962V36.1568L59.4364 36.7418V42.7873L65.7144 40.5371V34.4917L64.0717 35.0767L64.0792 35.0842ZM34.0396 23.5334C31.2419 23.5334 28.9693 22.7458 28.9693 21.7708C28.9693 20.7957 31.2419 20.0081 34.0396 20.0081C36.8373 20.0081 39.11 20.7957 39.11 21.7708C39.11 22.7458 36.8373 23.5334 34.0396 23.5334Z" fill="white"></path>
-</svg>
-</div>
-</div>
-<div style="display:flex;margin-top:auto;margin-bottom:auto;width:700px;"><p style="margin: 0"><strong>Tool Flexibility:</strong> While R is our preferred tool for reproducibility and integration with quantitative methods, the guide also includes best-practice workflows for using Dedoose (for team-based coding) and AI tools like NotebookLM (for early exploratory work).</p>
-</div>
-<div style="background:#8AC0B3;width:30px;height:30px;display:flex;margin:auto;border-radius:100%;padding:10px;box-sizing:content-box;">
-<div style="margin:auto;background:#8AC0B3;"><!--?xml version="1.0" encoding="UTF-8"?-->
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewbox="0 0 70 70" fill="none" style="background:#8AC0B3;">
-  <path d="M53.3253 13.6203L52.7102 13.9804C51.0301 14.9704 49.11 15.488 47.1598 15.488C43.3196 15.488 39.8168 13.5303 37.8067 10.2451L37.0416 9H33.7789L33.0138 10.2451C30.9962 13.5303 27.501 15.488 23.6607 15.488C21.703 15.488 19.7829 14.9629 18.1103 13.9804L17.4952 13.6203H14V25.6812C14 50.5155 33.4264 60.5137 34.2514 60.9262L35.4215 61.5112L36.5916 60.9262C37.4167 60.5137 56.843 50.5155 56.843 25.6812V13.6203H53.3478H53.3253ZM33.0963 44.26L24.2682 34.8468L28.0035 31.3441L33.0663 36.7445L42.772 26.2587L46.5298 29.739L33.0888 44.26H33.0963Z" fill="white"></path>
-</svg>
-</div>
-</div>
-<div style="display:flex;margin-top:auto;margin-bottom:auto;width:700px;"><p style="margin: 0"><strong>Method Selection Guidance:</strong> We offer practical decision points based on dataset size, analytic goals, and project context, ensuring methods match the scope and purpose of each evaluation.</p>
-</div>
-<div style="background:#8AC0B3;width:30px;height:30px;display:flex;margin:auto;border-radius:100%;padding:10px;box-sizing:content-box;">
-<div style="margin:auto;background:#8AC0B3;"><!--?xml version="1.0" encoding="UTF-8"?-->
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewbox="0 0 70 70" fill="none" style="background:#8AC0B3;">
-  <path d="M39.8104 37.1154C40.7339 37.1154 41.4944 36.4091 41.5895 35.5127C41.5963 35.4516 41.5963 35.3904 41.5963 35.3293C41.5963 35.2682 41.5963 35.2071 41.5895 35.1459C41.4944 34.2495 40.7339 33.5432 39.8104 33.5432C38.8258 33.5432 38.0245 34.3446 38.0245 35.3293C38.0245 36.314 38.8258 37.1154 39.8104 37.1154Z" fill="white"></path>
-  <path d="M20.6885 46.9017H49.575V23.5806H20.6885V46.9017ZM32.6193 34.562C32.6193 34.1885 32.918 33.8829 33.2983 33.8829H35.5527C36.0077 32.5314 37.0874 31.472 38.4523 31.0374V28.7283C38.4523 28.348 38.751 28.0492 39.1313 28.0492H40.4894C40.8629 28.0492 41.1684 28.348 41.1684 28.7283V31.0374C42.5333 31.472 43.613 32.5314 44.0679 33.8829H46.3224C46.7026 33.8829 47.0014 34.1885 47.0014 34.562V35.9203C47.0014 36.2938 46.7026 36.5994 46.3224 36.5994H44.1291C43.7081 38.0323 42.5944 39.1733 41.1684 39.6215V41.7539C41.1684 42.1342 40.8629 42.4331 40.4894 42.4331H39.1313C38.751 42.4331 38.4523 42.1342 38.4523 41.7539V39.6215C37.0263 39.1733 35.9126 38.0323 35.4916 36.5994H33.2983C32.918 36.5994 32.6193 36.2938 32.6193 35.9203V34.562ZM24.6201 28.1035C24.6201 27.73 24.9257 27.4244 25.2992 27.4244H26.6573C27.0307 27.4244 27.3363 27.73 27.3363 28.1035V42.3787C27.3363 42.7522 27.0307 43.0579 26.6573 43.0579H25.2992C24.9257 43.0579 24.6201 42.7522 24.6201 42.3787V28.1035Z" fill="white"></path>
-  <path d="M54.9056 17H15.3581C14.6043 17 14 17.6044 14 18.3582V52.1311C14 52.8781 14.6043 53.4894 15.3581 53.4894H54.9056C55.6593 53.4894 56.2636 52.8781 56.2636 52.1311V18.3582C56.2636 17.6044 55.6593 17 54.9056 17ZM52.2912 47.2957C52.2912 48.5793 51.2455 49.6183 49.9689 49.6183H20.3015C19.0181 49.6183 17.9724 48.5793 17.9724 47.2957V23.1868C17.9724 21.9033 19.0181 20.8642 20.3015 20.8642H49.9689C51.2455 20.8642 52.2912 21.9033 52.2912 23.1868V47.2957Z" fill="white"></path>
-</svg>
-</div>
-</div>
-<div style="display:flex;margin-top:auto;margin-bottom:auto;width:700px;"><p style="margin: 0"><strong>Structured Workflows:</strong> Omni workflows help analysts navigate all stages of qualitative analysis—from clarifying analytic frameworks and coding approaches to integrating qualitative and quantitative data in mixed-methods designs.</p>
-</div>
-<div style="background:#8AC0B3;width:30px;height:30px;display:flex;margin:auto;border-radius:100%;padding:10px;box-sizing:content-box;">
-<div style="margin:auto;background:#8AC0B3;"><!--?xml version="1.0" encoding="UTF-8"?-->
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewbox="0 0 70 70" fill="none" style="background:#8AC0B3;">
-  <path d="M39.8104 37.1154C40.7339 37.1154 41.4944 36.4091 41.5895 35.5127C41.5963 35.4516 41.5963 35.3904 41.5963 35.3293C41.5963 35.2682 41.5963 35.2071 41.5895 35.1459C41.4944 34.2495 40.7339 33.5432 39.8104 33.5432C38.8258 33.5432 38.0245 34.3446 38.0245 35.3293C38.0245 36.314 38.8258 37.1154 39.8104 37.1154Z" fill="white"></path>
-  <path d="M20.6885 46.9017H49.575V23.5806H20.6885V46.9017ZM32.6193 34.562C32.6193 34.1885 32.918 33.8829 33.2983 33.8829H35.5527C36.0077 32.5314 37.0874 31.472 38.4523 31.0374V28.7283C38.4523 28.348 38.751 28.0492 39.1313 28.0492H40.4894C40.8629 28.0492 41.1684 28.348 41.1684 28.7283V31.0374C42.5333 31.472 43.613 32.5314 44.0679 33.8829H46.3224C46.7026 33.8829 47.0014 34.1885 47.0014 34.562V35.9203C47.0014 36.2938 46.7026 36.5994 46.3224 36.5994H44.1291C43.7081 38.0323 42.5944 39.1733 41.1684 39.6215V41.7539C41.1684 42.1342 40.8629 42.4331 40.4894 42.4331H39.1313C38.751 42.4331 38.4523 42.1342 38.4523 41.7539V39.6215C37.0263 39.1733 35.9126 38.0323 35.4916 36.5994H33.2983C32.918 36.5994 32.6193 36.2938 32.6193 35.9203V34.562ZM24.6201 28.1035C24.6201 27.73 24.9257 27.4244 25.2992 27.4244H26.6573C27.0307 27.4244 27.3363 27.73 27.3363 28.1035V42.3787C27.3363 42.7522 27.0307 43.0579 26.6573 43.0579H25.2992C24.9257 43.0579 24.6201 42.7522 24.6201 42.3787V28.1035Z" fill="white"></path>
-  <path d="M54.9056 17H15.3581C14.6043 17 14 17.6044 14 18.3582V52.1311C14 52.8781 14.6043 53.4894 15.3581 53.4894H54.9056C55.6593 53.4894 56.2636 52.8781 56.2636 52.1311V18.3582C56.2636 17.6044 55.6593 17 54.9056 17ZM52.2912 47.2957C52.2912 48.5793 51.2455 49.6183 49.9689 49.6183H20.3015C19.0181 49.6183 17.9724 48.5793 17.9724 47.2957V23.1868C17.9724 21.9033 19.0181 20.8642 20.3015 20.8642H49.9689C51.2455 20.8642 52.2912 21.9033 52.2912 23.1868V47.2957Z" fill="white"></path>
-</svg>
-</div>
-</div>
-<div style="display:flex;margin-top:auto;margin-bottom:auto;width:700px;"><p style="margin: 0"><strong>Adaptability:</strong> Whether you're working with rich interview transcripts or brief open-ended survey responses, the guide provides adaptable tools that emphasize rigor, transparency, and context.</p>
-</div>
-</div>
-</div>
-</div>
 <p><br></p>
-<div class="cell">
-<div class="cell-output-display">
-<div style="width:700px;">
-<div style="padding-left:10px;padding-bottom:3px;color:#081C39;border-left:5px solid #41816F;font-size:11pt;">
-
-
-<p>By centering participant voices, documenting our methods clearly, and
-maintaining a reflexive stance, this guide strengthens the credibility
-and usefulness of Omni’s qualitative work. It equips staff with tools
-and strategies that not only meet evaluation standards but also foster
-accountability, responsiveness, and connection to the communities we
-serve.</p></div>
-</div>
-</div>
-</div>
-<p><br></p>
-<details>
-<summary>
-<strong>Version Control</strong>
-</summary>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Version</th>
-<th>Description</th>
-<th>Date released</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>-4.0</td>
-<td>Adding interactive features</td>
-<td>2025-08-14</td>
-</tr>
-<tr class="even">
-<td>-5.0</td>
-<td>Second draft for review and rebrand</td>
-<td>2025-08-14</td>
-</tr>
-<tr class="odd">
-<td>-6.0</td>
-<td>Initial draft for review</td>
-<td>2025-03-26</td>
-</tr>
-</tbody>
-</table>
-</details>
-<p><br></p>
-<!-- ```{=html} -->
-<!-- <div class="outer"> -->
-<!--   <div class="green-box" -->
-<!--        style="--bar-bg: #C65A8B; -->
-<!--               --bar-text-color: #FFFFFF; -->
-<!--               --box-h: 90px;"> -->
-<!--     <div class="green-col">Introduction</div> -->
-<!--     <div class="green-col pattern"> -->
-<!--       <img src="images/Pattern-02-Plum.png" alt="Pattern"> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </div> -->
-<!-- ``` -->
-<!-- <br> -->
 </section>
-</section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>At Omni, we conduct qualitative research in complex, real-world environments. Our clients and projects often require fast timelines, nuanced insights, and transparent methods that can stand up to external review. To meet these needs, we use systematic, reproducible qualitative analysis methods grounded in <strong><span class="plum-600">pragmatism</span></strong> and <strong><span class="plum-600">critical realism</span></strong>.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>At Omni, we conduct qualitative research in complex, real-world environments. Our clients and projects often require fast timelines, nuanced insights, and transparent methods that can stand up to external review. To meet these needs, we use systematic, reproducible qualitative analysis methods grounded in <strong><span class="teal-600">pragmatism</span></strong> and <strong><span class="teal-600">critical realism</span></strong>.</p>
 <p>This approach ensures our findings are actionable and reflect the realities and lived experiences of participants, while acknowledging the influence of context, interpretation, and limitations in our data.</p>
-<section id="purpose" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="purpose">Purpose</h2>
+<section id="purpose" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="purpose">Purpose</h3>
 <p>This guide was developed to support Omni staff in conducting methodologically sound, transparent, and reproducible qualitative analyses. It offers practical, step-by-step instructions and highlights best practices for text pre-processing, analysis, and reporting. Whether working with interview transcripts, focus groups, open-ended survey responses, or other text-based data, Omni teams can use this guide to produce findings that are both grounded in participants’ voices and useful for program improvement and decision-making.</p>
-<section id="how-does-this-guide-align-with-omnis-core-values" class="level4">
-<h4 class="anchored" data-anchor-id="how-does-this-guide-align-with-omnis-core-values">How does this guide align with Omni’s core values?</h4>
-<p><strong>Inquiry</strong> — Provides clear, rigorous methods that encourage thoughtful exploration of participants’ experiences.</p>
-<p><strong>Agility</strong> — Equips staff with adaptable tools to meet diverse project needs and respond efficiently to change.</p>
-<p><strong>Connection</strong> — Centers participants’ voices and strengthens relationships with the communities and partners we serve.</p>
-<p><strong>Accountability</strong> — Uses transparent, reproducible analysis practices to keep our work credible, ethical, and trustworthy.</p>
 </section>
-</section>
-<section id="what-this-guide-covers" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="what-this-guide-covers">What This Guide Covers</h2>
-<p>You’ll find guidance on:</p>
-<ul>
-<li><p><strong><span class="plum-600">Text mining / Natural Language Processing (NLP)</span></strong><br>
-(e.g., word frequency, sentiment analysis, topic modeling)</p></li>
-<li><p><strong><span class="plum-600">Thematic and content analysis</span></strong><br>
-(e.g., dictionary-based coding, thematic coding frameworks)</p></li>
-<li><p><strong><span class="plum-600">Narrative analysis <span class="citation" data-cites="qualBPT">@qualBPT</span> do we need?</span></strong><br>
-(Optional: e.g., structural analysis, language style matching)</p></li>
-<li><p><strong><span class="plum-600">Visualizing and reporting qualitative data</span></strong><br>
-(e.g., word clouds, bar charts, heatmaps, joint displays for mixed-methods)</p></li>
-</ul>
-<p>These methods can be applied to text from: Word documents (.docx), PDFs (.pdf), Zoom transcripts (.docx or .txt), open-ended survey responses (.xlsx or .csv), and more.</p>
+<section id="how-do-our-qualitative-resources-align-with-omnis-core-values" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-our-qualitative-resources-align-with-omnis-core-values">How do our qualitative resources align with Omni’s core values?</h3>
+<p><strong><span class="teal-600">Inquiry</span></strong>: Provides clear, rigorous methods that encourage thoughtful exploration of participants’ experiences.</p>
+<p><strong><span class="teal-600">Agility</span></strong>: Equips staff with adaptable tools to meet diverse project needs and respond efficiently to change.</p>
+<p><strong><span class="teal-600">Connection</span></strong>: Centers participants’ voices and strengthens relationships with the communities and partners we serve.</p>
+<p><strong><span class="teal-600">Accountability</span></strong>: Uses transparent, reproducible analysis practices to keep our work credible, ethical, and trustworthy.</p>
 <p>In many applied settings, qualitative methods (and especially mixed-methods) are described in vague terms. Reports may mention “themes emerging” or “triangulating findings,” but rarely explain the actual process used to get there. This vagueness makes it hard to replicate or assess qualitative findings and limits their credibility.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div style="width:800px;">
-<div style="padding-left:10px;padding-bottom:3px;color:#081C39;border-left:5px solid #821C4C;font-size:11pt;">
-
-
-<p>At Omni, we aim to avoid vague or ad hoc practices. We document
-clear, systematic workflows that integrate qualitative insights with
-quantitative data when appropriate.</p></div>
-</div>
-</div>
-</div>
-<section id="why-are-existing-descriptions-of-methods-so-vague" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="why-are-existing-descriptions-of-methods-so-vague">Why Are Existing Descriptions of Methods So Vague?</h3>
+</section>
+</section>
+<section id="why-are-existing-descriptions-of-methods-so-vague" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="why-are-existing-descriptions-of-methods-so-vague">Why Are Existing Descriptions of Methods So Vague?</h2>
+<p><strong><span class="teal-600">At Omni, we aim to avoid vague or ad hoc practices. We document clear, systematic workflows that integrate qualitative insights with quantitative data when appropriate.</span></strong></p>
 <p>Several factors explain the common lack of clarity in methodology:</p>
 <ul>
 <li><p>Different disciplines (e.g., public health vs.&nbsp;education research) use different frameworks, leading to inconsistent approaches.</p></li>
@@ -477,13 +338,12 @@ quantitative data when appropriate.</p></div>
 <!-- </div> -->
 <!-- ``` -->
 </section>
-</section>
 <section id="omnis-approach-to-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="omnis-approach-to-analysis">Omni’s Approach to Analysis</h2>
-<p>Omni’s qualitative practice is grounded in <strong><span class="olive-green-600">pragmatism</span></strong> and <strong><span class="olive-green-600">critical realism</span></strong>.</p>
+<p>Omni’s qualitative practice is grounded in <strong><span class="teal-600">pragmatism</span></strong> and <strong><span class="teal-600">critical realism</span></strong>.</p>
 <ul>
-<li><p><strong><span class="olive-green-600">Pragmatism</span></strong> means we focus on providing useful, actionable insights for real-world decision-making. Our goal is to help clients understand participants’ experiences in ways that inform policy, programs, and practice. This reflects a pragmatic stance rooted in the work of scholars like <a href="https://journals.sagepub.com/doi/pdf/10.1177/2345678906292462" target="_blank" rel="noopener"> Morgan (2007) </a> and <a href="https://www.taylorfrancis.com/books/mono/10.4324/9781351017831/explaining-society-berth-danermark-mats-ekstr%C3%B6m-jan-ch-karlsson" target="_blank" rel="noopener"> Danermark et al.&nbsp;(2015) </a>, emphasizing inquiry that is guided by consequences and utility.</p></li>
-<li><p><strong><span class="olive-green-600">Critical realism</span></strong> acknowledges that while participants’ experiences reflect real phenomena (barriers, challenges, successes), they are shaped by context and perspective. Influenced by <a href="https://www.tandfonline.com/doi/full/10.1080/13645579.2016.1144401" target="_blank" rel="noopener"> Fletcher’s (2017) </a> work and work by others, this perspective guides us to acknowledge our limitations, reflect on researcher influence, and avoid overstating claims.</p></li>
+<li><p><strong><span class="teal-600">Pragmatism</span></strong> means we focus on providing useful, actionable insights for real-world decision-making. Our goal is to help clients understand participants’ experiences in ways that inform policy, programs, and practice. This reflects a pragmatic stance rooted in the work of scholars like <a href="https://journals.sagepub.com/doi/pdf/10.1177/2345678906292462" target="_blank" rel="noopener"> Morgan (2007) </a> and <a href="https://www.taylorfrancis.com/books/mono/10.4324/9781351017831/explaining-society-berth-danermark-mats-ekstr%C3%B6m-jan-ch-karlsson" target="_blank" rel="noopener"> Danermark et al.&nbsp;(2015) </a>, emphasizing inquiry that is guided by consequences and utility.</p></li>
+<li><p><strong><span class="teal-600">Critical realism</span></strong> acknowledges that while participants’ experiences reflect real phenomena (barriers, challenges, successes), they are shaped by context and perspective. Influenced by <a href="https://www.tandfonline.com/doi/full/10.1080/13645579.2016.1144401" target="_blank" rel="noopener"> Fletcher’s (2017) </a> work and work by others, this perspective guides us to acknowledge our limitations, reflect on researcher influence, and avoid overstating claims.</p></li>
 <li><p>Omni’s qualitative practice draws on reflexive thematic analysis <a href="https://www.tandfonline.com/doi/abs/10.1191/1478088706qp063oa" target="_blank" rel="noopener"> (Clarke &amp; Braun, 2006) </a> and content analysis <a href="https://journals.sagepub.com/doi/abs/10.1177/1049732305276687" target="_blank" rel="noopener"> (Hseih &amp; Shannon, 2005) </a>, emphasizing the researcher’s active role in interpreting data and constructing themes, in alignment with our commitment to critical realism and methodological transparency.</p></li>
 </ul>
 <section id="transparent-and-systematic-workflows" class="level3 unnumbered">
@@ -495,23 +355,23 @@ quantitative data when appropriate.</p></div>
 <li>Clarify Purpose and Analytic Framework</li>
 </ol>
 <ul>
-<li><p>Define the evaluation questions and purpose of the qualitative analysis</p></li>
-<li><p>Select an analytic method</p></li>
+<li>Define the evaluation questions and purpose of the qualitative analysis</li>
+<li>Select an analytic method</li>
 </ul>
 <ol start="2" type="1">
 <li>Prepare and Familiarize with the Data</li>
 </ol>
 <ul>
-<li><p>Clean transcripts/text</p></li>
-<li><p>Read through interviews, discussions, or sessions at least once (text like reports you may not need context for, use your discretion)</p></li>
+<li>Clean transcripts/text</li>
+<li>Read through interviews, discussions, or sessions at least once (text like reports you may not need context for, use your discretion)</li>
 </ul>
 <ol start="3" type="1">
 <li>Systematic Coding of the Data</li>
 </ol>
 <ul>
-<li><p>Deductive, Inductive, or hybrid</p></li>
-<li><p>Deductive coding uses predefined codes (like our dictionaries) to apply to our data</p></li>
-<li><p>Inductive coding uses text mining or topic modeling to identify emergent themes</p></li>
+<li>Deductive, Inductive, or hybrid</li>
+<li>Deductive coding uses predefined codes (like our dictionaries) to apply to our data</li>
+<li>Inductive coding uses text mining or topic modeling to identify emergent themes</li>
 </ul>
 <ol start="4" type="1">
 <li>Theme Development and Refinement</li>
@@ -533,9 +393,11 @@ quantitative data when appropriate.</p></div>
 </section>
 <section id="choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="choosing-your-analysis-tool-r-vs.-dedoose-vs.-ai">Choosing Your Analysis Tool: R vs.&nbsp;Dedoose vs.&nbsp;AI</h2>
-<section id="r" class="level3">
-<h3 class="anchored" data-anchor-id="r">R</h3>
-<p><strong>Best when</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dedoose</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">AI</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><strong><span class="teal-600">Best when</span></strong></p>
 <ul>
 <li>Datasets are large or mixed (qual + quant) and need audit trails.<br>
 </li>
@@ -543,7 +405,7 @@ quantitative data when appropriate.</p></div>
 </li>
 <li>You’re under time constraints and have existing scripts/templates (IRR optional or phased).</li>
 </ul>
-<p><strong>Pros</strong></p>
+<p><strong><span class="teal-600">Pros</span></strong></p>
 <ul>
 <li>Transparent, reproducible code and scalable pipelines.<br>
 </li>
@@ -551,16 +413,15 @@ quantitative data when appropriate.</p></div>
 </li>
 <li>Produces precise visuals and integrates survey/demographic data easily.</li>
 </ul>
-<p><strong>Cons</strong></p>
+<p><strong><span class="teal-600">Cons</span></strong></p>
 <ul>
-<li>Steeper setup and learning curve.<br>
+<li>Steeper setup and learning curve for new R users.<br>
 </li>
 <li>Requires clear documentation to ensure shared understanding.</li>
 </ul>
-</section>
-<section id="dedoose" class="level3">
-<h3 class="anchored" data-anchor-id="dedoose">Dedoose</h3>
-<p><strong>Best when</strong></p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><strong><span class="teal-600">Best when</span></strong></p>
 <ul>
 <li>Working collaboratively with a team or training new coders.<br>
 </li>
@@ -568,14 +429,14 @@ quantitative data when appropriate.</p></div>
 </li>
 <li>Delivering quick turnarounds using built-in IRR workflows.</li>
 </ul>
-<p><strong>Pros</strong></p>
+<p><strong><span class="teal-600">Pros</span></strong></p>
 <ul>
 <li>Multi-user collaboration, role permissions, IRR features.<br>
 </li>
 <li>Low barrier for non-programmers.</li>
 <li>Simple approach for line-by-line coding</li>
 </ul>
-<p><strong>Cons</strong></p>
+<p><strong><span class="teal-600">Cons</span></strong></p>
 <ul>
 <li>License cost.<br>
 </li>
@@ -583,10 +444,9 @@ quantitative data when appropriate.</p></div>
 </li>
 <li>Reproducibility and export trails less granular than scripted pipelines.</li>
 </ul>
-</section>
-<section id="ai" class="level3">
-<h3 class="anchored" data-anchor-id="ai">AI</h3>
-<p><strong>Best when</strong></p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><strong><span class="teal-600">Best when</span></strong></p>
 <ul>
 <li>Very fast and low barrier (though not a replacement for traditional qualitative coding.<br>
 </li>
@@ -594,7 +454,7 @@ quantitative data when appropriate.</p></div>
 </li>
 <li>Preparing stakeholder previews before deeper human analysis.</li>
 </ul>
-<p><strong>Pros</strong></p>
+<p><strong><span class="teal-600">Pros</span></strong></p>
 <ul>
 <li>Very fast and accessible; supports brainstorming structures.<br>
 </li>
@@ -602,17 +462,18 @@ quantitative data when appropriate.</p></div>
 </li>
 <li>Useful for early iteration before moving to R or Dedoose.</li>
 </ul>
-<p><strong>Cons</strong></p>
+<p><strong><span class="teal-600">Cons</span></strong></p>
 <ul>
 <li>Not a substitute for human interpretation; may produce hallucinations.</li>
 <li>Inconsistent across runs; lacks deep context if prompts are weak.<br>
 </li>
 <li>Data governance and privacy limits — avoid uploading sensitive data.</li>
 </ul>
+</div>
+</div>
+</div>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -10,3 +10,24 @@ h3 {
   font-weight: normal;
   font-size: 1.3em;
 }
+
+/* === Custom Color Palette === */
+.golden-yellow-600 {color: #F7B925;}
+.golden-yellow-400 {color: #FCD82B;}
+.golden-yellow-200 {color: #FDE880;}
+.orange-red-600 {color: #CC4100;}
+.orange-red-400 {color: #FF5E34;}
+.orange-red-200 {color: #FFC5AA;}
+.teal-600 {color: #41816F;}
+.teal-400 {color: #8AC0B3;}
+.teal-200 {color: #C5DFD9;}
+.olive-green-600 {color: #3B5530;}
+.olive-green-400 {color: #89A046;}
+.olive-green-200 {color: #B8C690;}
+.plum-600 {color: #921C4C;}
+.plum-400 {color: #C65A8B;}
+.plum-200 {color: #DD9CB9;}
+.periwinkle-600 {color: #5776B2;}
+.periwinkle-600 {color: #A9BAD8;}
+.periwinkle-600 {color: #D4DDEB;}
+.navy {color: #081C39;}

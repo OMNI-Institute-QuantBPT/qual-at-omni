@@ -8,6 +8,45 @@ library(omni)
 
 Our BPT specializes in qualitative research methods; providing expertise, guidance, and support to OMNI teams; and building internal company capacity for qualitative approaches.
 
+**[By centering participant voices, documenting our methods clearly, and maintaining a reflexive stance, this guide strengthens the credibility and usefulness of Omni's qualitative work. It equips staff with tools and strategies that not only meet evaluation standards but also foster accountability, responsiveness, and connection to the communities we serve.]{.teal-600}**
+
+**Do not share this website outside of Omni**
+
+### Key Features of this Website:
+
+```{r, echo=FALSE}
+width_px <- 50
+text_width <- 700
+icon_color_fg <- "white"
+icon_color_bg <- 'teal-400'
+
+icon_text_grid(
+    omni_icon('education', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        text = '<strong>Tool Flexibility:</strong> While R is our preferred tool for reproducibility and integration with quantitative methods, the guide also includes best-practice workflows for using Dedoose (for team-based coding) and AI tools like NotebookLM (for early exploratory work).',
+        text_width
+    ),
+    omni_icon('security', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '<strong>Method Selection Guidance:</strong> We offer practical decision points based on dataset size, analytic goals, and project context, ensuring methods match the scope and purpose of each evaluation.',
+        text_width
+    ),
+    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '<strong>Structured Workflows:</strong> Omni workflows help analysts navigate all stages of qualitative analysis—from clarifying analytic frameworks and coding approaches to integrating qualitative and quantitative data in mixed-methods designs.',
+        text_width
+    ),
+    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '<strong>Adaptability:</strong> Whether you\'re working with rich interview transcripts or brief open-ended survey responses, the guide provides adaptable tools that emphasize rigor, transparency, and context.',
+        text_width
+    ),
+    column_gap_px = 10, # default is 10
+    row_gap_px = 10, # default is 10
+    width_px = width_px
+)
+```
+
 Omni’s approach to qualitative data collection, analysis, and reporting, is grounded in building deep understanding of evaluation questions through a community-centered approach. We emphasize participant protections, trust building, a neutral facilitation approach, and culturally responsive design to create a rich and contextualized understanding of the data. We recognize participants as the experts of their own experience, holders of important and valuable knowledge, and elucidators of rich and varied stories, experiences, and perspectives around key issues.
 
 We use a strengths-based and trauma-informed approach, attuned to the culture and context of the participants, and focused on surfacing the root causes behind inequities. We are committed to using our qualitative methods to provide valuable insights that can inform decision-making processes and positively impact communities. 
@@ -18,3 +57,14 @@ Our team has extensive experience with the use of focus groups, key informant in
 <!-- - [Use this template](./about.qmd): a short tutorial on how to use this website template -->
 <!-- - [Customization](./customization.qmd): a list of nice customizations you can make with Quarto, and how to do them -->
 
+<details>
+<summary><strong>Version Control</strong></summary>
+
+| Version | Description              | Date released |
+|---------|--------------------------|---------------|
+| -3.0    | Add guides and resources to website   | 2025-11-11    |
+| -4.0    | Adding interactive features   | 2025-08-14    |
+| -5.0    | Second draft for review and rebrand   | 2025-08-14    |
+| -6.0    | Initial draft for review  | 2025-03-26    |
+
+</details>

@@ -3,7 +3,7 @@ title: Data Cleaning
 toc-depth: 2
 ---
 
-```{r packages, echo=FALSE}
+```{r packages, echo=FALSE, eval=FALSE}
 library(tidyverse)
 library(omni)
 library(flextable)
@@ -12,13 +12,20 @@ library(janeaustenr) # jane austen books
 text <- austen_books()
 ```
 
-Manager's Summary
+## What This Page Covers 
 
-Data Cleaner's Summary
+You’ll find guidance on:
+
+-   **[Principles and purpose of qualitative data cleaning]{.teal-600}**
+-   **[Defining "clean" and "analysis-ready" data at Omni]{.teal-600}**
+-   **[Step-by-step cleaning procedures in R]{.teal-600}**
+-   **[Reporting and documentation standards]{.teal-600}**
+
+These data cleaning methods can be applied to text from: Word documents (.docx), PDFs
+(.pdf), Zoom transcripts (.docx or .txt), open-ended survey responses
+(.xlsx or .csv), and more.
 
 ## Introduction
-
-**Do not share this guide outside of Omni**
 
 Data cleaning is often one of the first things you will do when you
 start working with qualitative data at Omni. Whether we’re working with
@@ -44,14 +51,14 @@ what to remove, retain, or clarify in the data.
 The steps in a qualitative data cleaning process will always be informed
 by two key factors:
 
-1)  **The state of the data when we (Omni) receive it**
+1)  **[The state of the data when we (Omni) receive it]{.teal-600}**
 
 -   For example, some transcripts may come from automated services (like
     Zoom or Otter.ai) and contain timestamps, speaker labels, or filler
     words that require removal. Others may be professionally transcribed
     and need minimal cleaning.
 
-2)  **The specific needs of the project** 
+2)  **[The specific needs of the project]{.teal-600}** 
 -   Because of this variability,
     we encourage a flexible, judgment-driven approach to data cleaning.
     The steps described in this guide are common to many projects, but
@@ -96,30 +103,6 @@ inform:
 - What should be preserved (even if messy)
 - What should be flagged for discussion 
 
-Two especially helpful documents to have before qualitative data cleaning begins are:
-
-- A **[codebook](codebook.qmd)** (or at least a data dictionary). This helps ensure consistency in how we treat things like speaker names, special terminology, or
-sensitive content. 
-- A **[data analysis plan](https://omniinstitute.atlassian.net/wiki/spaces/Quant/pages/375226966/Guide+for+data+analysis+plans)**. This outlines the team’s
-approach to coding and analysis and helps identify if additional
-cleaning steps are necessary. For example: anonymizing sensitive details
-or removing artifacts from automated transcription tools (timestamps,
-filler words, etc.). 
-
-Whenever possible, we expect teams to develop a data analysis plan and request any available data dictionaries or
-codebooks from the client or partner organizations who collected the
-data. However, you may need to create a codebook if one doesn’t
-exist—feel free to reach out to the QualBPT (or whichever team you want
-to point folks to) if you need support.
-
-In many cases, the people drafting the analysis plan are different from
-those cleaning the qualitative data, so strong cross-team communication
-is essential. We recommend including the qualitative data cleaner (or
-cleaning team) in project discussions as early as possible. When
-drafting the analysis plan, think through what text cleaning steps will
-be necessary to make the data usable for coding, protect participant
-confidentiality, and meet the project’s goals.
-
 Finally, whether you’re writing code for qualitative data cleaning or
 any other purpose, always write your R scripts as if they will later be:
 
@@ -129,28 +112,24 @@ any other purpose, always write your R scripts as if they will later be:
 
 Make it easy on future Omni-ites—and on your future self!
 
-## When are data clean?
+## When are my data clean?
 
-**What Does It Mean to Have "Clean" Qualitative Data?**
-- For there to be project tasks that direct Omni-ites to ‘clean qualitative data,’ and a
+For there to be project tasks that direct Omni-ites to ‘clean qualitative data,’ and a
 guide to help in doing so, there should also be a shared understanding
 of what it means for qualitative data to be clean.
 
-**Definition of Clean Qualitative Data**
-- At Omni, qualitative data are
-considered clean when they are organized, de-identified, and ready for
-analysis or coding.
+**[At Omni, qualitative data are considered clean when they are organized, de-identified, and ready for analysis or coding.]{.teal-600}**
 
 That means the data:
-- Accurately reflect the original source material (e.g., interviews, focus
-groups, or open-text survey responses) Have been transformed into a
-structure that makes them easy to navigate and analyze Protect the
-privacy and confidentiality of participants Are consistent, clear, and
-free of irrelevant clutter (like transcription artifacts) 
 
-**What Makes a Qualitative Dataset "Analysis-Ready"?**
+- Accurately reflect the original source material (e.g., interviews, focus groups, or open-text survey responses) 
+- Have been transformed into a structure that makes them easy to navigate and analyze 
+- Protect the privacy and confidentiality of participants 
+- Are consistent, clear, and free of irrelevant clutter (like transcription artifacts) 
 
-- For qualitative text data to be ready for analysis, they should meet the following criteria:
+### What Makes a Qualitative Dataset "Analysis-Ready"?
+
+For qualitative text data to be ready for analysis, they should meet the following criteria:
 
 1) Speaker Information Is Clear and Consistent
 
@@ -203,7 +182,7 @@ analysis.
 - Spelling errors are corrected when they obscure meaning (but
 regional spellings or participant quirks may be preserved if relevant).
 - Punctuation and spacing are standardized (no excessive whitespace,
-missing periods, etc.). 
+missing periods, etc.).
 
 8) Relevant Identifiers Are Added to the Dataset
 
@@ -215,7 +194,7 @@ sections (e.g., "Challenges," "Recommendations"), these are identified.
 “Pre-implementation,” “Post-implementation”), they are included in the
 data structure. 
 
-**How Do We Know When Qualitative Data Are Clean?**
+### How Do We Know When Qualitative Data Are Clean
 
 Here are some guiding questions to help determine when qualitative data are
 ready for analysis (i.e., clean):
@@ -251,7 +230,7 @@ someone else (QA check)?
 - Whenever possible, have another Omni-ite review the cleaned data for
 accuracy and completeness. 
 
-**Common Issues to Discuss Early in the Cleaning Process**
+### Common Issues to Discuss Early in the Cleaning Process
 
 Just like in quantitative data cleaning, clarifying
 expectations at the start of a project will save time later. For
@@ -267,7 +246,7 @@ analysis?
 - Do we need to connect text segments with broader context, such as the
 discussion theme or section of the focus group? 
 
-**Quick Summary of "Clean Qualitative Data" at Omni: Clean qualitative data are:**
+**[Quick summary of "clean qualitative data" at Omni:]{.teal-600}**
 
 - Anonymized 
 - Clearly structured and labeled 
@@ -277,7 +256,6 @@ discussion theme or section of the focus group?
 
 ## How do I report the results of data cleaning?
 
-📝 How to Report the Results of Qualitative Data Cleaning at Omni
 Cleaning qualitative data is an interpretive and decision-heavy process,
 and those decisions need to be transparent. Reporting your cleaning
 process helps:
@@ -289,13 +267,15 @@ and reporting. Qualitative data cleaning produces results—changes to the
 text or data structure—that should be documented in a clear, shareable
 data cleaning report.
 
-📋 What to Include in a Qualitative Data Cleaning Report 1. Summary of
-the Dataset You Cleaned Start with an overview:
+**[What to include in a report about qualitative data cleaning]{.teal-600}**
+
+1. Summary of the Dataset You Cleaned Start with an overview:
 
 How many transcripts or files were cleaned? How many sessions (e.g.,
 focus groups, interviews) are included? What types of participants are
-represented (e.g., educators, public health professionals)? Example:
-This dataset includes transcripts from 8 focus groups, with 42
+represented (e.g., educators, public health professionals)? 
+
+Example: This dataset includes transcripts from 8 focus groups, with 42
 participants. Participants represent two stakeholder groups: Educators
 (n = 20) and Public Health Professionals (n = 22).
 
@@ -305,6 +285,7 @@ participants. Participants represent two stakeholder groups: Educators
 Were participant names replaced with IDs (e.g., Participant 01)? Were
 organizations, locations, or personal identifiers removed or redacted?
 Were job titles generalized (e.g., “CEO” changed to “senior leader”)?
+
 Example: Replaced all participant names with Participant IDs (e.g.,
 P01). Removed specific references to organizations and locations (e.g.,
 “at Boulder Community Hospital” becomes “at [hospital]”). Redacted job
@@ -315,7 +296,9 @@ titles for anonymity when mentioned alongside unique organizations.
 
 Were speakers consistently labeled as "Participant" and "Facilitator"?
 Was each speaker turn separated into its own row or segment? Were
-questions separated from responses? Example: Speaker turns were labeled
+questions separated from responses? 
+
+Example: Speaker turns were labeled
 consistently as either Facilitator or Participant. Each speaker turn is
 stored as one row in the cleaned dataset, with associated metadata
 (Session name, Speaker role, Discussion section).
@@ -325,7 +308,9 @@ stored as one row in the cleaned dataset, with associated metadata
 
 Were timestamps deleted? Were filler words (e.g., “um,” “uh”) removed?
 If so, specify whether this was systematic or case-by-case. Were
-transcription errors corrected? Example: Removed all timestamps in the
+transcription errors corrected? 
+
+Example: Removed all timestamps in the
 format [hh:mm:ss]. Deleted common filler words (“um,” “uh”) unless they
 contributed to participant meaning or tone. Reviewed and corrected
 auto-transcription errors (e.g., “Dodoose” corrected to “Dedoose”).
@@ -335,7 +320,9 @@ auto-transcription errors (e.g., “Dodoose” corrected to “Dedoose”).
 
 Was text converted to lowercase? Was spelling corrected? If so, did you
 preserve participant colloquialisms? Were consistent punctuation and
-spacing applied? Example: Converted all text to lowercase for
+spacing applied? 
+
+Example: Converted all text to lowercase for
 consistency. Standardized punctuation (e.g., added periods to sentence
 ends where missing). Corrected spelling errors that obscured meaning but
 preserved participant vernacular and tone where appropriate.
@@ -345,7 +332,9 @@ preserved participant vernacular and tone where appropriate.
 
 Session name (e.g., “Educators” vs. “Public Health Professionals”)
 Discussion section (e.g., “Challenges,” “Recommendations”) Participant
-role or group designation Example: Added metadata fields to identify
+role or group designation 
+
+Example: Added metadata fields to identify
 Session Name, Participant Group (Educator/Public Health), and Discussion
 Section (Barriers, Facilitators, Recommendations).
 
@@ -356,7 +345,9 @@ If you excluded any portions of text (e.g., off-topic discussions),
 document what was excluded and why. If you made choices about retaining
 or removing interruptions, overlapping speech, or non-verbal cues,
 describe the rationale. If you generalized identifying details in ways
-that may impact interpretation, note this. Example: Excluded
+that may impact interpretation, note this. 
+
+Example: Excluded
 introductory small talk (greetings, logistics discussions) from the
 analysis dataset. Retained overlapping speech where relevant to the
 discussion. Generalized certain job titles to preserve anonymity (e.g.,
@@ -367,111 +358,99 @@ discussion. Generalized certain job titles to preserve anonymity (e.g.,
 
 How many identifiers were removed? How many sessions, speakers, or
 responses are in the final dataset? If you organized by themes, how many
-segments are in each theme? Example: Final cleaned dataset includes 8
+segments are in each theme? 
+
+Example: Final cleaned dataset includes 8
 focus groups, 42 participants, and 620 participant responses across
 three discussion sections: Challenges (n = 220), Facilitators (n = 200),
 and Recommendations (n = 200).
 
-💡 Tips for Reporting Qualitative Data Cleaning Be Transparent Even
-small decisions (e.g., standardizing speaker labels) can have big
-implications during analysis. If you’re unsure whether to document
-something, document it!
+**[Tips for reporting qualitative data cleaning be transparent]{.teal-600}** 
 
-Take the Perspective of Your Project Lead or Analyst What decisions
+- Even small decisions (e.g., standardizing speaker labels) can have big implications during analysis. If you’re unsure whether to document something, document it!
+- Take the perspective of your project lead or analyst. What decisions
 might they need to revisit later? What context would help them
 understand how the data were shaped?
-
-Support Replicability and Quality Control Your cleaning report should
+- Support replicability and quality control. Your cleaning report should
 make it easy for another team member to:
+  - Understand what was done
+  - Re-run the cleaning script 
+  - Suggest or request changes with full knowledge of the process 
+  
+**[Example summary table to describe data cleaning for reporting]{.teal-600}**
 
-Understand what was done Re-run the cleaning script Suggest or request
-changes with full knowledge of the process 🖼️ Example Summary Table in a
-Qualitative Cleaning Report Cleaning Step Action Taken Notes
-Anonymization Removed names, replaced with Participant IDs (P01-P42)
-Locations and job titles generalized Speaker Labeling Labeled as
-Facilitator or Participant Consistent across all sessions Timestamps
-Removed Deleted all timestamps (hh:mm:ss)\
-Filler Words Removed "um," "uh" except when indicating hesitation
-Case-by-case review Text Standardization Converted to lowercase,
-corrected major spelling errors Preserved participant language/tone
-Metadata Added Session name, participant group, discussion section
-Useful for subgroup analysis Exclusions Removed introductions, off-topic
-discussions Documented in the data log
+| **Cleaning Step**       | **Action Taken**                                           | **Notes**                                     |
+|--------------------------|------------------------------------------------------------|------------------------------------------------|
+| **Anonymization**        | Removed names; replaced with Participant IDs (P01–P42).   | Locations and job titles generalized.          |
+| **Speaker Labeling**     | Labeled as *Facilitator* or *Participant*.                | Consistent across all sessions.                |
+| **Timestamps Removed**   | Deleted all timestamps (hh:mm:ss).                        |                                                |
+| **Filler Words Removed** | Removed “um,” “uh” except when indicating hesitation.     | Case-by-case review.                           |
+| **Text Standardization** | Converted to lowercase; corrected major spelling errors.  | Preserved participant language and tone.       |
+| **Metadata Added**       | Added session name, participant group, and discussion section. | Useful for subgroup analysis.              |
+| **Exclusions**           | Removed introductions and off-topic discussions.          | Documented in the data log.                    |
+
 
 ## Terminology
 
-📝 Relevant Terminology for Qualitative Data Cleaning in R 🔧 Data
-Structure & Format Terms Transcript A written or typed record of spoken
-language from interviews, focus groups, or meetings. Transcripts may
-include speaker labels, timestamps, and other artifacts that need
-cleaning.
+📝 Relevant Terminology for Qualitative Data Cleaning in R 
 
-Turn-Taking Each time a participant or facilitator speaks is called a
+🔧 Data Structure & Format Terms 
+
+- Transcript: A written or typed record of spoken language from interviews, focus groups, or meetings. Transcripts may include speaker labels, timestamps, and other artifacts that need cleaning.
+- Turn-Taking: Each time a participant or facilitator speaks is called a
 "turn." Clean data often organize these turns into individual rows in a
 dataset.
-
-Segment (or Excerpt) A portion of text, such as a paragraph, sentence,
+- Segment (or Excerpt): A portion of text, such as a paragraph, sentence,
 or speaker turn, treated as a unit for coding or analysis. Segments are
 often defined by the speaker's response or by topic.
+- Tidy Data: Data where:
+  - Each row represents a single observation (e.g., a speaker turn or
+segment) 
+  - Each column contains one type of information (e.g., speaker ID,
+text, session group) 
+  - Tidy data make it easier to manipulate, clean, and
+analyze qualitative datasets in R. 
+- Rectangular Data: Another term for a table or data frame, where rows and columns are used to organize data in R.
 
-Tidy Data Data where:
+🗂️ Qualitative Metadata & Labeling Term
 
-Each row represents a single observation (e.g., a speaker turn or
-segment) Each column contains one type of information (e.g., speaker ID,
-text, session group) Tidy data make it easier to manipulate, clean, and
-analyze qualitative datasets in R. Rectangular Data Another term for a
-table or data frame, where rows and columns are used to organize data in
-R.
-
-🗂️ Qualitative Metadata & Labeling Terms Speaker Label An identifier
-showing who is speaking (e.g., "Facilitator," "Participant 1"). Clean
-data should use consistent speaker labels.
-
-Participant ID A unique identifier assigned to participants to protect
+- Speaker Label: An identifier showing who is speaking (e.g., "Facilitator," "Participant 1"). Clean data should use consistent speaker labels.
+- Participant ID: A unique identifier assigned to participants to protect
 anonymity (e.g., "P01"). These are often used in place of names.
-
-Session ID / Group The label identifying the specific interview or focus
+- Session ID/Group: The label identifying the specific interview or focus
 group a participant was part of (e.g., "Session 1 – Educators").
-
-Discussion Section / Topic Area A label identifying a portion of the
+- Discussion Section/Topic Area: A label identifying a portion of the
 conversation (e.g., "Barriers," "Recommendations") to help organize
 qualitative data.
 
-✂️ Data Cleaning & Transformation Terms Anonymization /
-De-Identification The process of removing or replacing personal
+✂️ Data Cleaning & Transformation Terms 
+
+- Anonymization/De-Identification: The process of removing or replacing personal
 identifiers (e.g., names, locations, job titles) to protect participant
 privacy.
-
-Standardization Making text consistent in format (e.g., converting to
+- Standardization: Making text consistent in format (e.g., converting to
 lowercase, consistent punctuation, spacing).
-
-Tokenization (Optional depending on your analysis!) Breaking down text
+- Tokenization: (Optional depending on your analysis!) Breaking down text
 into smaller parts—words, sentences, or phrases—typically for text
 mining. Not always part of standard qualitative coding workflows.
-
-Filtering Removing unnecessary rows or segments (e.g., small talk,
+- Filtering: Removing unnecessary rows or segments (e.g., small talk,
 off-topic responses) from the data.
-
-Recoding Transforming data from one format to another (e.g.,
+- Recoding: Transforming data from one format to another (e.g.,
 generalizing job titles or grouping participant roles).
-
-Join / Merge Combining two datasets based on a shared key (e.g., merging
+- Join/Merge: Combining two datasets based on a shared key (e.g., merging
 participant demographic info with transcripts).
-
-Pivoting Restructuring data from wide format (many columns) to long
+- Pivoting: Restructuring data from wide format (many columns) to long
 format (many rows), or vice versa, to make it easier to analyze or
 display.
 
-🏷️ Text Cleaning Terms Timestamps Time markers in transcripts (e.g.,
-[00:12:34]) that need to be removed unless necessary for the analysis.
+🏷️ Text Cleaning Terms
 
-Filler Words Common speech disfluencies (e.g., "um," "uh," "like") that
+- Timestamps: Time markers in transcripts (e.g., [00:12:34]) that need to be removed unless necessary for the analysis.
+- Filler Words: Common speech disfluencies (e.g., "um," "uh," "like") that
 can be removed for clarity, depending on analysis goals.
-
-Inaudibles / Transcription Errors Markers like “[inaudible]” or machine
+- Inaudibles/Transcription Errors: Markers like “[inaudible]” or machine
 transcription errors that need to be corrected or flagged.
-
-Spelling and Grammar Standardization Correcting spelling errors that
+- Spelling and Grammar Standardization: Correcting spelling errors that
 make text difficult to read, while preserving participant voice and tone
 where relevant.
 
@@ -490,7 +469,7 @@ keep participant ID columns or other columns if you're doing a
 mixed-method analysis. In other cases, you may be analyzing different
 focus groups and comparing them to eachother. Whatever you are doing,
 make sure your dataframe is set up or your analysis. If you are unsure
-about this, ask Hannah or a member of Qual BPT for some help!
+about this, ask a member of Qual BPT for some help!
 
 Here is an example of what your data may look like when you first read
 it into R.
@@ -506,47 +485,41 @@ With clean data, we can:
 
 -   Compare participants' responses across sessions and discussion
     sections. We could answer questions like:
-
     -   What did Educators say about Community Impact vs. Public
         Health?"
-
     -   What did participants across all interviews think about
         abatement funds?
-
 -   Filter by participant role (e.g., facilitators vs. participants) for
     targeted analysis. We could answer questions like:
-
     -    How many participants mentioned that the county should invest
         in wraparound services across all interviews?
-
     -   What is the most common barrier in accessing services in the
         county?
-
 -   Preserve anonymity by removing names and identifiers.
 
-### Zoom transcripts
+## Cleaning transcripts
 
-One of the main forms of qualitative data we receive includes Zoom transcripts. Below is a function you can use to clean your Zoom transcripts and get them to a tidy format by entering the interviewer name(s), and key phrases used by the interviewer to mark the section of the discussion. For example, an interview might begin with an introduction, then include a discussion of barriers, and a discussion of strengths. We'll likely want to separate these out into sections so our analyses can speak to each section independent of each other, rather than be clumped altogether. 
+One of the main forms of qualitative data we receive includes online transcripts. Below is a function you can use to clean your Zoom/Otter.ai transcripts and get them to a tidy format by entering the interviewer name(s), and key phrases used by the interviewer to mark the section of the discussion. For example, an interview might begin with an introduction, then include a discussion of barriers, and a discussion of strengths. We'll likely want to separate these out into sections so our analyses can speak to each section independent of each other, rather than be clumped altogether. 
 
-```{r, echo = TRUE}
+This function works for Zoom transcripts that are saved as Word documents or .txt files. There are few things you need to specify in the function, including updating the file path, the interviewers, setting your list of questions, adding section labels, and the session name. 
+
+```{r, echo = TRUE, eval=FALSE}
 
 # youll need these libraries for this function:
 library(tidyverse)
 library(officer)
 library(stringr)
 
-clean_transcript <- function(file_path,
-                             file_type = c(".docx", ".txt"),
-                             interviewers,
-                             question_list,
-                             section_labels,
-                             session_name) {
-  
-  # Match file_type argument
+# function to clean transcripts
+clean_transcripts <- function(file_path,
+                              file_type = c(".docx", ".txt"),
+                              interviewers,
+                              session_name) {
+
   file_type <- match.arg(file_type)
-  
+
   # ================================
-  # ✅ 1. Load transcript based on file_type
+  # ✅ 1. Load transcript
   # ================================
   if (file_type == ".docx") {
     doc <- read_docx(file_path)
@@ -561,7 +534,7 @@ clean_transcript <- function(file_path,
   }
 
   # ================================
-  # ✅ 2. Classify speaker: interviewer vs participant
+  # ✅ 2. Classify speakers
   # ================================
   df <- df %>%
     mutate(
@@ -571,16 +544,14 @@ clean_transcript <- function(file_path,
       )
     ) %>%
     filter(
-      text != "",                      # Remove blank rows
-      !str_detect(text, "^\\d+$"),     # Remove number-only rows
-      !str_detect(text, "-->")         # Remove timestamp markers
+      text != "",
+      !str_detect(text, "^\\d+$"),
+      !str_detect(text, "-->")
     )
 
   # ================================
-  # ✅ 3. Extract participant & interviewer names
+  # ✅ 3. Extract and assign participant IDs
   # ================================
-  
-  # Participants
   unique_participants <- df %>%
     filter(speaker == "participant" & str_detect(text, ":")) %>%
     mutate(participant_name = str_extract(text, "^[^:]+")) %>%
@@ -588,7 +559,6 @@ clean_transcript <- function(file_path,
     drop_na() %>%
     mutate(participant_id = paste0("P", row_number()))
 
-  # Assign participant IDs back
   df <- df %>%
     mutate(
       participant_name = if_else(
@@ -600,118 +570,87 @@ clean_transcript <- function(file_path,
     left_join(unique_participants, by = "participant_name") %>%
     select(-participant_name)
 
-  # Interviewers
-  unique_interviewers <- df %>%
-    filter(speaker == "interviewer" & str_detect(text, ":")) %>%
-    mutate(interviewer_name = str_extract(text, "^[^:]+")) %>%
-    distinct(interviewer_name) %>%
-    drop_na() %>%
-    mutate(interviewer_id = paste0("I", row_number()))
-
-  # Assign interviewer IDs back
+  # ================================
+  # ✅ 4. Detect section markers and extract section labels
+  # ================================
   df <- df %>%
     mutate(
-      interviewer_name = if_else(
-        speaker == "interviewer" & str_detect(text, ":"),
-        str_extract(text, "^[^:]+"),
+      question = if_else(str_detect(text, "\\[.*\\]"), 1L, 0L),
+      section_label_raw = if_else(
+        question == 1L,
+        str_extract(text, "\\[(.*?)\\]"),
         NA_character_
       )
     ) %>%
-    left_join(unique_interviewers, by = "interviewer_name") %>%
     mutate(
-      participant_id = coalesce(participant_id, interviewer_id)
-    ) %>%
-    select(-interviewer_name, -interviewer_id)
-
-  # ================================
-  # ✅ 4. Clean and Preprocess Text
-  # ================================
-  df <- df %>%
-    mutate(
-      text = str_remove(text, ".*?:\\s*"),   # Remove speaker names (before colon)
-      text = tolower(text),                  # Convert to lowercase
-      text = str_replace_all(text, "[^a-zA-Z0-9\\s]", ""),  # Remove special characters (except spaces)
-      text = iconv(text, from = "UTF-8", to = "ASCII//TRANSLIT")  # Convert non-ASCII characters
+      section_label_clean = str_remove_all(section_label_raw, "\\[|\\]")
     )
 
   # ================================
-  # ✅ 5. Create speaker segments BEFORE detecting questions
-  # ================================
-  df <- df %>%
-    arrange(line) %>%
-    filter(!is.na(participant_id)) %>%
-    mutate(
-      group_id = cumsum(
-        participant_id != lag(participant_id, default = first(participant_id))
-      )
-    ) %>%
-    group_by(group_id) %>%
-    summarize(
-      across(-text, first),                # Keep first of all other columns
-      text = str_c(text, collapse = " "),  # Collapse text
-      .groups = "drop"
-    ) %>%
-    arrange(line)
-
-  # ================================
-  # ✅ 6. Detect interviewer questions
-  # ================================
-  df <- df %>%
-    mutate(
-      question = if_else(
-        speaker == "interviewer" &
-          str_detect(
-            text,
-            regex(str_c(question_list, collapse = "|"), ignore_case = TRUE)
-          ),
-        1L,
-        0L
-      )
-    )
-
-  # ================================
-  # ✅ 7. Remove text before first question
+  # ✅ 5. Remove text before the first question
   # ================================
   first_question_line <- min(df$line[df$question == 1], na.rm = TRUE)
-  
+
+  if (!is.finite(first_question_line)) {
+    stop("❌ No questions (section markers) detected in brackets!")
+  }
+
   df <- df %>%
     filter(line >= first_question_line)
 
   # ================================
-  # ✅ 8. Assign section numbers
+  # ✅ 6. Fill forward the section labels
   # ================================
   df <- df %>%
-    mutate(section = cumsum(question == 1))
-
-  # Map section numbers to section labels
-  section_map <- tibble(
-    section = seq_along(section_labels),
-    section_label = section_labels
-  )
-
-  # Join section labels
-  df <- df %>%
-    left_join(section_map, by = "section")
+    arrange(line) %>%
+    tidyr::fill(section_label_clean, .direction = "down") %>%
+    mutate(
+      section = as.numeric(factor(section_label_clean))
+    )
 
   # ================================
-  # ✅ 9. Remove interviewer lines AFTER section labels assigned
+  # ✅ 7. Create original_text (remove speaker name only)
+  # ================================
+  df <- df %>%
+    mutate(
+      original_text = str_remove(text, ".*?:\\s*")  # Remove everything before the colon
+    )
+
+  # ================================
+  # ✅ 8. Clean the `text` column for analysis
+  # ================================
+  df <- df %>%
+    mutate(
+      text = iconv(original_text, from = "UTF-8", to = "ASCII//TRANSLIT"),
+      text = tolower(text),
+      text = str_replace_all(text, "[^a-zA-Z0-9\\s]", "")  # Remove special characters
+    )
+
+  # ================================
+  # ✅ 9. Filter out section label rows (optional)
+  # ================================
+  df <- df %>%
+    filter(question != 1L)
+
+  # ================================
+  # ✅ 10. Filter out interviewer lines (optional)
   # ================================
   df <- df %>%
     filter(speaker != "interviewer") %>%
     mutate(session = session_name)
 
   # ================================
-  # ✅ 10. Return final dataframe
+  # ✅ 11. Return final dataframe
   # ================================
   final_df <- df %>%
     select(
       line,
       speaker,
       participant_id,
-      question,
       section,
-      section_label,
-      text,
+      section_label = section_label_clean,
+      text,           # cleaned lowercase version
+      original_text,  # original casing/punctuation minus speaker name
       session
     )
 
@@ -720,74 +659,151 @@ clean_transcript <- function(file_path,
 
 ```
 
-And when you want to clean the transcripts and mark the interviewer, you can add the names of the interviewers here. 
+The example below comes from the Loudoun County Opioid Abatement project where Shon, Lindsay, Hannah, Luke, Eden, and Arden are staffed, so any of them could have been an interviewer. 
 
-This function works for Zoom transcripts that are saved as Word documents or .txt files. There are few things you need to specify in the function, including updating the file path, the interviewers, setting your list of questions, adding section labels, and the session name. 
+### Instructions
 
-This example comes from the Loudoun County Opioid Abatement project where Shon, Lindsay, Hannah, Luke, Eden, and Arden are staffed, so any of them could have been an interviewer. 
+1. Open the listening session slides/guide/questions that correspond to the session to make sure we know the order of the discussion.
+2. Open the listening session transcript. If it is a .vtt file, save it as a .txt or .docx and open the new .txt/.docx file. 
+3. Identify which sections are present from the session out of the following list of section labels. If there is a slide that is unique to a single session then it will not be included in the list below. For example, the public safety session had a slide about "public safety in the community" that other sessions did not have. In this case, I added a unique section label to mark this section.  
 
-@QUALBPT is there anything listed here that may be helpful to add that we might want to analyze or examine?
-@QUALBPT is there ever a case where we would need to analyze the interviewer's language?
+-   [Data check]
+-   [Community impact]
+-   [Abatement funds]
+-   [Prevention and harm reduction]
+-   [Treatment and recovery]
+-   [Other strategies]
+-   [Vision for the future]
+-   [Next steps]
 
-In the case where an interviewer asks a question an exact way, we can enter the question as it is listed on the interview guide. However, this is not always the best way to run an interview when you're following a more relaxed vibe. So, it may be helpful to have the interview guide (or deck, whatever the interviewer used to facilitate the discussion) and the transcript opened to identify the order of discussion and section labels, and to identify where those key markers of the text are going to identify your questions. 
+4. Add the section labels where relevant in the transcript. For example, when you see in the transcript something that marks the beginning of the data checks slide, you would add above that line "[Data check]". Importantly, note that:
+-   You do not need to add any section labels before the [Data check] label. This will be our first one.
+-   Section labels should be on their own line and spelled exactly as the labels above, including the brackets []. This is important because our cleaning function searches for brackets!
+-   Please do not edit the raw text- you are adding new lines with the section labels, not changing anything in the text.
+-   Not all sections are in the same order across the sessions (e.g., sometimes treatment and recovery were discussed before prevention and harm reduction) so carefully skim through the transcript to identify the order (this should also align with the order of the deck which is helpful to have open at the same time)
 
-What is a good example of a question list if the interviewer did not read the question verbatim? Let's imagine the first question listed on the interview guide is "What kinds of barriers do you think prevent community members from accessing services in the county?". 
+5. Save the file (.docx or .txt) with the section labels included.
 
-Bad example: "accessing services" this is a bad example because this phrase has been marked as an identifier for a question, so any instance of "accessing services" comes up will count the phrase as a question.
+6. Copy and paste the example chunk below and edit the code to fit your session parameters. 
 
-Good example: "barriers do you think prevent community members from accessing services" it is less likely for someone to have used this exact string of words in the conversation, so we're safe to mark this as a question identifier. 
+7. Run the chunk and check that all sections of the session are shown.
 
-```{r}
+8. If everything looks ok, add your dataframe to the R chunk labeled ```{r bind all data together}.
+
+9. Run the whole script below and check the "cleaned_text" dataframe. 
+
+```{r, echo=TRUE, eval=FALSE}
 # %%%%%%%%%%%%%%%%%%% List interviewer names %%%%%%%%%%%%%%%%%%%
-# ed_df <- clean_transcript(
-#   file_path      = "../../../data_collection/Listening Sessions/Transcripts/Education Listening Session Transcript.docx",
-#   file_type      = ".docx",
-#   interviewers   = c("Shon Reed", "Lindsay Houston", 
-#                      "Hannah Lunkenheimer", "Luke Saunders", 
-#                      "Eden Griffin", "Sam Barron",
-#                      "Arden Trewartha"),
-#   question_list  = c("1st question", 
-#                      "how has the opioid crisis impacted schools and universities within Loudoun County", 
-#                      "opioid abatement fund",
-#                      "what are what are other specific examples that are working well",
-#                      "current efforts on the treatment and recovery",
-#                      "are there any other strategies",
-#                      "vision for the future",
-#                      "survey that you can complete if you would like"),
-#   section_labels = c("Data check", "Community impact", "Abatement funds",
-#                      "Prevention and harm reduction", "Treatment and recovery",
-#                      "Other strategies", "Vision for the future", "Next steps"),
-#   session_name   = "education"
-# )
-
+interviewers <- c("Shon Reed", 
+                  "Lindsay Houston",
+                  "Hannah Lunkenheimer",
+                  "Luke Saunders",
+                  "Eden Griffin",
+                  "Sam Barron",
+                  "Arden Trewartha")
 ```
+
+```{r, echo=TRUE, eval=FALSE}
+# %%%%%%%%%%%%%%%%%%%%%%% EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%
+
+# public safety session
+ps_df <- clean_transcripts( # relabel the dataframe something meaningful - like ps_df stands for public safety dataframe
+  file_path = "../../../data_collection/Listening Sessions/Transcripts/Public Safety Transcript.txt", # add your transcript file here- you should only need to change out the last part!
+  file_type = ".txt", # specify whether you have a .txt or .docx file
+  interviewers = interviewers,
+  session_name = "public safety" # add a session name
+)
+
+ps_df %>% 
+  select(section_label) %>%
+  unique()
+```
+
+```{r, echo=TRUE, eval=FALSE}
+#education 2
+edu2_df <- clean_transcripts( # relabel the dataframe something meaningful - like ps_df stands for public safety dataframe
+  file_path = "../../../data_collection/Listening Sessions/Transcripts/Education 2 Listening Session file.txt", # add your transcript file here- you should only need to change out the last part!
+  file_type = ".txt", # specify whether you have a .txt or .docx file
+  interviewers = interviewers,
+  session_name = "education" # add a session name
+)
+
+edu2_df %>% 
+  select(section_label) %>%
+  unique()
+```
+
+```{r, echo=TRUE, eval=FALSE}
+
+# education
+ed_df <- clean_transcripts(
+  file_path      = "../../../data_collection/Listening Sessions/Transcripts/Education Listening Session Transcript.docx",
+  file_type      = ".docx",
+  interviewers   = interviewers,
+  session_name   = "education"
+)
+
+ed_df %>% 
+  select(section_label) %>%
+  unique()
+```
+
+```{r bind all data together, echo=TRUE, eval=FALSE}
+#####################
+# 3) Combine all data
+#####################
+cleaned_text <- dplyr::bind_rows(
+  # add your new dataframe here to this list
+  ed_df,
+  edu2_df,
+  ps_df)
+
+cleaned_text <- cleaned_text %>%
+  select(-section, -speaker)
+```
+
+```{r, echo=TRUE, eval=FALSE}
+write_rds(cleaned_text, file = "data_clean/text_data_clean.rds")
+```
+
+<!-- And when you want to clean the transcripts and mark the interviewer, you can add the names of the interviewers here.  -->
+
+<!-- In the case where an interviewer asks a question an exact way, we can enter the question as it is listed on the interview guide. However, this is not always the best way to run an interview when you're following a more relaxed vibe. So, it may be helpful to have the interview guide (or deck, whatever the interviewer used to facilitate the discussion) and the transcript opened to identify the order of discussion and section labels, and to identify where those key markers of the text are going to identify your questions.  -->
+
+<!-- What is a good example of a question list if the interviewer did not read the question verbatim? Let's imagine the first question listed on the interview guide is "What kinds of barriers do you think prevent community members from accessing services in the county?".  -->
+
+<!-- Bad example: "accessing services" this is a bad example because this phrase has been marked as an identifier for a question, so any instance of "accessing services" comes up will count the phrase as a question. -->
+
+<!-- Good example: "barriers do you think prevent community members from accessing services" it is less likely for someone to have used this exact string of words in the conversation, so we're safe to mark this as a question identifier.  -->
+
+## Other text file types
 
 ### PDFs
 
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 library(pdftools)
 library(tibble)
 library(dplyr)
 
-# # Define the folder where PDFs are saved
-# folder_path <- "path/to/your/pdf/folder"
-# 
-# # List all PDF files in the folder
-# pdf_files <- list.files(folder_path, pattern = "\\.pdf$", full.names = TRUE)
-# 
-# pdf_data <- pdf_files %>%
-#   map_df(~ tibble(
-#     file = basename(.x),           # Extract file name only
-#     text = paste(pdf_text(.x), collapse = " ")  # Merge all pages into one text block
-#   ))
-# 
-# # View the cleaned data
-# print(pdf_data)
-# 
-# pdf_data <- pdf_data %>%
-#   mutate(text = str_replace_all(text, "\\s+", " "))  # Remove extra spaces/newlines
-# 
-# print(pdf_data)
+# Define the folder where PDFs are saved
+folder_path <- "path/to/your/pdf/folder"
+
+# List all PDF files in the folder
+pdf_files <- list.files(folder_path, pattern = "\\.pdf$", full.names = TRUE)
+
+pdf_data <- pdf_files %>%
+  map_df(~ tibble(
+    file = basename(.x),           # Extract file name only
+    text = paste(pdf_text(.x), collapse = " ")  # Merge all pages into one text block
+  ))
+
+# View the cleaned data
+print(pdf_data)
+
+pdf_data <- pdf_data %>%
+  mutate(text = str_replace_all(text, "\\s+", " "))  # Remove extra spaces/newlines
+
+print(pdf_data)
 
 
 ```
@@ -796,60 +812,15 @@ library(dplyr)
 
 Of course, we also tend to ask qualitative questions in some of our surveys at Omni, and these types of data should be read in like quantitative data and should already be in a clean format if you follow the data cleaning guide (insert link to data cleaning guide).
 
-### @QUALBPT Any other forms of text we use?
+## QA Checklist for Qual Cleaning
 
-```{r}
-# %%%%%%%%%%%%%%% Fix misspelled words %%%%%%%%%%%%%%%
-
-# library(hunspell)
-# 
-# # Flag misspelled words
-# misspelled <- cleaned_text %>%
-#   mutate(
-#     misspelled = !hunspell_check(word),
-#     suggestions = map(word, hunspell_suggest)
-#   ) %>%
-#   filter(misspelled)
-# 
-# head(misspelled)
-# 
-# corrected_text <- cleaned_text %>%
-#   mutate(word = case_match(
-#     word, 
-#     "leraning" ~ "learning",
-#     .default = word
-#   ))
-# 
-# head(corrected_text)
-
-```
-
-
-# QA Checklist for Qual Cleaning
-
-[ ] Are participant and interviewer roles correctly labeled?
-[ ] Have names, locations, and job titles been de-identified?
-[ ] Are timestamps removed (unless needed for analysis)?
-[ ] Are discussion sections correctly labeled?
-[ ] Has text been standardized (case, punctuation, spacing)?
-[ ] Is the cleaned dataset in a tidy format (one speaker turn per row)?
-[ ] Has the cleaned dataset been reviewed by another team member?
-
-```{=html}
-<div class="outer">
-  <div class="green-box"
-       style="--bar-bg: #5776b2;
-              --bar-text-color: #FFFFFF;
-              --box-h: 90px;">
-    <div class="green-col">Cleaning and Pre-Processing Your Data</div>
-    <div class="green-col pattern">
-      <img src="images/Pattern-05-Periwinkle.png" alt="Pattern">
-    </div>
-  </div>
-</div>
-```
-
-<br>
+[ ] Are participant and interviewer roles correctly labeled?\
+[ ] Have names, locations, and job titles been de-identified?\
+[ ] Are timestamps removed (unless needed for analysis)?\
+[ ] Are discussion sections correctly labeled?\
+[ ] Has text been standardized (case, punctuation, spacing)?\
+[ ] Is the cleaned dataset in a tidy format (one speaker turn per row)?\
+[ ] Has the cleaned dataset been reviewed by another team member?\
 
 ## Terminology {.unnumbered}
 
@@ -869,8 +840,6 @@ analysis steps.
 | Dataset | Collection of text documents as one dataset |
 | Dictionary | List of keywords/phrases used to code or categorize text |
 
-::::: columns
-::: {.column width="60%"}
 ```{r, echo=TRUE}
 # Load all packages 
 library(tidyverse)
@@ -884,14 +853,8 @@ library(knitr)
 library(omni)
 
 ```
-:::
 
-::: {.column width="40%"}
-![](images/preprocessing.png)
-:::
-:::::
-
-```{r, include=FALSE}
+```{r, include=TRUE}
 # Create a fake, tidy qualitative dataset
 text_data <- tibble(
   line = 1:10,
@@ -934,18 +897,6 @@ You should always assess the **scope and quality** of your data first:
 -   Are the data cleaned (lowercase, removed participant names,
     punctuation, symbols)? 
 
-```{r, echo=FALSE}
-omni::callout_box(
-    text = "Check out our function that does all of these data cleaning tasks for you in R! You can also segment your text by question, combine multiple interviews and focus groups into one dataset, and more.",
-    color = "periwinkle-600",
-    fixed_width_px = 800
-)
-```
-<center> 
-  <a href="https://www.example.com" target="_blank" rel="noopener" class="yellow-btn">
-    Cleaning transcripts function
-  </a>
-</center>
 -   How much text do you have? (Word counts per document/response.)
 
 -   How many participants contributed?
@@ -971,7 +922,7 @@ sometimes phrases or sentences.
     okay for some analyses, but not for narrative analysis or content
     analysis.
 
-```{r}
+```{r, include=TRUE}
 # %%%%%%%%%%%%%%% Tokenize text %%%%%%%%%%%%%%%
 
 # Tokenize text
@@ -1000,7 +951,7 @@ appear frequently but aren’t relevant to the analysis.
     other words like "but", "is", "the", etc. If you'd like to see all
     of the stop words, see View(stop_words).
 
-```{r}
+```{r, echo=TRUE}
 # %%%%%%%%%%%%%%% Stop words %%%%%%%%%%%%%%%
 
 # Use standard stop words + custom ones (e.g., counties, names)
@@ -1023,7 +974,7 @@ datasets, with typically hundreds of documents or more, but for our
 purposes we recommend stemming any time you have enough data for topic
 modeling (around 5,000 total words).
 
-```{r}
+```{r, echo=TRUE}
 # %%%%%%%%%%%%%%% Stemming %%%%%%%%%%%%%%%
 
 library(textstem)
@@ -1040,7 +991,7 @@ pre-processing step should be used for word frequency analysis,
 sentiment analysis, or thematic/content analysis as it works will with
 small and large datasets.
 
-```{r}
+```{r, echo=TRUE}
 
 # %%%%%%%%%%%%%%% Lemmatization %%%%%%%%%%%%%%%
 
@@ -1052,7 +1003,7 @@ lemmatized_text <- cleaned_text %>%
 Let's compare the stem words, vs lemmatized words against the original
 tokenized words:
 
-```{r}
+```{r, echo=TRUE}
 compare_words <- cleaned_text %>% 
   left_join(stemmed_text, 
             by = join_by(line, 
@@ -1068,12 +1019,12 @@ compare_words <- cleaned_text %>%
   kable()
 ```
 
-```{r, include=TRUE}
+```{r, echo=TRUE}
 compare_words
 ```
 
-```{r, echo=FALSE}
-# Create a data frame for the table
+```{r, echo=TRUE}
+# create a data frame for the table
 comparison_table <- data.frame(
   "Stemming" = c(
     "You need speed over accuracy",
@@ -1091,7 +1042,6 @@ comparison_table <- data.frame(
   )
 )
 
-# Print the table
 kable(comparison_table,
       caption = "When to Use Stemming vs. Lemmatization",
       align = 'll')
