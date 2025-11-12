@@ -1,5 +1,5 @@
 ---
-title: "Fundamental Standards"
+title: "Qualitative Fundamental Standards"
 execute: 
   echo: true
 ---

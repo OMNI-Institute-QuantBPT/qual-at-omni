@@ -170,7 +170,7 @@
   {
     "objectID": "fun_standards.html",
     "href": "fun_standards.html",
-    "title": "Fundamental Standards",
+    "title": "Qualitative Fundamental Standards",
     "section": "",
     "text": "The following fundamental standards and associated practices guide Omni’s Qualitative methods (including data management and analyses). These apply regardless of the methods or software packages used to support project work and are considered non-negotiables because they are critical to our ability to be #accountable to clients and communities in the accuracy of our work.\nAll staff are expected to review the Fundamental Qualitative Standards and indicate they have done so in Confluence here."
   },
@@ -352,35 +352,35 @@
   {
     "objectID": "fun_standards.html#reproducibility",
     "href": "fun_standards.html#reproducibility",
-    "title": "Fundamental Standards",
+    "title": "Qualitative Fundamental Standards",
     "section": "Reproducibility",
     "text": "Reproducibility\nAll data management and analysis must be transparently documented from start to finish.\nAnother Omni staff person should be able to independently retrace your steps and understand exactly how themes, findings, and interpretations were generated, without needing to confer with you directly. This applies to data management, coding, theme development, and interpretation.\nReproducibility in qualitative work is facilitated through:\n\nClear documentation of every step of the process, including:\n\nHow data were collected (e.g., interview guides, focus group protocols, open-ended survey items)\nHow transcripts or field notes were processed and stored\nHow coding was applied (including codebooks with definitions and decision rules)\nHow codes were organized into categories/themes\nHow interpretations and conclusions were drawn\n\nUse of qualitative data analysis software (e.g., Dedoose, R, or similar) that allows for:\n\nSystematic coding and categorization\nDocumentation of memos and analytic decisions\nExporting of coded data and audit trails\n\nMemos and annotations in plain English that explain:\n\nWhy specific codes were applied\nHow you handled complexities (e.g., contradictory data, ambiguous passages)\nRationale for developing themes and conclusions"
   },
   {
     "objectID": "fun_standards.html#analysis-reviews",
     "href": "fun_standards.html#analysis-reviews",
-    "title": "Fundamental Standards",
+    "title": "Qualitative Fundamental Standards",
     "section": "Analysis reviews",
     "text": "Analysis reviews\nWe check each other’s qualitative coding and interpretations.\nWe’re human, which means we bring our own perspectives and potential biases to qualitative work. To strengthen the credibility and trustworthiness of our findings, there must be at least two sets of eyes on:\n\nCodebooks\nApplication of codes\nTheme development and interpretation\n\nThis includes, at a minumum, one person who does the original coding and one person who reviews the coding or participates in a coding comparison. Peer debriefing and/or oversight review should also be used to critically examine interpretations, question assumptions, and ensure findings are rooted in the data rather than assumptions."
   },
   {
     "objectID": "fun_standards.html#save-and-preserve-raw-data-files",
     "href": "fun_standards.html#save-and-preserve-raw-data-files",
-    "title": "Fundamental Standards",
+    "title": "Qualitative Fundamental Standards",
     "section": "Save and Preserve Raw Data Files",
     "text": "Save and Preserve Raw Data Files\nOriginal data are maintained for the entirety of the project lifecycle.\nQualitative data can be messy: transcription software might include typos, audio recordings may be unclear, and datasets might include photos alongside text. Although we may engage in additional efforts to clean up our data, we must maintain a copy of the original data.\nOriginal data files should be:\n\nClearly Labeled (e.g., education_listening_session_transcript_raw.txt)\nSecurely Stored (i.e., saved to a locked down data folder in Dropbox)\nNever altered\n\nAny modifications (e.g., de-identification, transcript corrections, cleaning up of quotes for reporting) should be made on copies, with clear documentation of changes. This ensures data integrity, allows for mistakes to be traced and corrected, and maintains the authenticity of participants voices. Additionally, qualitative files should follow Omni’s data security protocols, ensuring confidentiality and participant protections at all stages."
   },
   {
     "objectID": "fun_standards.html#estimate-and-communicate-with-precision",
     "href": "fun_standards.html#estimate-and-communicate-with-precision",
-    "title": "Fundamental Standards",
+    "title": "Qualitative Fundamental Standards",
     "section": "Estimate and Communicate with Precision",
     "text": "Estimate and Communicate with Precision\nOur reporting is as precise as possible, and we precisely communicate the uncertainty of our findings.\nOur qualitative findings are presented with the greatest precision possible, and we communicate how interpretations were reached, including any uncertainties or limitations.\nWhen we present themes or findings to clients, they should be rooted in the data and include:\n\nClear explanations of how themes were derived\nDiscussion of alternative interpretations, where appropriate\nExplanation of analytic decisions, including the rationale for emphasizing certain themes over others\nTransparency about data limitations (e.g., sample characteristics, data quality, potential biases)\nCareful and intentional use of quantifiers (words like “many”, “most” may not be appropriate for all qualitative reporting, and should be used judiciously)\nDirect reporting of the number of participants/groups that the code/theme arose in (e.g., n=)\nDirect quotes that illustrate key themes\n\nThis information can be conveyed in a narrative or as a technical appendix. It not need to take up a lot of space in a report (regardless of where it is shared), but its inclusion better allows clients and communities to trust the rigor of our work."
   },
   {
     "objectID": "fun_standards.html#evaluate",
     "href": "fun_standards.html#evaluate",
-    "title": "Fundamental Standards",
+    "title": "Qualitative Fundamental Standards",
     "section": "Evaluate",
     "text": "Evaluate\nQuestion whether what you’re seeing makes sense. If it doesn’t make sense, dig in.\n#Inquiry is our greatest tool to ensure high-quality, accurate qualitative methods. At every step, from opening the raw data file to examining findings that emerge from our analyses, we should be critically examining our results and asking questions like: does this look like what we expected? does this make intuitive sense? what does this actually mean? If the answer to these questions are no or I don’t know or your gut tells you something is off, dig in until it is resolved. “Digging in” could consist of retracing your steps and double checking the code, the data, or assumptions about the data. It could be consulting a data dictionary, conferring with a colleague, or adding an agenda item to a project meeting. The important thing is to lean into inquiry, be critical, and identify those things that don’t seem right."
   },
